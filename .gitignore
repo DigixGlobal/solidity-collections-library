@@ -1,0 +1,8 @@
+node_modules
+./scripts/doxity/node_modules
+npm-debug.log
+yarn-error.log
+kovan.env
+testnet.env
+mainnet.env
+.tmp/
