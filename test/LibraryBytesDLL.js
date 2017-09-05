@@ -1,7 +1,6 @@
 const a = require('awaiting');
 
 const bN = web3.toBigNumber;
-
 const TestLibraryBytesDLL = artifacts.require('./TestLibraryBytesDLL.sol');
 
 // web3.toAscii results in some padding \u0000 at the end,
@@ -12,14 +11,15 @@ const myToAscii = function (input) { return web3.toAscii(input).replace(/\u0000/
 contract('LibraryBytesDLL', function (addresses) {
   let testLibraryBytesDLL;
 
-  before(async function () {
+  let resetDataBeforeTest = async function () {
     testLibraryBytesDLL = await TestLibraryBytesDLL.new();
-  });
+    await testLibraryBytesDLL.setup_data_for_testing();
+  }
+
+  before(resetDataBeforeTest);
 
   describe('find', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('returns correct index if item is found', async function () {
       assert.deepEqual(await testLibraryBytesDLL.test_find.call('test4'), bN(4));
     });
@@ -33,9 +33,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('get', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('returns correct item if index is valid', async function () {
       assert.deepEqual(myToAscii(await testLibraryBytesDLL.test_get.call(bN(6))),'test6');
       assert.deepEqual(myToAscii(await testLibraryBytesDLL.test_get.call(bN(4))),'test4');
@@ -53,9 +51,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('append', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[item already exists]: returns false', async function () {
       assert.deepEqual(await testLibraryBytesDLL.test_append.call('test4'),false);
     });
@@ -66,7 +62,6 @@ contract('LibraryBytesDLL', function (addresses) {
       assert.deepEqual(await testLibraryBytesDLL.test_check_count.call(),bN(7));
     });
     it('[item is new]: item added is at last_index, items content and pointers are correct', async function() {
-      await testLibraryBytesDLL.setup_data_for_testing();
       await testLibraryBytesDLL.test_append('test_append_2');
       //make sure we just added to index 7
       assert.deepEqual(myToAscii(await testLibraryBytesDLL.test_get.call(bN(7))),'test_append_2');
@@ -85,9 +80,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('remove', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[index = 1]: removes the first item, first_index changes correctly, (new first item).previous_index = 0, count is updated, returns true', async function () {
       assert.deepEqual(await testLibraryBytesDLL.test_remove.call(bN(1)),true);
       await testLibraryBytesDLL.test_remove(bN(1));
@@ -96,7 +89,6 @@ contract('LibraryBytesDLL', function (addresses) {
       assert.deepEqual(await testLibraryBytesDLL.test_check_count.call(),bN(5));
     });
     it('[index = last_index]: removes the last item, last_index changes correctly, (new last item).next_index = 0, count is updated, returns true', async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
       assert.deepEqual(await testLibraryBytesDLL.test_remove.call(bN(6)),true);
       await testLibraryBytesDLL.test_remove(bN(6));
       assert.deepEqual(await testLibraryBytesDLL.test_check_last_index.call(),bN(5));
@@ -104,7 +96,6 @@ contract('LibraryBytesDLL', function (addresses) {
       assert.deepEqual(await testLibraryBytesDLL.test_check_count.call(),bN(5));
     });
     it('[1 < index < last_index]: removes correct item, previous_index and next_index of surrouding items are updated correctly, count is updated, returns true', async function() {
-      await testLibraryBytesDLL.setup_data_for_testing();
       assert.deepEqual(await testLibraryBytesDLL.test_remove.call(bN(4)),true);
       await testLibraryBytesDLL.test_remove(bN(4));
       assert.deepEqual(await testLibraryBytesDLL.test_item_next_index.call(bN(3)),bN(5));
@@ -112,20 +103,17 @@ contract('LibraryBytesDLL', function (addresses) {
       assert.deepEqual(await testLibraryBytesDLL.test_check_count.call(),bN(5));
     });
     it('[index is already removed]: doesnt do anything, count is the same, returns false', async function() {
-      await testLibraryBytesDLL.setup_data_for_testing();
       await testLibraryBytesDLL.test_remove(bN(4));
       assert.deepEqual(await testLibraryBytesDLL.test_remove.call(bN(4)),false);
       await testLibraryBytesDLL.test_remove(bN(4));
       assert.deepEqual(await testLibraryBytesDLL.test_check_count.call(),bN(5));
     });
     it('[index=0 - invalid]: no item should be removed, count is unchanged, returns false', async function() {
-      await testLibraryBytesDLL.setup_data_for_testing();
       assert.deepEqual(await testLibraryBytesDLL.test_remove.call(bN(0)),false);
       await testLibraryBytesDLL.test_remove(bN(0));
       assert.deepEqual(await testLibraryBytesDLL.test_check_count.call(),bN(6));
     });
     it('[index>last_index - invalid]: no item should be removed, count is unchanged, returns false', async function() {
-      await testLibraryBytesDLL.setup_data_for_testing();
       assert.deepEqual(await testLibraryBytesDLL.test_remove.call(bN(7)),false);
       await testLibraryBytesDLL.test_remove(bN(7));
       assert.deepEqual(await testLibraryBytesDLL.test_check_count.call(),bN(6));
@@ -133,9 +121,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('remove_item', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[item exists]: remove the item, count decrements by 1, returns true', async function () {
       assert.deepEqual(await testLibraryBytesDLL.test_remove_item.call('test2'),true);
       await testLibraryBytesDLL.test_remove_item('test2');
@@ -143,7 +129,6 @@ contract('LibraryBytesDLL', function (addresses) {
       assert.deepEqual(await testLibraryBytesDLL.test_find.call('test2'), bN(0));
     });
     it('[item does not exist]: count is the same, returns false', async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
       assert.deepEqual(await testLibraryBytesDLL.test_remove_item.call('test_remove_item_new'),false);
       await testLibraryBytesDLL.test_remove_item('test_remove_item_new');
       assert.deepEqual(await testLibraryBytesDLL.test_check_count.call(),bN(6));
@@ -151,9 +136,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('total', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[collection is not empty]: returns correct count', async function () {
       assert.deepEqual(await testLibraryBytesDLL.test_total.call(),bN(6));
     });
@@ -164,9 +147,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('start', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[collection is not empty]: returns correct first_index', async function () {
       assert.deepEqual(await testLibraryBytesDLL.test_start.call(),bN(1));
     });
@@ -177,9 +158,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('start_item', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[collection is not empty]: returns correct item', async function () {
       assert.deepEqual(myToAscii(await testLibraryBytesDLL.test_start_item.call()),'test1');
     });
@@ -190,9 +169,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('end', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[collection is not empty]: returns correct last_index', async function () {
       assert.deepEqual(await testLibraryBytesDLL.test_end.call(),bN(6));
     });
@@ -203,9 +180,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('end_item', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[collection is not empty]: returns correct item', async function () {
       assert.deepEqual(myToAscii(await testLibraryBytesDLL.test_end_item.call()),'test6');
     });
@@ -216,9 +191,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('valid', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[index = 0]: returns false', async function () {
       assert.deepEqual(await testLibraryBytesDLL.test_valid.call(bN(0)),false);
     });
@@ -231,9 +204,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('valid_item', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[item is in the collection]: returns true', async function () {
       assert.deepEqual(await testLibraryBytesDLL.test_valid_item.call('test2'),true);
     });
@@ -243,9 +214,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('previous', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[first_index < index <= last_index]: returns correct previous index', async function () {
       assert.deepEqual(await testLibraryBytesDLL.test_previous.call(bN(4)),bN(3));
     });
@@ -261,9 +230,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('previous_item', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[item is in the collection, not the first]: returns correct previous item', async function () {
       assert.deepEqual(myToAscii(await testLibraryBytesDLL.test_previous_item.call('test5')),'test4');
     });
@@ -276,9 +243,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('next', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[first_index <= index < last_index]: returns correct next index', async function () {
       assert.deepEqual(await testLibraryBytesDLL.test_next.call(bN(4)),bN(5));
     });
@@ -294,9 +259,7 @@ contract('LibraryBytesDLL', function (addresses) {
   });
 
   describe('next_item', function () {
-    before(async function () {
-      await testLibraryBytesDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[item is in the collection, not the last]: returns correct next item', async function () {
       assert.deepEqual(myToAscii(await testLibraryBytesDLL.test_next_item.call('test5')),'test6');
     });
