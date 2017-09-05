@@ -1,10 +1,10 @@
 linkPrefix = "/solidity-collections-library"
-name = "solidity-collections-library"
+name = "@digix/solidity-collections"
 license = "BSD-2-Clause"
 version = "0.0.1"
 description = "Solidity library for collections"
 author = "ace@dgx.io"
-buildTime = 2017-09-05T06:22:08.631Z
+buildTime = 2017-09-05T06:24:23.432Z
 target = "scripts/doxity"
 src = "contracts/*"
 dir = "pages/docs"
