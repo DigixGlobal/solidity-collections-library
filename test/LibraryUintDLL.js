@@ -12,14 +12,15 @@ const myToAscii = function (input) { return web3.toAscii(input).replace(/\u0000/
 contract('LibraryUintDLL', function (addresses) {
   let testLibraryUintDLL;
 
-  before(async function () {
+  let resetDataBeforeTest = async function () {
     testLibraryUintDLL = await TestLibraryUintDLL.new();
-  });
+    await testLibraryUintDLL.setup_data_for_testing();
+  }
+
+  before(resetDataBeforeTest);
 
   describe('find', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('returns correct index if item is found', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_find.call(bN(104)), bN(4));
     });
@@ -33,9 +34,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('get', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('returns correct item if index is valid', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_get.call(bN(6)),bN(106));
       assert.deepEqual(await testLibraryUintDLL.test_get.call(bN(4)),bN(104));
@@ -53,9 +52,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('append', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[item already exists]: returns false', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_append.call(bN(104)),false);
     });
@@ -66,7 +63,6 @@ contract('LibraryUintDLL', function (addresses) {
       assert.deepEqual(await testLibraryUintDLL.test_check_count.call(),bN(7));
     });
     it('[item is new]: item added is at last_index, items content and pointers are correct', async function() {
-      await testLibraryUintDLL.setup_data_for_testing();
       await testLibraryUintDLL.test_append(bN(104003));
       //make sure we just added to index 7
       assert.deepEqual(await testLibraryUintDLL.test_get.call(bN(7)),bN(104003));
@@ -85,9 +81,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('remove', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[index = 1]: removes the first item, first_index changes correctly, (new first item).previous_index = 0, count is updated, returns true', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_remove.call(bN(1)),true);
       await testLibraryUintDLL.test_remove(bN(1));
@@ -96,7 +90,6 @@ contract('LibraryUintDLL', function (addresses) {
       assert.deepEqual(await testLibraryUintDLL.test_check_count.call(),bN(5));
     });
     it('[index = last_index]: removes the last item, last_index changes correctly, (new last item).next_index = 0, count is updated, returns true', async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
       assert.deepEqual(await testLibraryUintDLL.test_remove.call(bN(6)),true);
       await testLibraryUintDLL.test_remove(bN(6));
       assert.deepEqual(await testLibraryUintDLL.test_check_last_index.call(),bN(5));
@@ -104,7 +97,6 @@ contract('LibraryUintDLL', function (addresses) {
       assert.deepEqual(await testLibraryUintDLL.test_check_count.call(),bN(5));
     });
     it('[1 < index < last_index]: removes correct item, previous_index and next_index of surrouding items are updated correctly, count is updated, returns true', async function() {
-      await testLibraryUintDLL.setup_data_for_testing();
       assert.deepEqual(await testLibraryUintDLL.test_remove.call(bN(4)),true);
       await testLibraryUintDLL.test_remove(bN(4));
       assert.deepEqual(await testLibraryUintDLL.test_item_next_index.call(bN(3)),bN(5));
@@ -112,20 +104,17 @@ contract('LibraryUintDLL', function (addresses) {
       assert.deepEqual(await testLibraryUintDLL.test_check_count.call(),bN(5));
     });
     it('[index is already removed]: doesnt do anything, count is the same, returns false', async function() {
-      await testLibraryUintDLL.setup_data_for_testing();
       await testLibraryUintDLL.test_remove(bN(4));
       assert.deepEqual(await testLibraryUintDLL.test_remove.call(bN(4)),false);
       await testLibraryUintDLL.test_remove(bN(4));
       assert.deepEqual(await testLibraryUintDLL.test_check_count.call(),bN(5));
     });
     it('[index=0 - invalid]: no item should be removed, count is unchanged, returns false', async function() {
-      await testLibraryUintDLL.setup_data_for_testing();
       assert.deepEqual(await testLibraryUintDLL.test_remove.call(bN(0)),false);
       await testLibraryUintDLL.test_remove(bN(0));
       assert.deepEqual(await testLibraryUintDLL.test_check_count.call(),bN(6));
     });
     it('[index>last_index - invalid]: no item should be removed, count is unchanged, returns false', async function() {
-      await testLibraryUintDLL.setup_data_for_testing();
       assert.deepEqual(await testLibraryUintDLL.test_remove.call(bN(7)),false);
       await testLibraryUintDLL.test_remove(bN(7));
       assert.deepEqual(await testLibraryUintDLL.test_check_count.call(),bN(6));
@@ -133,9 +122,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('remove_item', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[item exists]: remove the item, count decrements by 1, returns true', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_remove_item.call(bN(102)),true);
       await testLibraryUintDLL.test_remove_item(bN(102));
@@ -143,7 +130,6 @@ contract('LibraryUintDLL', function (addresses) {
       assert.deepEqual(await testLibraryUintDLL.test_find.call(bN(102)), bN(0));
     });
     it('[item does not exist]: count is the same, returns false', async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
       assert.deepEqual(await testLibraryUintDLL.test_remove_item.call(bN(105001)),false);
       await testLibraryUintDLL.test_remove_item(bN(105001));
       assert.deepEqual(await testLibraryUintDLL.test_check_count.call(),bN(6));
@@ -151,9 +137,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('total', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[collection is not empty]: returns correct count', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_total.call(),bN(6));
     });
@@ -164,9 +148,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('start', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[collection is not empty]: returns correct first_index', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_start.call(),bN(1));
     });
@@ -177,9 +159,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('start_item', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[collection is not empty]: returns correct item', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_start_item.call(),bN(101));
     });
@@ -190,9 +170,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('end', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[collection is not empty]: returns correct last_index', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_end.call(),bN(6));
     });
@@ -203,9 +181,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('end_item', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[collection is not empty]: returns correct item', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_end_item.call(),bN(106));
     });
@@ -216,9 +192,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('valid', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[index = 0]: returns false', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_valid.call(bN(0)),false);
     });
@@ -231,9 +205,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('valid_item', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[item is in the collection]: returns true', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_valid_item.call(bN(102)),true);
     });
@@ -243,9 +215,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('previous', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[first_index < index <= last_index]: returns correct previous index', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_previous.call(bN(4)),bN(3));
     });
@@ -261,9 +231,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('previous_item', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[item is in the collection, not the first]: returns correct previous item', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_previous_item.call(bN(105)),bN(104));
     });
@@ -276,9 +244,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('next', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[first_index <= index < last_index]: returns correct next index', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_next.call(bN(4)),bN(5));
     });
@@ -294,9 +260,7 @@ contract('LibraryUintDLL', function (addresses) {
   });
 
   describe('next_item', function () {
-    before(async function () {
-      await testLibraryUintDLL.setup_data_for_testing();
-    });
+    beforeEach(resetDataBeforeTest);
     it('[item is in the collection, not the last]: returns correct next item', async function () {
       assert.deepEqual(await testLibraryUintDLL.test_next_item.call(bN(105)),bN(106));
     });
