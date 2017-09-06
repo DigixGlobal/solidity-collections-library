@@ -12,6 +12,7 @@ library LibraryDLL {
     uint256 last_index;
     uint256 count;
     mapping(bytes32 => uint256) item_index;
+    mapping(uint256 => bool) valid_indexes;
     Item[] collection;
   }
 
@@ -48,7 +49,11 @@ library LibraryDLL {
            constant
            returns (bytes32 _item)
   {
-    _item = self.collection[_item_index - 1].item;
+    if (self.valid_indexes[_item_index] == true) { 
+      _item = self.collection[_item_index - 1].item;
+    } else {
+      _item = bytes32("");
+    }
   }
 
   function append(Data storage self, bytes32 _data)
@@ -71,6 +76,7 @@ library LibraryDLL {
         self.last_index = _index;
         self.count++;
       }
+      self.valid_indexes[_index] = true;
       self.item_index[_data] = _index;
       _success = true;
     }     
@@ -80,22 +86,27 @@ library LibraryDLL {
            internal
            returns (bool _success) 
   {
-    Item memory item = self.collection[_index - 1];
-    if (item.previous_index == NONE) {
-      self.first_index = item.next_index;
+    if (self.valid_indexes[_index] == true) {
+      Item memory item = self.collection[_index - 1];
+      if (item.previous_index == NONE) {
+        self.first_index = item.next_index;
+      }
+      if (item.next_index == NONE) {
+        self.last_index = item.previous_index;
+      }
+      if (item.previous_index != NONE) {
+        self.collection[item.previous_index - 1].next_index = item.next_index;
+      }
+      if (item.next_index != NONE) {
+        self.collection[item.next_index - 1].previous_index = item.previous_index;
+      }
+      delete self.collection[_index - 1];
+      self.valid_indexes[_index] = false;
+      self.count--;
+      _success = true;
+    } else {
+      _success = false;
     }
-    if (item.next_index == NONE) {
-      self.last_index = item.previous_index;
-    }
-    if (item.previous_index != NONE) {
-      self.collection[item.previous_index - 1].next_index = item.next_index;
-    }
-    if (item.next_index != NONE) {
-      self.collection[item.next_index - 1].previous_index = item.previous_index;
-    }
-    delete self.collection[_index - 1];
-    self.count--;
-    _success = true;
   }
 
   function remove_item(Data storage self, bytes32 _item) 
@@ -170,8 +181,8 @@ library LibraryDLL {
            constant
            returns (bool _yes)
   {
-    _yes = ((_item_index - 1) < self.collection.length);
-    return _yes;
+    _yes = self.valid_indexes[_item_index];
+    //_yes = ((_item_index - 1) < self.collection.length);
   }
 
   function valid_item(Data storage self, bytes32 _item)
@@ -180,11 +191,7 @@ library LibraryDLL {
            returns (bool _yes)
   {
     uint256 _item_index = self.item_index[_item];
-    if(_item_index != NONE) {
-      _yes = true;
-    } else {
-      _yes = false;
-    }
+    _yes = self.valid_indexes[_item_index];
   }
 
   function previous(Data storage self, uint256 _current_index)
@@ -192,7 +199,11 @@ library LibraryDLL {
            constant
            returns (uint256 _previous_index)
   {
-    _previous_index = self.collection[_current_index -1].previous_index;
+    if (self.valid_indexes[_current_index] == true) {
+      _previous_index = self.collection[_current_index - 1].previous_index;
+    } else {
+      _previous_index = NONE;
+    }
   }
 
   function previous_item(Data storage self, bytes32 _current_item)
@@ -214,7 +225,11 @@ library LibraryDLL {
            constant
            returns (uint256 _next_index)
   {
-    _next_index = self.collection[_current_index - 1].next_index;
+    if (self.valid_indexes[_current_index] == true) {
+      _next_index = self.collection[_current_index - 1].next_index;
+    } else {
+      _next_index = NONE;
+    }
   }
 
   function next_item(Data storage self, bytes32 _current_item)

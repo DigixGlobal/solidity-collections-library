@@ -20,6 +20,7 @@ contract TestLibraryDLL {
       testData.append('test5');
       testData.append('test6');
   }
+
   function test_check_collection_count () returns (uint256 _count) {
     _count = testData.collection.length;
   }
