@@ -272,6 +272,20 @@ contract('LibraryDLL', function (addresses) {
     });
   });
 
+  // Combining multiple methods;
+
+  describe('remove, start and total', function () {
+    beforeEach(resetDataBeforeTest);
+    it('[remove the whole collection by repeatedly removing the first]: collection is empty', async function () {
+      const count = (await testLibraryDLL.test_total.call()).toNumber();
+      for (var i=0;i<count;i++) {
+        const indexOfFirstItem = await testLibraryDLL.test_start.call();
+        await testLibraryDLL.test_remove(indexOfFirstItem);
+      }
+      assert.deepEqual(await testLibraryDLL.test_total.call(), bN(0));
+    });
+  });
+
   // describe('test', function () {
   //   // it('throws when address is null', async function () {
   //   //   assert.ok(await a.failure(mockLibraryDLL.test_not_null_address.call(nullAddress)));

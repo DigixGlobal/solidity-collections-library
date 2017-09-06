@@ -14,12 +14,12 @@ contract TestLibraryAddressDLL {
   function setup_data_for_testing ()
   {
       delete testData;
-      testData.append(address(0xef91b34f9a88f811dbd0794446830e95bd68fe7d));
-      testData.append(address(0x66ba92773feeef8cc0ddfdc8b6adc87ede1a0ec3));
-      testData.append(address(0xe6583dcde6403fbae2a83641ea849f744ca862d5));
-      testData.append(address(0x7046f6f2125b7148cb96183d2f3ac19781a2dffc));
-      testData.append(address(0x9a8cf272691f844e243e7712ca6f3c0d5f6bc94b));
-      testData.append(address(0xd2b90da1b96cbe2aa1b23172dd6d8d77903a92a8));
+      testData.append(address(0x249b1bf054d2b2643a0e38948aa92ccb6c2ccd7e));
+      testData.append(address(0x1cd24e853af2027df542551f393b1bd0db2f1a03));
+      testData.append(address(0x54e3872db39fc3a1fa018688bff59dd6409b0a23));
+      testData.append(address(0x4db089d50f72996895dc4224c8c6fae0f104bc1d));
+      testData.append(address(0x74cd5f20ee949189bdc83f7f6088063eb7fdcc86));
+      testData.append(address(0xa1fada6e4f11770a672ca678d6290b311f53c256));
   }
 
   function test_check_collection_count () returns (uint256 _count) {

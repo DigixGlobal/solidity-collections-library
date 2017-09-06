@@ -29,6 +29,32 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage {
     address_collection.append(0xd2b90da1b96cbe2aa1b23172dd6d8d77903a92a8);
   }
 
+  function remove_all_data_in_bytes_collection()
+           public
+           returns (bool _success)
+  {
+    for (uint256 i=1;i<=6;i++) {
+      bytes_collection.remove(i);
+    }
+    _success = bytes_collection.total() == 0;
+  }
+
+  function remove_all_data_in_addresses_collection()
+           public
+           returns (bool _success)
+  {
+    for (uint256 i=1;i<=6;i++) {
+      address_collection.remove(i);
+    }
+    _success = address_collection.total() == 0;
+  }
+
+  /*function test_total()
+           returns (uint256 _count)
+  {
+    _count = bytes_collection.total();
+  }*/
+
   function read_first_in_bytes_collection()
            public
            constant
@@ -43,7 +69,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage {
            returns (bytes32 _item)
   {
     _item = read_last_from_bytes_dll(bytes_collection);
-  } 
+  }
 
   function read_next_in_bytes_collection(bytes32 _current_item)
            public
@@ -84,7 +110,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage {
            returns (address _item)
   {
     _item = read_last_from_addresses_dll(address_collection);
-  } 
+  }
 
   function read_next_in_addresses_collection(address _current_item)
            public
