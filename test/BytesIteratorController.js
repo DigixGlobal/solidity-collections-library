@@ -1,15 +1,9 @@
-const a = require('awaiting');
+const { myToAscii, bN } = require('./testHelpers');
 
-const bN = web3.toBigNumber;
 const ExampleController = artifacts.require('./ExampleController.sol');
 const ExampleStorage = artifacts.require('./ExampleStorage.sol');
 
-// web3.toAscii results in some padding \u0000 at the end,
-// this function fixes this problem
-// link to issue: https://github.com/ethereum/web3.js/issues/337
-const myToAscii = function (input) { return web3.toAscii(input).replace(/\u0000/g, '') };
-
-contract('BytesIteratorController', function (addresses) {
+contract('BytesIteratorController', function () {
   let exampleController;
   let exampleStorage;
 
@@ -79,6 +73,4 @@ contract('BytesIteratorController', function (addresses) {
       assert.deepEqual(await exampleController.get_total_in_bytes_collection.call(), bN(0));
     });
   });
-
-
 });

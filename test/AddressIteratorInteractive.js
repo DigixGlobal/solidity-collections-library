@@ -1,49 +1,19 @@
-const a = require('awaiting');
+const { bN, exampleAddresses } = require('./testHelpers');
 
-const bN = web3.toBigNumber;
 const ExampleController = artifacts.require('./ExampleController.sol');
 const ExampleStorage = artifacts.require('./ExampleStorage.sol');
 const ExampleInteractive = artifacts.require('./ExampleInteractive');
-// web3.toAscii results in some padding \u0000 at the end,
-// this function fixes this problem
-// link to issue: https://github.com/ethereum/web3.js/issues/337
-const myToAscii = function (input) { return web3.toAscii(input).replace(/\u0000/g, '') };
 
-contract('AddressIteratorInteractive', function (addresses) {
+contract('AddressIteratorInteractive', function () {
   let exampleController;
   let exampleStorage;
   let exampleInteractive;
-
-  const exampleAddresses = [
-    "blah",
-    "0xb1b8c0e568591f7b71f825be26087a82ddda17b2",
-    "0x66ba92773feeef8cc0ddfdc8b6adc87ede1a0ec3",
-    "0x9a8cf272691f844e243e7712ca6f3c0d5f6bc94b",
-    "0x3c5ce67a06e4fb06022dce62737288bede746ffa",
-    "0x7046f6f2125b7148cb96183d2f3ac19781a2dffc",
-    "0xd2b90da1b96cbe2aa1b23172dd6d8d77903a92a8",
-    "0xd2b90da1b96cbe2aa1b000000000000000000000"
-  ]
-
-  const emptyAddress = '0x0000000000000000000000000000000000000000';
 
   beforeEach(async function () {
     exampleStorage = await ExampleStorage.new();
     exampleController = await ExampleController.new(exampleStorage.address);
     exampleInteractive = await ExampleInteractive.new(exampleController.address);
   });
-
-  // describe('list_adr_from_start', function () {
-  //   it('[collection is not empty, 0<count<size of collection] returns correct items', async function () {
-  //     const res = await exampleInteractive.list_bytes_collection_from_start(bN(6));
-  //     assert.deepEqual(myToAscii(res[0]), 'test1');
-  //     assert.deepEqual(myToAscii(res[1]), 'test2');
-  //     assert.deepEqual(myToAscii(res[2]), 'test3');
-  //     assert.deepEqual(myToAscii(res[3]), 'test4');
-  //     assert.deepEqual(myToAscii(res[4]), 'test5');
-  //     assert.deepEqual(myToAscii(res[5]), 'test6');
-  //   });
-  // });
 
   describe('list_addresses_from_start', function () {
     it('[collection is not empty, 0<count<=size of collection] returns correct items', async function () {
@@ -115,6 +85,4 @@ contract('AddressIteratorInteractive', function (addresses) {
       assert.deepEqual(res.length, 0);
     });
   });
-
-
 });

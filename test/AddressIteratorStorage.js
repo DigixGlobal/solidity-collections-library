@@ -1,28 +1,9 @@
-const a = require('awaiting');
+const { bN, exampleAddresses, emptyAddress } = require('./testHelpers');
 
-const bN = web3.toBigNumber;
 const ExampleStorage = artifacts.require('./ExampleStorage.sol');
-
-// web3.toAscii results in some padding \u0000 at the end,
-// this function fixes this problem
-// link to issue: https://github.com/ethereum/web3.js/issues/337
-const myToAscii = function (input) { return web3.toAscii(input).replace(/\u0000/g, '') };
 
 contract('AddressIteratorStorage', function (addresses) {
   let exampleStorage;
-
-  const exampleAddresses = [
-    "blah",
-    "0xb1b8c0e568591f7b71f825be26087a82ddda17b2",
-    "0x66ba92773feeef8cc0ddfdc8b6adc87ede1a0ec3",
-    "0x9a8cf272691f844e243e7712ca6f3c0d5f6bc94b",
-    "0x3c5ce67a06e4fb06022dce62737288bede746ffa",
-    "0x7046f6f2125b7148cb96183d2f3ac19781a2dffc",
-    "0xd2b90da1b96cbe2aa1b23172dd6d8d77903a92a8",
-    "0xd2b90da1b96cbe2aa1b000000000000000000000"
-  ]
-
-  const emptyAddress = '0x0000000000000000000000000000000000000000';
 
   beforeEach(async function () {
     exampleStorage = await ExampleStorage.new();
