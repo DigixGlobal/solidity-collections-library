@@ -12,7 +12,7 @@ contract ExampleController is BytesIteratorController, AddressIteratorController
     storage_contract = _storage;
   }
 
-  function example_storage() 
+  function example_storage()
            internal
            constant
            returns (ExampleStorage _contract)
@@ -59,7 +59,7 @@ contract ExampleController is BytesIteratorController, AddressIteratorController
   {
     _total_count = get_total_in_bytes_dll(example_storage().read_total_in_bytes_collection);
   }
-          
+
   function get_first_in_addresses_collection()
            public
            constant
