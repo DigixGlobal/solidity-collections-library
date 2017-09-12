@@ -1,4 +1,4 @@
-pragma solidity ^0.4.14;
+pragma solidity ^0.4.16;
 
 import "../abstract/BytesIteratorInteractive.sol";
 import "../abstract/AddressIteratorInteractive.sol";
