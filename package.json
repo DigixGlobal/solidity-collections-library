@@ -1,6 +1,6 @@
 {
   "name": "@digix/solidity-collections",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Solidity library for collections",
   "files": ["build", "contracts"],
   "repository": {

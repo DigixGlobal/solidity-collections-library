@@ -26,12 +26,14 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
     bytes_collection.append("test4");
     bytes_collection.append("test5");
     bytes_collection.append("test6");
-    address_collection.append(0xb1b8c0e568591f7b71f825be26087a82ddda17b2);
-    address_collection.append(0x66ba92773feeef8cc0ddfdc8b6adc87ede1a0ec3);
-    address_collection.append(0x9a8cf272691f844e243e7712ca6f3c0d5f6bc94b);
-    address_collection.append(0x3c5ce67a06e4fb06022dce62737288bede746ffa);
-    address_collection.append(0x7046f6f2125b7148cb96183d2f3ac19781a2dffc);
-    address_collection.append(0xd2b90da1b96cbe2aa1b23172dd6d8d77903a92a8);
+
+		address_collection.append(0x7812421a7579d8182DC6f2B68Ab56595db01553F);
+		address_collection.append(0x419f0a80D85f3C7dC3553394d91c9A339332a01E);
+		address_collection.append(0xF5dFE2A3f8Cf5CA8723b51be6fc065beA0cFE893);
+		address_collection.append(0x5dc52D499a77af45f43174CFE7982dC68c331c38);
+		address_collection.append(0x727C89006bd885f9A77254797a362d69E8A1f4da);
+		address_collection.append(0x0F66eC3DF48eC1E216D24e225b772696e031B698);
+
     uint_collection.append(1002);
     uint_collection.append(1003);
     uint_collection.append(1004);

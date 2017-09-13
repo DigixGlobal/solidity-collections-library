@@ -1,6 +1,6 @@
 pragma solidity ^0.4.16;
 
-contract BytesIteratorInteractive {
+contract IndexedBytesIteratorInteractive {
 
   function list_indexed_bytes_from_start(bytes32 _collection_index, uint256 _count, 
                                  function (bytes32) external constant returns (uint256) _function_total,
