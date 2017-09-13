@@ -1,12 +1,12 @@
 pragma solidity ^0.4.16;
 
-import "../lib/LibraryDLL.sol";
+import "../lib/DoublyLinkedList.sol";
 
 contract AddressIteratorStorage {
 
-  using LibraryDLL for LibraryDLL.AddressDLL;
+  using DoublyLinkedList for DoublyLinkedList.Address;
 
-  function read_first_from_addresses_dll(LibraryDLL.AddressDLL storage _list)
+  function read_first_from_addresses_dll(DoublyLinkedList.Address storage _list)
            internal
            constant
            returns (address _item)
@@ -14,7 +14,7 @@ contract AddressIteratorStorage {
     _item = _list.start_item();
   }
 
-  function read_last_from_addresses_dll(LibraryDLL.AddressDLL storage _list)
+  function read_last_from_addresses_dll(DoublyLinkedList.Address storage _list)
            internal
            constant
            returns (address _item)
@@ -22,7 +22,7 @@ contract AddressIteratorStorage {
     _item = _list.end_item();
   }
 
-  function read_next_from_addresses_dll(LibraryDLL.AddressDLL storage _list, address _current_item)
+  function read_next_from_addresses_dll(DoublyLinkedList.Address storage _list, address _current_item)
            internal
            constant
            returns (address _item)
@@ -30,7 +30,7 @@ contract AddressIteratorStorage {
     _item = _list.next_item(_current_item);
   }
 
-  function read_previous_from_addresses_dll(LibraryDLL.AddressDLL storage _list, address _current_item)
+  function read_previous_from_addresses_dll(DoublyLinkedList.Address storage _list, address _current_item)
            internal
            constant
            returns (address _item)
@@ -38,7 +38,7 @@ contract AddressIteratorStorage {
     _item = _list.previous_item(_current_item);
   }
 
-  function read_addresses_dll_total(LibraryDLL.AddressDLL storage _list)
+  function read_addresses_dll_total(DoublyLinkedList.Address storage _list)
            internal
            constant
            returns (uint256 _count)

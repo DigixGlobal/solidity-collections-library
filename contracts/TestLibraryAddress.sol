@@ -1,10 +1,10 @@
 pragma solidity ^0.4.16;
 
-import './lib/LibraryDLL.sol';
+import './lib/DoublyLinkedList.sol';
 
-contract TestLibraryAddressDLL {
-  using LibraryDLL for LibraryDLL.AddressDLL;
-  LibraryDLL.AddressDLL testData;
+contract TestLibraryAddress {
+  using DoublyLinkedList for DoublyLinkedList.Address;
+  DoublyLinkedList.Address testData;
 
   function setup_reset_data () {
     delete testData;

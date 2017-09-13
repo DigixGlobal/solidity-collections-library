@@ -1,0 +1,8 @@
+{
+  "contract_name": "IndexedBytesIteratorController",
+  "abi": [],
+  "unlinked_binary": "0x60606040523415600e57600080fd5b5b603680601c6000396000f30060606040525b600080fd00a165627a7a723058203755eef4f5d36e983931e80abbb6b92832438412ad2038ed5fd6ea232bc96cb70029",
+  "networks": {},
+  "schema_version": "0.0.5",
+  "updated_at": 1505276609756
+}

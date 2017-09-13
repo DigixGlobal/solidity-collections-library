@@ -1,10 +1,10 @@
 pragma solidity ^0.4.16;
 
-import './lib/LibraryDLL.sol';
+import './lib/DoublyLinkedList.sol';
 
-contract TestLibraryBytesDLL {
-  using LibraryDLL for LibraryDLL.BytesDLL;
-  LibraryDLL.BytesDLL testData;
+contract TestLibraryBytes {
+  using DoublyLinkedList for DoublyLinkedList.Bytes;
+  DoublyLinkedList.Bytes testData;
 
   function setup_reset_data () {
     delete testData;

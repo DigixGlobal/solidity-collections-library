@@ -2,13 +2,18 @@ pragma solidity ^0.4.16;
 
 import "../abstract/BytesIteratorStorage.sol";
 import "../abstract/AddressIteratorStorage.sol";
+import "../abstract/UintIteratorStorage.sol";
 
-contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage {
+contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIteratorStorage {
 
-  using LibraryDLL for LibraryDLL.BytesDLL;
-  using LibraryDLL for LibraryDLL.AddressDLL;
-  LibraryDLL.BytesDLL bytes_collection;
-  LibraryDLL.AddressDLL address_collection;
+  using DoublyLinkedList for DoublyLinkedList.Bytes;
+  using DoublyLinkedList for DoublyLinkedList.Address;
+  using DoublyLinkedList for DoublyLinkedList.Uint;
+
+  DoublyLinkedList.Bytes bytes_collection;
+  DoublyLinkedList.Address address_collection;
+  DoublyLinkedList.Uint uint_collection;
+
 
   function ExampleStorage() {
     initialize();
@@ -27,6 +32,12 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage {
     address_collection.append(0x3c5ce67a06e4fb06022dce62737288bede746ffa);
     address_collection.append(0x7046f6f2125b7148cb96183d2f3ac19781a2dffc);
     address_collection.append(0xd2b90da1b96cbe2aa1b23172dd6d8d77903a92a8);
+    uint_collection.append(1002);
+    uint_collection.append(1003);
+    uint_collection.append(1004);
+    uint_collection.append(1005);
+    uint_collection.append(1006);
+    uint_collection.append(1007);
   }
 
   function remove_all_data_in_bytes_collection()
@@ -47,6 +58,17 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage {
       address_collection.remove(i);
     }
     _success = address_collection.total() == 0;
+  }
+
+
+  function remove_all_data_in_uints_collection()
+           public
+           returns (bool _success)
+  {
+    for (uint256 i=1;i<=6;i++) {
+      uint_collection.remove(i);
+    }
+    _success = uint_collection.total() == 0;
   }
 
   /*function test_total()

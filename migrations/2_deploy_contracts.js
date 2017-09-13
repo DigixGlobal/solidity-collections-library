@@ -1,26 +1,26 @@
-var LibraryDLL = artifacts.require("./LibraryDLL.sol");
-var TestLibraryDLL = artifacts.require("./TestLibraryDLL.sol");
-var TestLibraryUintDLL = artifacts.require("./TestLibraryUintDLL.sol");
-var TestLibraryAddressDLL = artifacts.require("./TestLibraryAddressDLL.sol");
-var TestLibraryBytesDLL = artifacts.require("./TestLibraryBytesDLL.sol");
+var DoublyLinkedList = artifacts.require("./DoublyLinkedList.sol");
+var TestDoublyLinkedList = artifacts.require("./TestDoublyLinkedList.sol");
+var TestLibraryUint = artifacts.require("./TestLibraryUint.sol");
+var TestLibraryAddress = artifacts.require("./TestLibraryAddress.sol");
+var TestLibraryBytes = artifacts.require("./TestLibraryBytes.sol");
 var ExampleStorage = artifacts.require("./ExampleStorage.sol");
 var ExampleController = artifacts.require("./ExampleController.sol");
 var ExampleInteractive = artifacts.require("./ExampleInteractive.sol");
 
 
 module.exports = function(deployer, network, accounts) {
-  deployer.deploy(LibraryDLL).then(() => {
-    deployer.link(LibraryDLL, TestLibraryDLL);
-    deployer.link(LibraryDLL, TestLibraryUintDLL);
-    deployer.link(LibraryDLL, TestLibraryAddressDLL);
-    deployer.link(LibraryDLL, TestLibraryBytesDLL);
-    return deployer.link(LibraryDLL, ExampleStorage);
+  deployer.deploy(DoublyLinkedList).then(() => {
+    deployer.link(DoublyLinkedList, TestDoublyLinkedList);
+    deployer.link(DoublyLinkedList, TestLibraryUint);
+    deployer.link(DoublyLinkedList, TestLibraryAddress);
+    deployer.link(DoublyLinkedList, TestLibraryBytes);
+    return deployer.link(DoublyLinkedList, ExampleStorage);
   }).then(() => {
-    deployer.deploy(TestLibraryBytesDLL);
-    deployer.deploy(TestLibraryAddressDLL);
-    deployer.deploy(TestLibraryUintDLL);
+    deployer.deploy(TestLibraryBytes);
+    deployer.deploy(TestLibraryAddress);
+    deployer.deploy(TestLibraryUint);
     deployer.deploy(ExampleStorage);
-    return deployer.deploy(TestLibraryDLL);
+    return deployer.deploy(TestDoublyLinkedList);
   }).then(() => {
     return deployer.deploy(ExampleController, ExampleStorage.address);
   }).then(() => {
