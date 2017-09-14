@@ -53,6 +53,17 @@ contract ExampleInteractive is BytesIteratorInteractive, AddressIteratorInteract
                                                   example_controller().get_next_in_addresses_collection);
   }
 
+  function list_addresses_collection_backwards_from_end(uint256 _count)
+           public
+           constant
+           returns (address[] _collection_items)
+  {
+    _collection_items = list_addresses_backwards_from_end(_count,
+                                                  example_controller().get_total_in_addresses_collection,
+                                                  example_controller().get_last_in_addresses_collection,
+                                                  example_controller().get_previous_in_addresses_collection);
+  }
+
   function list_addresses_collection_from_item(address _current_item, uint256 _count)
            public
            constant
@@ -62,6 +73,17 @@ contract ExampleInteractive is BytesIteratorInteractive, AddressIteratorInteract
                                                     _count,
                                                     example_controller().get_last_in_addresses_collection,
                                                     example_controller().get_next_in_addresses_collection);
+  }
+
+  function list_addresses_collection_backwards_from_item(address _current_item, uint256 _count)
+           public
+           constant
+           returns (address[] _collection_items)
+  {
+    _collection_items = list_addresses_from_address(_current_item, 
+                                                    _count,
+                                                    example_controller().get_first_in_addresses_collection,
+                                                    example_controller().get_previous_in_addresses_collection);
   }
 }
 

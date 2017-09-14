@@ -31,15 +31,14 @@ module.exports = {
     '0xf903ac86e05120384dc1a447f284b9f207880e86',
   ],
   // exampleAddresses is used to test contracts in contracts/abstract
-  exampleAddresses: [
-    'blah',
-    '0xb1b8c0e568591f7b71f825be26087a82ddda17b2',
-    '0x66ba92773feeef8cc0ddfdc8b6adc87ede1a0ec3',
-    '0x9a8cf272691f844e243e7712ca6f3c0d5f6bc94b',
-    '0x3c5ce67a06e4fb06022dce62737288bede746ffa',
-    '0x7046f6f2125b7148cb96183d2f3ac19781a2dffc',
-    '0xd2b90da1b96cbe2aa1b23172dd6d8d77903a92a8',
-    '0xd2b90da1b96cbe2aa1b000000000000000000000',
+  exampleAddresses: [ 'blah',
+  '0x7812421a7579d8182dc6f2b68ab56595db01553f',
+  '0x419f0a80d85f3c7dc3553394d91c9a339332a01e',
+  '0xf5dfe2a3f8cf5ca8723b51be6fc065bea0cfe893',
+  '0x5dc52d499a77af45f43174cfe7982dc68c331c38',
+  '0x727c89006bd885f9a77254797a362d69e8a1f4da',
+  '0x0f66ec3df48ec1e216d24e225b772696e031b698',
+  '0xd2b90da1b96cbe2aa1b000000000000000000000' 
   ],
   emptyAddress: '0x0000000000000000000000000000000000000000',
 };

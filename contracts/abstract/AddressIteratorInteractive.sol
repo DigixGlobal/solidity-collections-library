@@ -2,6 +2,18 @@ pragma solidity ^0.4.16;
 
 contract AddressIteratorInteractive {
 
+  function list_addresses_backwards_from_end(uint256 _count, 
+                                 function () external constant returns (uint256) _function_total,
+                                 function () external constant returns (address) _function_last, 
+                                 function (address) external constant returns (address) _function_previous)
+                                 
+           internal
+           constant
+           returns (address[] _address_items)
+  {
+    _address_items = list_addresses_from_start(_count, _function_total, _function_last, _function_previous);
+  }
+
   function list_addresses_from_start(uint256 _count, 
                                  function () external constant returns (uint256) _function_total,
                                  function () external constant returns (address) _function_first, 
@@ -35,6 +47,18 @@ contract AddressIteratorInteractive {
     } else {
       _address_items = new address[](0);
     }
+  }
+
+
+
+  function list_addresses_backwards_from_address(address _current_item, uint256 _count,
+                                 function () external constant returns (address) _function_first,
+                                 function (address) external constant returns (address) _function_previous)
+           internal
+           constant
+           returns (address[] _address_items)
+  {
+    _address_items = list_addresses_from_address(_current_item, _count, _function_first, _function_previous);    
   }
 
   function list_addresses_from_address(address _current_item, uint256 _count,
