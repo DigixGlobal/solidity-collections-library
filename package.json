@@ -2,7 +2,10 @@
   "name": "@digix/solidity-collections",
   "version": "0.1.0",
   "description": "Solidity library for collections",
-  "files": ["build", "contracts"],
+  "files": [
+    "build",
+    "contracts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/DigixGlobal/solidity-collections-library"

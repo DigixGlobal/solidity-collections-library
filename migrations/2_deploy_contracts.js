@@ -12,28 +12,23 @@ var ExampleIndexedController = artifacts.require("./ExampleIndexedController.sol
 var ExampleIndexedInteractive = artifacts.require("./ExampleIndexedInteractive.sol");
 
 module.exports = function(deployer, network, accounts) {
-  deployer.deploy(DoublyLinkedList).then(() => {
-    deployer.link(DoublyLinkedList, TestDoublyLinkedList);
-    deployer.link(DoublyLinkedList, TestLibraryUint);
-    deployer.link(DoublyLinkedList, TestLibraryAddress);
-    return deployer.link(DoublyLinkedList, TestLibraryBytes);
-  }).then(() => {
-    deployer.link(DoublyLinkedList, ExampleIndexedStorage);
-    return deployer.link(DoublyLinkedList, ExampleStorage);
-  }).then(() => {
-    deployer.deploy(TestLibraryBytes);
-    deployer.deploy(TestLibraryAddress);
-    return deployer.deploy(TestLibraryUint);
-  }).then(() => {
-    deployer.deploy(ExampleStorage);
-    deployer.deploy(ExampleIndexedStorage);
-    return deployer.deploy(TestDoublyLinkedList);
-  }).then(() => {
-    ExampleIndexedStorage.at(ExampleIndexedStorage.address).initialize();
-    deployer.deploy(ExampleIndexedController, ExampleIndexedStorage.address);
-    return deployer.deploy(ExampleController, ExampleStorage.address);
-  }).then(() => {
-    deployer.deploy(ExampleIndexedInteractive, ExampleIndexedController.address);
-    return deployer.deploy(ExampleInteractive, ExampleController.address);
+  return deployer.deploy(DoublyLinkedList).then(async() => {
+  await deployer.link(DoublyLinkedList, TestDoublyLinkedList);
+  await deployer.link(DoublyLinkedList, TestLibraryUint);
+  await deployer.link(DoublyLinkedList, TestLibraryAddress);
+  await deployer.link(DoublyLinkedList, TestLibraryBytes);
+  await deployer.link(DoublyLinkedList, ExampleIndexedStorage);
+  await deployer.link(DoublyLinkedList, ExampleStorage);
+  await deployer.deploy(TestLibraryBytes);
+  await deployer.deploy(TestLibraryAddress);
+  await deployer.deploy(TestLibraryUint);
+  await deployer.deploy(ExampleStorage);
+  await deployer.deploy(ExampleIndexedStorage);
+  await deployer.deploy(TestDoublyLinkedList);
+  await ExampleIndexedStorage.at(ExampleIndexedStorage.address).initialize();
+  await deployer.deploy(ExampleIndexedController, ExampleIndexedStorage.address);
+  await deployer.deploy(ExampleController, ExampleStorage.address);
+  await deployer.deploy(ExampleIndexedInteractive, ExampleIndexedController.address);
+  return await deployer.deploy(ExampleInteractive, ExampleController.address);
   });
 };
