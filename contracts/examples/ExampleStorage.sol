@@ -73,11 +73,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
     _success = uint_collection.total() == 0;
   }
 
-  /*function test_total()
-           returns (uint256 _count)
-  {
-    _count = bytes_collection.total();
-  }*/
+  
 
   function read_first_in_bytes_collection()
            public
@@ -158,6 +154,48 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            returns (uint256 _total_count)
   {
     _total_count = read_addresses_dll_total(address_collection);
+  }
+
+
+
+  function read_first_in_uints_collection()
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = read_first_from_uints_dll(uint_collection);
+  }
+
+  function read_last_in_uints_collection()
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = read_last_from_uints_dll(uint_collection);
+  }
+
+  function read_next_in_uints_collection(uint256 _current_item)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = read_next_from_uints_dll(uint_collection, _current_item);
+  }
+
+  function read_previous_in_uints_collection(uint256 _current_item)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = read_previous_from_uints_dll(uint_collection, _current_item);
+  }
+
+  function read_total_in_uints_collection()
+           public
+           constant
+           returns (uint256 _total_count)
+  {
+    _total_count = read_uints_dll_total(uint_collection);
   }
 
 }

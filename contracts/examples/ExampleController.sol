@@ -2,9 +2,10 @@ pragma solidity ^0.4.16;
 
 import "../abstract/BytesIteratorController.sol";
 import "../abstract/AddressIteratorController.sol";
+import "../abstract/UintIteratorController.sol";
 import "./ExampleStorage.sol";
 
-contract ExampleController is BytesIteratorController, AddressIteratorController {
+contract ExampleController is BytesIteratorController, AddressIteratorController, UintIteratorController {
 
   address public storage_contract;
 
@@ -98,5 +99,47 @@ contract ExampleController is BytesIteratorController, AddressIteratorController
            returns (uint256 _total_count)
   {
     _total_count = get_total_in_addresses_dll(example_storage().read_total_in_addresses_collection);
+  }
+
+
+
+  function get_first_in_uints_collection()
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = get_first_from_uints_dll(example_storage().read_first_in_uints_collection);
+  }
+
+  function get_last_in_uints_collection()
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = get_last_from_uints_dll(example_storage().read_last_in_uints_collection);
+  }
+
+  function get_next_in_uints_collection(uint256 _current_item)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = get_next_from_uints_dll(example_storage().read_next_in_uints_collection, _current_item);
+  }
+
+  function get_previous_in_uints_collection(uint256 _current_item)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = get_previous_from_uints_dll(example_storage().read_previous_in_uints_collection, _current_item);
+  }
+
+  function get_total_in_uints_collection()
+           public
+           constant
+           returns (uint256 _total_count)
+  {
+    _total_count = get_total_in_uints_dll(example_storage().read_total_in_uints_collection);
   }
 }

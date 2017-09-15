@@ -48,43 +48,6 @@ contract AddressIteratorInteractive {
     }
   }
 
-  function list_addresses_from_end(uint256 _count, 
-                                   function () external constant returns (uint256) _function_total,
-                                   function () external constant returns (address) _function_first, 
-                                   function (address) external constant returns (address) _function_next)
-                                 
-           internal
-           constant
-           returns (address[] _address_items)
-  {
-    uint256 _i;
-    address _current_item;
-    uint256 _real_count = _function_total();
-
-    if (_count > _real_count) {
-      _count = _real_count;
-    }
-
-    address[] memory _items_tmp = new address[](_count);
-
-    if (_count > 0) {
-      _current_item = _function_first();
-      _items_tmp[0] = _current_item;
-
-      for(_i = 1;_i <= (_count - 1);_i++) {
-        _current_item = _function_next(_current_item);
-        if (_current_item != address(0x0)) {
-          _items_tmp[_i] = _current_item;
-        }
-      }
-      _address_items = _items_tmp;
-    } else {
-      _address_items = new address[](0);
-    }
-  }
-
-
-
   function list_addresses_backwards_from_address(address _current_item, uint256 _count,
                                  function () external constant returns (address) _function_first,
                                  function (address) external constant returns (address) _function_previous)

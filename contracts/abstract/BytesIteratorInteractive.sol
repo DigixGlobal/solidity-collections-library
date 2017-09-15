@@ -2,11 +2,23 @@ pragma solidity ^0.4.16;
 
 contract BytesIteratorInteractive {
 
-  function list_bytes_from_start(uint256 _count, 
+  function list_bytes_backwards_from_end(uint256 _count,
                                  function () external constant returns (uint256) _function_total,
-                                 function () external constant returns (bytes32) _function_first, 
+                                 function () external constant returns (bytes32) _function_last,
+                                 function (bytes32) external constant returns (bytes32) _function_previous)
+
+           internal
+           constant
+           returns (bytes32[] _bytes_items)
+  {
+    _bytes_items = list_bytes_from_start(_count, _function_total, _function_last, _function_previous);
+  }
+
+  function list_bytes_from_start(uint256 _count,
+                                 function () external constant returns (uint256) _function_total,
+                                 function () external constant returns (bytes32) _function_first,
                                  function (bytes32) external constant returns (bytes32) _function_next)
-                                 
+
            internal
            constant
            returns (bytes32[] _bytes_items)
@@ -37,6 +49,16 @@ contract BytesIteratorInteractive {
     }
   }
 
+  function list_bytes_backwards_from_bytes(bytes32 _current_item, uint256 _count,
+                                 function () external constant returns (bytes32) _function_first,
+                                 function (bytes32) external constant returns (bytes32) _function_previous)
+           internal
+           constant
+           returns (bytes32[] _bytes_items)
+  {
+    _bytes_items = list_bytes_from_bytes(_current_item, _count, _function_first, _function_previous);
+  }
+
   function list_bytes_from_bytes(bytes32 _current_item, uint256 _count,
                                  function () external constant returns (bytes32) _function_last,
                                  function (bytes32) external constant returns (bytes32) _function_next)
@@ -46,35 +68,39 @@ contract BytesIteratorInteractive {
   {
     uint256 _i;
     uint256 _real_count = 0;
+    
+    if (_count == 0) {
+      _bytes_items = new bytes32[](0);
+    } else {
+      bytes32[] memory _items_temp = new bytes32[](_count);
 
-    bytes32[] memory _items_temp = new bytes32[](_count);
+      bytes32 _start_item;
+      bytes32 _last_item;
 
-    bytes32 _start_item;
-    bytes32 _last_item;
+      _last_item = _function_last();
 
-    _last_item = _function_last();
-
-    if (_last_item != _current_item) {
-      _start_item = _function_next(_current_item);
-      if (_start_item != bytes32(0x0)) {
-        _items_temp[0] = _start_item;
-        _real_count = 1;
-        for(_i = 1;(_i <= (_count - 1)) && (_start_item != _last_item);_i++) {
-          _start_item = _function_next(_start_item);
-          if (_start_item != bytes32(0x0)) {
-            _real_count++;
-            _items_temp[_i] = _start_item;
+      if (_last_item != _current_item) {
+        _start_item = _function_next(_current_item);
+        if (_start_item != bytes32(0x0)) {
+          _items_temp[0] = _start_item;
+          _real_count = 1;
+          for(_i = 1;(_i <= (_count - 1)) && (_start_item != _last_item);_i++) {
+            _start_item = _function_next(_start_item);
+            if (_start_item != bytes32(0x0)) {
+              _real_count++;
+              _items_temp[_i] = _start_item;
+            }
           }
-        }
-        _bytes_items = new bytes32[](_real_count);
-        for(_i = 0;_i <= (_real_count - 1);_i++) {
-          _bytes_items[_i] = _items_temp[_i];
+          _bytes_items = new bytes32[](_real_count);
+          for(_i = 0;_i <= (_real_count - 1);_i++) {
+            _bytes_items[_i] = _items_temp[_i];
+          }
+        } else {
+          _bytes_items = new bytes32[](0);
         }
       } else {
         _bytes_items = new bytes32[](0);
       }
-    } else {
-      _bytes_items = new bytes32[](0);
     }
   }
 

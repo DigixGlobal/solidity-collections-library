@@ -2,11 +2,22 @@ pragma solidity ^0.4.16;
 
 contract IndexedBytesIteratorInteractive {
 
-  function list_indexed_bytes_from_start(bytes32 _collection_index, uint256 _count, 
+  function list_indexed_bytes_backwards_from_end(bytes32 _collection_index, uint256 _count,
                                  function (bytes32) external constant returns (uint256) _function_total,
-                                 function (bytes32) external constant returns (bytes32) _function_first, 
+                                 function (bytes32) external constant returns (bytes32) _function_last,
+                                 function (bytes32, bytes32) external constant returns (bytes32) _function_previous)
+
+           internal
+           constant
+           returns (bytes32[] _indexed_bytes_items)
+  {
+    _indexed_bytes_items = list_indexed_bytes_from_start(_collection_index, _count, _function_total, _function_last, _function_previous);
+  }
+
+  function list_indexed_bytes_from_start(bytes32 _collection_index, uint256 _count,
+                                 function (bytes32) external constant returns (uint256) _function_total,
+                                 function (bytes32) external constant returns (bytes32) _function_first,
                                  function (bytes32, bytes32) external constant returns (bytes32) _function_next)
-                                 
            internal
            constant
            returns (bytes32[] _indexed_bytes_items)
@@ -37,6 +48,16 @@ contract IndexedBytesIteratorInteractive {
     }
   }
 
+  function list_indexed_bytes_backwards_from_bytes(bytes32 _collection_index, bytes32 _current_item, uint256 _count,
+                                         function (bytes32) external constant returns (bytes32) _function_first,
+                                         function (bytes32, bytes32) external constant returns (bytes32) _function_previous)
+           internal
+           constant
+           returns (bytes32[] _indexed_bytes_items)
+  {
+    _indexed_bytes_items = list_indexed_bytes_from_bytes(_collection_index, _current_item, _count, _function_first, _function_previous);
+  }
+
   function list_indexed_bytes_from_bytes(bytes32 _collection_index, bytes32 _current_item, uint256 _count,
                                          function (bytes32) external constant returns (bytes32) _function_last,
                                          function (bytes32, bytes32) external constant returns (bytes32) _function_next)
@@ -46,35 +67,38 @@ contract IndexedBytesIteratorInteractive {
   {
     uint256 _i;
     uint256 _real_count = 0;
+    if (_count == 0) {
+      _indexed_bytes_items = new bytes32[](0);
+    } else {
+      bytes32[] memory _items_temp = new bytes32[](_count);
 
-    bytes32[] memory _items_temp = new bytes32[](_count);
+      bytes32 _start_item;
+      bytes32 _last_item;
 
-    bytes32 _start_item;
-    bytes32 _last_item;
+      _last_item = _function_last(_collection_index);
 
-    _last_item = _function_last(_collection_index);
-
-    if (_last_item != _current_item) {
-      _start_item = _function_next(_collection_index, _current_item);
-      if (_start_item != bytes32(0x0)) {
-        _items_temp[0] = _start_item;
-        _real_count = 1;
-        for(_i = 1;(_i <= (_count - 1)) && (_start_item != _last_item);_i++) {
-          _start_item = _function_next(_collection_index, _start_item);
-          if (_start_item != bytes32(0x0)) {
-            _real_count++;
-            _items_temp[_i] = _start_item;
+      if (_last_item != _current_item) {
+        _start_item = _function_next(_collection_index, _current_item);
+        if (_start_item != bytes32(0x0)) {
+          _items_temp[0] = _start_item;
+          _real_count = 1;
+          for(_i = 1;(_i <= (_count - 1)) && (_start_item != _last_item);_i++) {
+            _start_item = _function_next(_collection_index, _start_item);
+            if (_start_item != bytes32(0x0)) {
+              _real_count++;
+              _items_temp[_i] = _start_item;
+            }
           }
-        }
-        _indexed_bytes_items = new bytes32[](_real_count);
-        for(_i = 0;_i <= (_real_count - 1);_i++) {
-          _indexed_bytes_items[_i] = _items_temp[_i];
+          _indexed_bytes_items = new bytes32[](_real_count);
+          for(_i = 0;_i <= (_real_count - 1);_i++) {
+            _indexed_bytes_items[_i] = _items_temp[_i];
+          }
+        } else {
+          _indexed_bytes_items = new bytes32[](0);
         }
       } else {
         _indexed_bytes_items = new bytes32[](0);
       }
-    } else {
-      _indexed_bytes_items = new bytes32[](0);
     }
   }
 

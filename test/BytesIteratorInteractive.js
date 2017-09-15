@@ -32,7 +32,7 @@ contract('ByteIteratorInteractive', function () {
       assert.deepEqual(res.length, 0);
     });
     it('[collection is not empty, count>size of collection] returns all the items', async function () {
-      const res = await exampleInteractive.list_bytes_collection_from_start.call(bN(6));
+      const res = await exampleInteractive.list_bytes_collection_from_start.call(bN(7));
       assert.deepEqual(myToAscii(res[0]), 'test1');
       assert.deepEqual(myToAscii(res[1]), 'test2');
       assert.deepEqual(myToAscii(res[2]), 'test3');
@@ -48,7 +48,7 @@ contract('ByteIteratorInteractive', function () {
     });
   });
 
-  describe('list_bytes_from_address', function () {
+  describe('list_bytes_from_bytes', function () {
     it('[item is not the last, count <= items remaining] returns correct items', async function () {
       const res = await exampleInteractive.list_bytes_collection_from_item.call('test3', bN(2));
       assert.deepEqual(myToAscii(res[0]), 'test4');
@@ -73,7 +73,7 @@ contract('ByteIteratorInteractive', function () {
       assert.deepEqual(res.length, 0);
     });
     it('[count = 0] returns empty array', async function () {
-      const res = await exampleInteractive.list_bytes_collection_from_item.call('test6', bN(0));
+      const res = await exampleInteractive.list_bytes_collection_from_item.call('test3', bN(0));
       assert.deepEqual(res.length, 0);
     });
     it('[item does not exist] returns empty array', async function () {
@@ -83,6 +83,78 @@ contract('ByteIteratorInteractive', function () {
     it('[collection is empty] returns empty array', async function () {
       await exampleStorage.remove_all_data_in_bytes_collection();
       const res = await exampleInteractive.list_bytes_collection_from_item.call('test5', bN(1));
+      assert.deepEqual(res.length, 0);
+    });
+  });
+
+
+  describe('list_bytes_backwards_from_end', function () {
+    it('[collection is not empty, 0<count<=size of collection] returns correct items', async function () {
+      const res = await exampleInteractive.list_bytes_collection_backwards_from_end.call(bN(6));
+      assert.deepEqual(myToAscii(res[0]), 'test6');
+      assert.deepEqual(myToAscii(res[1]), 'test5');
+      assert.deepEqual(myToAscii(res[2]), 'test4');
+      assert.deepEqual(myToAscii(res[3]), 'test3');
+      assert.deepEqual(myToAscii(res[4]), 'test2');
+      assert.deepEqual(myToAscii(res[5]), 'test1');
+      assert.deepEqual(res.length, 6);
+    });
+    it('[collection is not empty, count=0] returns empty array', async function () {
+      const res = await exampleInteractive.list_bytes_collection_backwards_from_end.call(bN(0));
+      assert.deepEqual(res.length, 0);
+    });
+    it('[collection is not empty, count>size of collection] returns all the items', async function () {
+      const res = await exampleInteractive.list_bytes_collection_backwards_from_end.call(bN(7));
+      assert.deepEqual(myToAscii(res[0]), 'test6');
+      assert.deepEqual(myToAscii(res[1]), 'test5');
+      assert.deepEqual(myToAscii(res[2]), 'test4');
+      assert.deepEqual(myToAscii(res[3]), 'test3');
+      assert.deepEqual(myToAscii(res[4]), 'test2');
+      assert.deepEqual(myToAscii(res[5]), 'test1');
+      assert.deepEqual(res.length, 6);
+    });
+    it('[collection is empty] returns empty array', async function () {
+      await exampleStorage.remove_all_data_in_bytes_collection();
+      const res = await exampleInteractive.list_bytes_collection_backwards_from_end.call(bN(2));
+      assert.deepEqual(res.length, 0);
+    });
+  });
+
+  describe('list_bytes_backwards_from_bytes', function () {
+    it('[item is not the first, count <= items remaining] returns correct items', async function () {
+      const res = await exampleInteractive.list_bytes_collection_backwards_from_item.call('test3', bN(2));
+      assert.deepEqual(myToAscii(res[0]), 'test2');
+      assert.deepEqual(myToAscii(res[1]), 'test1');
+      // assert.deepEqual(res[2], 'test6');
+      assert.deepEqual(res.length, 2);
+    });
+    it('[item is not the first, count > items remaining] returns all items remaining', async function () {
+      const res = await exampleInteractive.list_bytes_collection_backwards_from_item.call('test4', bN(4));
+      assert.deepEqual(myToAscii(res[0]), 'test3');
+      assert.deepEqual(myToAscii(res[1]), 'test2');
+      assert.deepEqual(myToAscii(res[2]), 'test1');
+      assert.deepEqual(res.length, 3);
+    });
+    it('[item is the second, count > 0] returns just the first item', async function () {
+      const res = await exampleInteractive.list_bytes_collection_backwards_from_item.call('test2', bN(3));
+      assert.deepEqual(myToAscii(res[0]), 'test1');
+      assert.deepEqual(res.length, 1);
+    });
+    it('[item is the first, count > 0] returns empty array', async function () {
+      const res = await exampleInteractive.list_bytes_collection_backwards_from_item.call('test1', bN(1));
+      assert.deepEqual(res.length, 0);
+    });
+    it('[count = 0] returns empty array', async function () {
+      const res = await exampleInteractive.list_bytes_collection_backwards_from_item.call('test3', bN(0));
+      assert.deepEqual(res.length, 0);
+    });
+    it('[item does not exist] returns empty array', async function () {
+      const res = await exampleInteractive.list_bytes_collection_backwards_from_item.call('test_new', bN(1));
+      assert.deepEqual(res.length, 0);
+    });
+    it('[collection is empty] returns empty array', async function () {
+      await exampleStorage.remove_all_data_in_bytes_collection();
+      const res = await exampleInteractive.list_bytes_collection_backwards_from_item.call('test5', bN(1));
       assert.deepEqual(res.length, 0);
     });
   });

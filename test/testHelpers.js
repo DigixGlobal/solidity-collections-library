@@ -1,3 +1,4 @@
+const bN = web3.toBigNumber;  
 module.exports = {
 
   // web3.toAscii results in some padding \u0000 at the end,
@@ -6,7 +7,7 @@ module.exports = {
   myToAscii(input) {
     return web3.toAscii(input).replace(/\u0000/g, '');
   },
-  bN: web3.toBigNumber,
+  bN: bN,
   // testAddresses is used to test contracts/lib/LibraryDLL.sol
   testAddresses: [
     '0x817229b2d1cb37bf23b20185d59aff8595e52401',
@@ -39,6 +40,14 @@ module.exports = {
   '0x727c89006bd885f9a77254797a362d69e8a1f4da',
   '0x0f66ec3df48ec1e216d24e225b772696e031b698',
   '0xd2b90da1b96cbe2aa1b000000000000000000000' 
+  ],
+  exampleUints: [ bN(0),
+    bN(1002),
+    bN(1003),
+    bN(1004),
+    bN(1005),
+    bN(1006),
+    bN(1007),
   ],
   emptyAddress: '0x0000000000000000000000000000000000000000',
 };
