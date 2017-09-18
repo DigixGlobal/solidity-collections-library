@@ -158,5 +158,4 @@ contract('AddressIteratorInteractive', function () {
       assert.deepEqual(res.length, 0);
     });
   });
-
 });

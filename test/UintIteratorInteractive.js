@@ -157,5 +157,4 @@ contract('UintIteratorInteractive', function () {
       assert.deepEqual(res.length, 0);
     });
   });
-
 });
