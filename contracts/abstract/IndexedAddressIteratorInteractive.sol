@@ -1,5 +1,9 @@
 pragma solidity ^0.4.16;
 
+/**
+  @title Indexed Address Iterator Interactive
+  @author DigixGlobal Pte Ltd
+*/
 contract IndexedAddressIteratorInteractive {
 
   function list_indexed_addresses_backwards_from_end(bytes32 _collection_index, uint256 _count,
