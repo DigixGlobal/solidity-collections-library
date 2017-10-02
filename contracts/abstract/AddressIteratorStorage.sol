@@ -5,6 +5,7 @@ import "../lib/DoublyLinkedList.sol";
 /**
   @title Address Iterator Storage
   @author DigixGlobal Pte Ltd
+  @notice See: [Doubly Linked List](/DoublyLinkedList)
 */
 contract AddressIteratorStorage {
   

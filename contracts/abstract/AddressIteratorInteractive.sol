@@ -5,12 +5,12 @@ pragma solidity ^0.4.16;
 */
 contract AddressIteratorInteractive {
 
-  /*
+  /**
     @notice List the Addresses in reverse starting from the end of the list
     @param _count Total number of adddresses to return
-    @param _function_total Total number of Address in the list
-    @param _function_last The last Address from the list
-    @param _function_previous The previous item from the list
+    @param _function_total The function that returns the Total number of Address in the list
+    @param _function_last The function that returns the Last Address from the list
+    @param _function_previous The function that returns the Previous item from the list
     @return {"_address_items": "Reversed address list" }
   */
   function list_addresses_backwards_from_end(uint256 _count, 
@@ -26,12 +26,12 @@ contract AddressIteratorInteractive {
   }
 
 
-  /*
+  /**
     @notice List the Addresses from start of the list
     @param _count Total number of adddresses to return
-    @param _function_total Total number of Address in the list
-    @param _function_first The first Address from the list
-    @param _function_next The Next item from the list
+    @param _function_total The Function that returns the Total number of Address in the list
+    @param _function_first The Function that returns the First Address from the list
+    @param _function_next The Function that returns the Next item from the list
     @return {"_address_items": "Address list" }
   */
   function list_addresses_from_start(uint256 _count, 
@@ -68,11 +68,12 @@ contract AddressIteratorInteractive {
     }
   }
 
-  /*
+  /**
     @notice List the Addresses in reverse starting from the specified `_current_item`
+    @param _current_item The current item from the collection to be used as base line
     @param _count Total number of adddresses to return
-    @param _function_first The first item on the list
-    @param _function_previous The previous item on the list
+    @param _function_first The Function that returns the First item on the list
+    @param _function_previous The Function that return the Previous item on the list
     @return {"_address_items": "Address list" } 
   */
   function list_addresses_backwards_from_address(address _current_item, uint256 _count,
@@ -85,8 +86,9 @@ contract AddressIteratorInteractive {
     _address_items = list_addresses_from_address(_current_item, _count, _function_first, _function_previous);    
   }
 
-  /*
+  /**
     @notice List the Addresses starting from a specified `_current_item`
+    @param _current_item The current item from the collection
     @param _count Total number of adddresses to return
     @param _function_last The last item on the list
     @param _function_next The next item on the list

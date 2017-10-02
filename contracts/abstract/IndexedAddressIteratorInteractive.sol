@@ -6,6 +6,15 @@ pragma solidity ^0.4.16;
 */
 contract IndexedAddressIteratorInteractive {
 
+  /**
+    @notice Lists indexed Addresses in reverse starting from the end of the list
+    @param _collection_index Index of the Collection to evaluate
+    @param _count The total number of Addresses to return
+    @param _function_total Function that returns that Total number of addresses in the list
+    @param _function_last Function that returns the last Item in the Collection
+    @param _function_previous Function that returns the previous Item in the collection
+    @return {"_address_items" : "Lisf of addresses in reverse"}
+  */
   function list_indexed_addresses_backwards_from_end(bytes32 _collection_index, uint256 _count,
                                              function (bytes32) external constant returns (uint256) _function_total,
                                              function (bytes32) external constant returns (address) _function_last,
@@ -18,6 +27,15 @@ contract IndexedAddressIteratorInteractive {
     _address_items = list_indexed_addresses_from_start(_collection_index, _count, _function_total, _function_last, _function_previous);
   }
 
+  /**
+    @notice Lists indexed Address from start of the list
+    @param _collection_index Index of the Collection to evaluate
+    @param _count The total number of Addresses to return
+    @param _function_total Function that returns that Total number of addresses in the list
+    @param _function_first Function that returns the first Item in the Collection
+    @param _function_next Function that returns the next Item in the collection
+    @return {"_address_items" : "Lisf of addresses"}
+  */
   function list_indexed_addresses_from_start(bytes32 _collection_index, uint256 _count,
                                              function (bytes32) external constant returns (uint256) _function_total,
                                              function (bytes32) external constant returns (address) _function_first,
@@ -54,6 +72,15 @@ contract IndexedAddressIteratorInteractive {
     }
   }
 
+  /**
+    @notice Lists indexed Addresses in reverse starting from the specified `_current_item`
+    @param _collection_index Index of the Collection to evaluate
+    @param _current_item  The current item from the collection
+    @param _count The total number of Addresses to return
+    @param _function_first Function that returns the first Item in the Collection
+    @param _function_previous Function that returns the previous Item in the collection
+    @return {"_address_items" : "Lisf of addresses in reverse"}
+  */
   function list_indexed_addresses_backwards_from_address(bytes32 _collection_index, address _current_item, uint256 _count,
                                  function (bytes32) external constant returns (address) _function_first,
                                  function (bytes32, address) external constant returns (address) _function_previous)
@@ -64,6 +91,15 @@ contract IndexedAddressIteratorInteractive {
     _address_items = list_indexed_addresses_from_address(_collection_index, _current_item, _count, _function_first, _function_previous);
   }
 
+  /**
+    @notice Lists indexed Addresses starting from the specified `_current_item`
+    @param _collection_index Index of the Collection to evaluate
+    @param _current_item The current item from the collection
+    @param _count The total number of Addresses to return
+    @param _function_last The Function that returns the last Item in the Collection
+    @param _function_next The Function that returns the next Item in the collection
+    @return {"_address_items" : "Lisf of addresses"}
+  */
   function list_indexed_addresses_from_address(bytes32 _collection_index, address _current_item, uint256 _count,
                                  function (bytes32) external constant returns (address) _function_last,
                                  function (bytes32, address) external constant returns (address) _function_next)

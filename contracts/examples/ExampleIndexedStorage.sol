@@ -3,7 +3,10 @@ pragma solidity ^0.4.16;
 import "../abstract/IndexedBytesIteratorStorage.sol";
 import "../abstract/IndexedAddressIteratorStorage.sol";
 import "../abstract/IndexedUintIteratorStorage.sol";
-
+/**
+    @title Example Indexed Storage
+    @author DigixGlobal Pte Ltd
+ */
 contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIteratorStorage, IndexedUintIteratorStorage {
 
   using DoublyLinkedList for DoublyLinkedList.IndexedBytes;
@@ -14,10 +17,15 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
   DoublyLinkedList.IndexedAddress indexed_address_collection;
   DoublyLinkedList.IndexedUint indexed_uint_collection;
 
-
+  /**
+    @notice Constructor
+  */
   function ExampleIndexedStorage() {
   }
 
+  /**
+    @notice Initializes a list of collections
+  */
   function initialize() {
     indexed_bytes_collection.append("a", "atest1");
     indexed_bytes_collection.append("a", "atest2");
@@ -51,6 +59,11 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     indexed_uint_collection.append("b", 2006);
   }
 
+  /**
+    @notice Removes all data in the Indexed Bytes Collection
+    @param _collection_index The source collection to be delete
+    @return {"_success":"True if all items were successfully removed"}d
+  */
   function remove_all_data_in_indexed_bytes_collection(bytes32 _collection_index)
            public
            returns (bool _success)
@@ -61,6 +74,11 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _success = indexed_bytes_collection.total(_collection_index) == 0;
   }
 
+  /**
+    @notice Removes all data in the Indexed Addreses collection
+    @param _collection_index The source collection to be deleted
+    @return {"_success":"True if all items were successfully removed"}
+  */
   function remove_all_data_in_indexed_addresses_collection(bytes32 _collection_index)
            public
            returns (bool _success)
@@ -71,7 +89,11 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _success = indexed_address_collection.total(_collection_index) == 0;
   }
 
-
+  /**
+    @notice Removes all data in the Indexed Uints collection
+    @param _collection_index The source collection to be deleted
+    @return {"_item":"Collection item"}
+  */
   function remove_all_data_in_indexed_uints_collection(bytes32 _collection_index)
            public
            returns (bool _success)
@@ -82,6 +104,11 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _success = indexed_uint_collection.total(_collection_index) == 0;
   }
 
+  /**
+    @notice Reads the first item in the Indexed Bytes collection
+    @param _collection_index The source collection to be evaluate
+    @return {"_item":"Collection item"}
+  */
   function read_first_in_indexed_bytes_collection(bytes32 _collection_index)
            public
            constant
@@ -90,6 +117,11 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _item = read_first_from_indexed_bytes_dll(indexed_bytes_collection, _collection_index);
   }
 
+  /**
+    @notice Reads the last item in the Indexed Bytes collection
+    @param _collection_index The source collection to evaluate
+    @return {"_item":"Collection item"}
+  */
   function read_last_in_indexed_bytes_collection(bytes32 _collection_index)
            public
            constant
@@ -98,6 +130,12 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _item = read_last_from_indexed_bytes_dll(indexed_bytes_collection, _collection_index);
   }
 
+  /**
+    @notice Reads the Next Indexed Bytes collection from the specified `_collection_index` and `_current_item`
+    @param _collection_index The source collection to evaluate
+    @param _current_item The item to be used as base line
+    @return {"_item":"Collection item"}
+  */
   function read_next_in_indexed_bytes_collection(bytes32 _collection_index, bytes32 _current_item)
            public
            constant
@@ -106,6 +144,12 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _item = read_next_from_indexed_bytes_dll(indexed_bytes_collection, _collection_index, _current_item);
   }
 
+  /**
+    @notice Reads the Previous Indexed Bytes collection from the specified `_collection_index` and `_current_item`
+    @param _collection_index The source collection to evaluate
+    @param _current_item The item to be used as base line
+    @return {"_item":"Collection item"}
+  */
   function read_previous_in_indexed_bytes_collection(bytes32 _collection_index, bytes32 _current_item)
            public
            constant
@@ -114,6 +158,11 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _item = read_previous_from_indexed_bytes_dll(indexed_bytes_collection, _collection_index, _current_item);
   }
 
+  /**
+    @notice Reads the Total number of items in an Indexed Bytes collection
+    @param _collection_index The source collection to evaluate
+    @return {"_item":"Collection item"}
+  */
   function read_total_in_indexed_bytes_collection(bytes32 _collection_index)
            public
            constant
@@ -122,7 +171,11 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _total_count = read_indexed_bytes_dll_total(indexed_bytes_collection, _collection_index);
   }
 
-
+  /**
+    @notice Reads the First item in an Indexed Address collection
+    @param _collection_index The source collection to evaluate
+    @return {"_item":"Collection item"}
+  */
   function read_first_in_indexed_addresses_collection(bytes32 _collection_index)
            public
            constant
@@ -131,6 +184,11 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _item = read_first_from_indexed_addresses_dll(indexed_address_collection, _collection_index);
   }
 
+  /**
+    @notice Reads the Last item in an Indexed Addresses collection
+    @param _collection_index The source collection to evaluate
+    @return {"_item":"Collection item"}
+  */
   function read_last_in_indexed_addresses_collection(bytes32 _collection_index)
            public
            constant
@@ -139,6 +197,11 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _item = read_last_from_indexed_addresses_dll(indexed_address_collection, _collection_index);
   }
 
+  /**
+    @notice Reads the Next item from an Indexed Addresses collection using the specified `_collection_index` and `_current_item`
+    @param _collection_index The source collection to evaluate
+    @return {"_item":"Collection item"}
+  */
   function read_next_in_indexed_addresses_collection(bytes32 _collection_index, address _current_item)
            public
            constant
@@ -147,6 +210,11 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _item = read_next_from_indexed_addresses_dll(indexed_address_collection, _collection_index, _current_item);
   }
 
+  /**
+    @notice Reads the Previous item from an Indexed Addresses collection using the specified `_collection_index` and `_current_item`
+    @param _collection_index The source collection to evaluate
+    @return {"_item":"Collection item"}
+  */
   function read_previous_in_indexed_addresses_collection(bytes32 _collection_index, address _current_item)
            public
            constant
@@ -155,6 +223,11 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _item = read_previous_from_indexed_addresses_dll(indexed_address_collection, _collection_index, _current_item);
   }
 
+  /**
+    @notice Reads the Total number of items in an Indexed Addresses collection
+    @param _collection_index The source collection to evaluate
+    @return {"_total_count":"Total number of items"}
+  */
   function read_total_in_indexed_addresses_collection(bytes32 _collection_index)
            public
            constant

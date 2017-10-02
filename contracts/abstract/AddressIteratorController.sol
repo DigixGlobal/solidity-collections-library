@@ -5,6 +5,7 @@ import "./AddressIteratorStorage.sol";
 /**
   @title Address Iterator Controller
   @author DigixGlobal Pte Ltd
+  @notice This contract utilizes: [Address Iterator Storage](/AddressIteratorStorage)
 */
 
 contract AddressIteratorController {
@@ -35,6 +36,7 @@ contract AddressIteratorController {
 
   /**
     @notice Gets the next address from the list based on the specified `_current_item`
+    @param _function The function that returns the next address based on the specified `_current_item`
     @param _current_item The current Address
     @return {"_item": "The last Address"} 
   */
@@ -48,6 +50,7 @@ contract AddressIteratorController {
 
   /**
     @notice Gets the previous address from the list based on the spcified `_current_item`
+    @param _function The function that returns the previous address based on the specified `_current_item`
     @param _current_item  The current Address
     @return {"_item": "The last Address"}
   */         
@@ -61,6 +64,7 @@ contract AddressIteratorController {
 
   /**
     @notice Gets the length (total number of addresses) of the list
+    @param _function Function that returns the length of the list
     @return {"_total_count": "Length of the list"}
   */
   function get_total_in_addresses_dll(function () constant external returns (uint256) _function)

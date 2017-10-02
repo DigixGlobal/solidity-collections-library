@@ -5,7 +5,7 @@ pragma solidity ^0.4.16;
 */
 contract BytesIteratorInteractive {
 
-  /*
+  /**
     @notice Lists a Bytes collection in reverse starting from the end of the list
     @param _count Total number of Bytes item to return
     @param _function_total Function that returns the total number of Bytes item in the list
@@ -25,12 +25,12 @@ contract BytesIteratorInteractive {
     _bytes_items = list_bytes_from_start(_count, _function_total, _function_last, _function_previous);
   }
 
-  /*
+  /**
     @notice Lists a Bytes collection starting from the start of the list
     @param _count Total number of Bytes item to return
-    @param _funtion_total Function that returns the total number of Bytes item in the list
-    @param _function_first Function that returns the first Bytes item in the list
-    @param _functioin-next Function that returns the next Bytes item in the list
+    @param _function_total The Function that returns the Total number of Bytes item in the list
+    @param _function_first The Function that returns the First Bytes item in the list
+    @param _function_next The Function that returns the Next Bytes item in the list
     @return {"_bytes_items" :"Collection/list of Bytes"}
   */
   function list_bytes_from_start(uint256 _count,
@@ -68,12 +68,12 @@ contract BytesIteratorInteractive {
     }
   }
 
-  /*
+  /**
     @notice Lists a Bytes collection in reverse starting from the specified `_current_item`
     @param _current_item The current Item
     @param _count Total number of Bytes item to return
-    @param _function_first Function that returns the first item
-    @param _function_previous Function that returns the previous item based on the specified `_current_item`
+    @param _function_first The Function that returns the first item
+    @param _function_previous The Function that returns the previous item based on the specified `_current_item`
     @return {"_bytes_items" :"Collection/list of Bytes"}
   */
   function list_bytes_backwards_from_bytes(bytes32 _current_item, uint256 _count,
@@ -86,12 +86,12 @@ contract BytesIteratorInteractive {
     _bytes_items = list_bytes_from_bytes(_current_item, _count, _function_first, _function_previous);
   }
 
-  /*
+  /**
     @notice Lists a Bytes collection starting from the specified `_current_item`
     @param _current_item The current Item
     @param _count Total number of Bytes item to return
-    @param _function_last Function that returns the last item
-    @param _function_next Function that returns the next item
+    @param _function_last The Function that returns the Last item
+    @param _function_next The Function that returns the Next item
     @return {"_bytes_items" :"Collection/list of Bytes"}
   */
   function list_bytes_from_bytes(bytes32 _current_item, uint256 _count,

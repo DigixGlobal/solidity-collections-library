@@ -1,7 +1,20 @@
 pragma solidity ^0.4.16;
 
+/**
+  @title Indexed Bytes Iterator Interactive
+  @author DigixGlobal Pte Ltd
+*/
 contract IndexedBytesIteratorInteractive {
 
+  /**
+    @notice Lists indexed Bytes in reverse from the end of the list
+    @param _collection_index Index of the Collection to evaluate
+    @param _count The total number of items to return
+    @param _function_total Function that returns the Total number of items in the list
+    @param _function_last Function that returns the last item in the list
+    @param _function_previous Function that returns the previous item in the list
+    @return {"_index_bytes_items": "List of reversed Bytes collection"}
+  */
   function list_indexed_bytes_backwards_from_end(bytes32 _collection_index, uint256 _count,
                                  function (bytes32) external constant returns (uint256) _function_total,
                                  function (bytes32) external constant returns (bytes32) _function_last,
@@ -14,6 +27,15 @@ contract IndexedBytesIteratorInteractive {
     _indexed_bytes_items = list_indexed_bytes_from_start(_collection_index, _count, _function_total, _function_last, _function_previous);
   }
 
+  /**
+    @notice Lists indexed Bytes starting from the beginning of the collection
+    @param _collection_index Index of the Collection to evaluate
+    @param _count The total number of items to return
+    @param _function_total Function that returns the Total number of items in the list
+    @param _function_first Function that returns the first item in the list
+    @param _function_next Function that returns the next item in the list
+    @return {"_index_bytes_items": "List of items in Bytes collection"}
+  */
   function list_indexed_bytes_from_start(bytes32 _collection_index, uint256 _count,
                                  function (bytes32) external constant returns (uint256) _function_total,
                                  function (bytes32) external constant returns (bytes32) _function_first,
@@ -48,6 +70,15 @@ contract IndexedBytesIteratorInteractive {
     }
   }
 
+  /**
+    @notice Lists indexed Bytes in reverse starting from a specified `_current_item`
+    @param _collection_index Index of the Collection to evaluate
+    @param _current_item The current item to be used as base line
+    @param _count The The total number of items to return
+    @param _function_first Function that returns the first item in the list
+    @param _function_previous Function that returns the previous item in the list
+    @return {"_index_bytes_items": "List of items in Bytes collection in reverse"}
+  */
   function list_indexed_bytes_backwards_from_bytes(bytes32 _collection_index, bytes32 _current_item, uint256 _count,
                                          function (bytes32) external constant returns (bytes32) _function_first,
                                          function (bytes32, bytes32) external constant returns (bytes32) _function_previous)
@@ -58,6 +89,15 @@ contract IndexedBytesIteratorInteractive {
     _indexed_bytes_items = list_indexed_bytes_from_bytes(_collection_index, _current_item, _count, _function_first, _function_previous);
   }
 
+  /**
+    @notice Lists indexed Bytes starting from a specified `_current_item`
+    @param _collection_index Index of the Collection to evaluate
+    @param _current_item The current item to be used as base line
+    @param _count The total number of items to return
+    @param _function_last Function that returns the last item in the list
+    @param _function_next Function that returns the next item in the list
+    @return {"_index_bytes_items": "List of items in Bytes collection"}
+  */
   function list_indexed_bytes_from_bytes(bytes32 _collection_index, bytes32 _current_item, uint256 _count,
                                          function (bytes32) external constant returns (bytes32) _function_last,
                                          function (bytes32, bytes32) external constant returns (bytes32) _function_next)
