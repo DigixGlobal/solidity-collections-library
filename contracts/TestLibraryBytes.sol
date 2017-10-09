@@ -16,8 +16,7 @@ contract TestLibraryBytes {
   }
 
   /// @notice Setups `testData` values for testing
-  function setup_data_for_testing ()
-  {
+  function setup_data_for_testing () {
       delete testData;
       testData.append('test1');
       testData.append('test2');

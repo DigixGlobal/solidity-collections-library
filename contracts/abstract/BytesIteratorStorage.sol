@@ -15,7 +15,7 @@ contract BytesIteratorStorage {
   /**
     @notice Reads the first item from the list of Bytes
     @param _list The source list
-    @return _item The first item from the list
+    @return {"_item": "The first item from the list"} 
   */
   function read_first_from_bytes_dll(DoublyLinkedList.Bytes storage _list)
            internal
@@ -28,7 +28,7 @@ contract BytesIteratorStorage {
   /**
     @notice Reads the last item from the list of Bytes
     @param _list The source list
-    @return _item The last item from the list
+    @return {"_item": "The last item from the list"} 
   */
   function read_last_from_bytes_dll(DoublyLinkedList.Bytes storage _list)
            internal
@@ -42,8 +42,7 @@ contract BytesIteratorStorage {
     @notice Reads the next item on the list of Bytes
     @param _list The source list
     @param _current_item The current item to be used as base line
-    @return _item The next item from the list based on the specieid `_current_item`
-
+    @return {"_item": "The next item from the list based on the specieid `_current_item`"} 
     TODO: Need to verify what happens if the specified `_current_item` is the last item from the list
   */
   function read_next_from_bytes_dll(DoublyLinkedList.Bytes storage _list, bytes32 _current_item)
@@ -58,8 +57,7 @@ contract BytesIteratorStorage {
     @notice Reads the previous item on the list of Bytes
     @param _list The source list
     @param _current_item The current item to be used as base line
-    @return _item The previous item from the list based on the spcified `_current_item`
-
+    @return {"_item": "The previous item from the list based on the spcified `_current_item`"} 
     TODO: Need to verify what happens if the specified `_current_item` is the first item from the list
   */
   function read_previous_from_bytes_dll(DoublyLinkedList.Bytes storage _list, bytes32 _current_item)
@@ -73,7 +71,8 @@ contract BytesIteratorStorage {
   /**
     @notice Reads the list of Bytes and returns the length of the list
     @param _list The source list
-    @return `uint256` The lenght of the list
+    @return {"count": "`uint256` The lenght of the list"}
+    
   */
   function read_bytes_dll_total(DoublyLinkedList.Bytes storage _list)
            internal
