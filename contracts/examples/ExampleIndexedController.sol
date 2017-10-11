@@ -15,7 +15,7 @@ import "./ExampleIndexedStorage.sol";
 */
 contract ExampleIndexedController is IndexedBytesIteratorController, IndexedAddressIteratorController, IndexedUintIteratorController {
 
-  
+
   /// @notice State to be used as holder for the specified storage
   /// @dev This example controller inherits from [IndexedBytesIteratorController](/IndexedBytesIteratorController),
   ///    [IndexedAddressIteratorController](/IndexedAddressIteratorController), [IndexedUintIteratorController](IndexedUintIteratorController)
@@ -173,5 +173,73 @@ contract ExampleIndexedController is IndexedBytesIteratorController, IndexedAddr
            returns (uint256 _total_count)
   {
     _total_count = get_total_in_indexed_addresses_dll(example_storage().read_total_in_indexed_addresses_collection, _collection_index);
+  }
+
+  /**
+    @notice Gets the first item in an Indexed Uints collection
+    @param _collection_index Index of the Collection to evaluate
+    @return {"_item":"Collection item"}
+  */
+  function get_first_in_indexed_uints_collection(bytes32 _collection_index)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = get_first_from_indexed_uints_dll(example_storage().read_first_in_indexed_uints_collection, _collection_index);
+  }
+
+  /**
+    @notice Gets the last item in an Indexed Uints collection
+    @param _collection_index Index of the Collection to evaluate
+    @return {"_item":"Collection item"}
+  */
+  function get_last_in_indexed_uints_collection(bytes32 _collection_index)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = get_last_from_indexed_uints_dll(example_storage().read_last_in_indexed_uints_collection, _collection_index);
+  }
+
+  /**
+    @notice Gets the next item in an Indexed Uints collection based on the specified `_current_item`
+    @param _collection_index Index of the Collection to evaluate
+    @param _current_item The item the be used as base line
+    @return {"_item":"Collection item"}
+  */
+  function get_next_in_indexed_uints_collection(bytes32 _collection_index, uint256 _current_item)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = get_next_from_indexed_uints_dll(example_storage().read_next_in_indexed_uints_collection, _collection_index, _current_item);
+  }
+
+
+  /**
+    @notice Gets the previous item in an Indexed Uints collection based on the specified `_current_item`
+    @param _collection_index Index of the Collection to evaluate
+    @param _current_item The item to be used as base line
+    @return {"_item":"Collection item"}
+  */
+  function get_previous_in_indexed_uints_collection(bytes32 _collection_index, uint256 _current_item)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = get_previous_from_indexed_uints_dll(example_storage().read_previous_in_indexed_uints_collection, _collection_index, _current_item);
+  }
+
+  /**
+    @notice Gets the total number of items in an Indexed Uints collection
+    @param _collection_index Index of the Collection to evaluate
+    @return {"_item":"Collection item"}
+  */
+  function get_total_in_indexed_uints_collection(bytes32 _collection_index)
+           public
+           constant
+           returns (uint256 _total_count)
+  {
+    _total_count = get_total_in_indexed_uints_dll(example_storage().read_total_in_indexed_uints_collection, _collection_index);
   }
 }

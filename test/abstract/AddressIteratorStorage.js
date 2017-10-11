@@ -1,4 +1,4 @@
-const { bN, exampleAddresses, emptyAddress } = require('./testHelpers');
+const { bN, exampleAddresses, emptyAddress } = require('../testHelpers');
 
 const ExampleStorage = artifacts.require('./ExampleStorage.sol');
 

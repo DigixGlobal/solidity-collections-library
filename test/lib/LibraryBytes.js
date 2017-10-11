@@ -1,4 +1,4 @@
-const { myToAscii, bN } = require('./testHelpers');
+const { myToAscii, bN } = require('../testHelpers');
 
 const TestLibraryBytes = artifacts.require('./TestLibraryBytes.sol');
 

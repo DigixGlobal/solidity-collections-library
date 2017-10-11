@@ -1,4 +1,4 @@
-const { bN } = require('./testHelpers');
+const { bN } = require('../testHelpers');
 
 const TestLibraryUint = artifacts.require('./TestLibraryUint.sol');
 

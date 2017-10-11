@@ -1,4 +1,4 @@
-const { bN, exampleUints } = require('./testHelpers');
+const { bN, exampleUints } = require('../testHelpers');
 
 const ExampleStorage = artifacts.require('./ExampleStorage.sol');
 

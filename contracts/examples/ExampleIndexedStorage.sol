@@ -21,6 +21,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     @notice Constructor
   */
   function ExampleIndexedStorage() {
+    initialize();
   }
 
   /**
@@ -32,31 +33,36 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     indexed_bytes_collection.append("a", "atest3");
     indexed_bytes_collection.append("a", "atest4");
     indexed_bytes_collection.append("a", "atest5");
-    indexed_bytes_collection.append("b", "btest1");
+    indexed_bytes_collection.append("a", "atest6");
+    /*indexed_bytes_collection.append("b", "btest1");
     indexed_bytes_collection.append("b", "btest2");
     indexed_bytes_collection.append("b", "btest3");
     indexed_bytes_collection.append("b", "btest4");
-    indexed_bytes_collection.append("b", "btest5");
-		indexed_address_collection.append("a", 0x7812421a7579d8182DC6f2B68Ab56595db01553F);
-		indexed_address_collection.append("a", 0x419f0a80D85f3C7dC3553394d91c9A339332a01E);
-		indexed_address_collection.append("a", 0xF5dFE2A3f8Cf5CA8723b51be6fc065beA0cFE893);
-		indexed_address_collection.append("a", 0x5dc52D499a77af45f43174CFE7982dC68c331c38);
-		indexed_address_collection.append("a", 0x727C89006bd885f9A77254797a362d69E8A1f4da);
-		indexed_address_collection.append("b", 0x0F66eC3DF48eC1E216D24e225b772696e031B698);
+    indexed_bytes_collection.append("b", "btest5");*/
+    indexed_address_collection.append("a", 0x7812421a7579d8182dc6f2b68ab56595db01553f);
+    indexed_address_collection.append("a", 0x419f0a80d85f3c7dc3553394d91c9a339332a01e);
+    indexed_address_collection.append("a", 0xf5dfe2a3f8cf5ca8723b51be6fc065bea0cfe893);
+    indexed_address_collection.append("a", 0x5dc52d499a77af45f43174cfe7982dc68c331c38);
+    indexed_address_collection.append("a", 0x727c89006bd885f9a77254797a362d69e8a1f4da);
+    indexed_address_collection.append("a", 0x0f66ec3df48ec1e216d24e225b772696e031b698);
+		/*indexed_address_collection.append("b", 0x0F66eC3DF48eC1E216D24e225b772696e031B698);
 		indexed_address_collection.append("b", 0x755eAc40A9017B52b6d811A2Ee3f495D08afb5eD);
 		indexed_address_collection.append("b", 0xFd59C5dBB42666CF99a714EE5286C0280B6002Bd);
 		indexed_address_collection.append("b", 0xF8954DA58BA81BFC29B5651029A71B0693b6Cd98);
-		indexed_address_collection.append("b", 0x027a8620cAD4d536F3C2F9Fdeeb4490b1fa6833b);
+		indexed_address_collection.append("b", 0x027a8620cAD4d536F3C2F9Fdeeb4490b1fa6833b);*/
+
     indexed_uint_collection.append("a", 1002);
     indexed_uint_collection.append("a", 1003);
     indexed_uint_collection.append("a", 1004);
     indexed_uint_collection.append("a", 1005);
     indexed_uint_collection.append("a", 1006);
-    indexed_uint_collection.append("b", 2002);
+    indexed_uint_collection.append("a", 1007);
+
+    /*indexed_uint_collection.append("b", 2002);
     indexed_uint_collection.append("b", 2003);
     indexed_uint_collection.append("b", 2004);
     indexed_uint_collection.append("b", 2005);
-    indexed_uint_collection.append("b", 2006);
+    indexed_uint_collection.append("b", 2006);*/
   }
 
   /**
@@ -68,7 +74,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            public
            returns (bool _success)
   {
-    for (uint256 i=1;i<=5;i++) {
+    for (uint256 i=1;i<=6;i++) {
       indexed_bytes_collection.remove(_collection_index, i);
     }
     _success = indexed_bytes_collection.total(_collection_index) == 0;
@@ -83,7 +89,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            public
            returns (bool _success)
   {
-    for (uint256 i=1;i<=5;i++) {
+    for (uint256 i=1;i<=6;i++) {
       indexed_address_collection.remove(_collection_index, i);
     }
     _success = indexed_address_collection.total(_collection_index) == 0;
@@ -236,4 +242,68 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     _total_count = read_indexed_addresses_dll_total(indexed_address_collection, _collection_index);
   }
 
+  /**
+    @notice Reads the First item in an Indexed Uints collection
+    @param _collection_index The source collection to evaluate
+    @return {"_item":"Collection item"}
+  */
+  function read_first_in_indexed_uints_collection(bytes32 _collection_index)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = read_first_from_indexed_uints_dll(indexed_uint_collection, _collection_index);
+  }
+
+  /**
+    @notice Reads the Last item in an Indexed Uints collection
+    @param _collection_index The source collection to evaluate
+    @return {"_item":"Collection item"}
+  */
+  function read_last_in_indexed_uints_collection(bytes32 _collection_index)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = read_last_from_indexed_uints_dll(indexed_uint_collection, _collection_index);
+  }
+
+  /**
+    @notice Reads the Next item from an Indexed Uints collection using the specified `_collection_index` and `_current_item`
+    @param _collection_index The source collection to evaluate
+    @return {"_item":"Collection item"}
+  */
+  function read_next_in_indexed_uints_collection(bytes32 _collection_index, uint256 _current_item)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = read_next_from_indexed_uints_dll(indexed_uint_collection, _collection_index, _current_item);
+  }
+
+  /**
+    @notice Reads the Previous item from an Indexed Uints collection using the specified `_collection_index` and `_current_item`
+    @param _collection_index The source collection to evaluate
+    @return {"_item":"Collection item"}
+  */
+  function read_previous_in_indexed_uints_collection(bytes32 _collection_index, uint256 _current_item)
+           public
+           constant
+           returns (uint256 _item)
+  {
+    _item = read_previous_from_indexed_uints_dll(indexed_uint_collection, _collection_index, _current_item);
+  }
+
+  /**
+    @notice Reads the Total number of items in an Indexed Uints collection
+    @param _collection_index The source collection to evaluate
+    @return {"_total_count":"Total number of items"}
+  */
+  function read_total_in_indexed_uints_collection(bytes32 _collection_index)
+           public
+           constant
+           returns (uint256 _total_count)
+  {
+    _total_count = read_indexed_uints_dll_total(indexed_uint_collection, _collection_index);
+  }
 }

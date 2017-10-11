@@ -1,6 +1,6 @@
 const a = require('awaiting');
 
-const { myToAscii, bN } = require('./testHelpers');
+const { myToAscii, bN } = require('../testHelpers');
 
 const TestDoublyLinkedList = artifacts.require('./TestDoublyLinkedList.sol');
 
