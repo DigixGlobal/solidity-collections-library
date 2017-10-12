@@ -9,7 +9,7 @@ contract('AddressIteratorStorage', function (addresses) {
     exampleStorage = await ExampleStorage.new();
   });
 
-  describe('read_first_from_addresses_dll', function () {
+  describe('read_first_from_addresses', function () {
     it('[collection is not empty] returns correct first item', async function () {
       assert.deepEqual(await exampleStorage.read_first_in_addresses_collection.call(), exampleAddresses[1]);
     });
@@ -19,7 +19,7 @@ contract('AddressIteratorStorage', function (addresses) {
     });
   });
 
-  describe('read_last_from_addresses_dll', function () {
+  describe('read_last_from_addresses', function () {
     it('[collection is not empty] returns correct last item', async function () {
       assert.deepEqual(await exampleStorage.read_last_in_addresses_collection.call(), exampleAddresses[6]);
     });
@@ -29,7 +29,7 @@ contract('AddressIteratorStorage', function (addresses) {
     });
   });
 
-  describe('read_next_from_addresses_dll', function () {
+  describe('read_next_from_addresses', function () {
     it('[item is not last] returns correct next item', async function () {
       assert.deepEqual(await exampleStorage.read_next_in_addresses_collection.call(exampleAddresses[4]), exampleAddresses[5]);
     });
@@ -45,7 +45,7 @@ contract('AddressIteratorStorage', function (addresses) {
     });
   });
 
-  describe('read_previous_from_addresses_dll', function () {
+  describe('read_previous_from_addresses', function () {
     it('[item is not first] returns correct previous item', async function () {
       assert.deepEqual(await exampleStorage.read_previous_in_addresses_collection.call(exampleAddresses[4]), exampleAddresses[3]);
     });
@@ -61,7 +61,7 @@ contract('AddressIteratorStorage', function (addresses) {
     });
   });
 
-  describe('read_addresses_dll_total', function () {
+  describe('read_total_addresses', function () {
     it('[collection is not empty] returns correct number of items', async function () {
       assert.deepEqual(await exampleStorage.read_total_in_addresses_collection.call(), bN(6));
     });

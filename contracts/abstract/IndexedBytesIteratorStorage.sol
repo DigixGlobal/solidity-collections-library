@@ -17,7 +17,7 @@ contract IndexedBytesIteratorStorage {
     @param _collection_index Index of the Collection to evaluate
     @return {"_item":"The first item from the specified `_list`"}
   */
-  function read_first_from_indexed_bytes_dll(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index)
+  function read_first_from_indexed_bytesarray(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index)
            internal
            constant
            returns (bytes32 _item)
@@ -31,7 +31,7 @@ contract IndexedBytesIteratorStorage {
     @param _collection_index Index of the Collection to evaluate
     @return {"_item":"The last item from the specified `_list`"}
   */
-  function read_last_from_indexed_bytes_dll(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index)
+  function read_last_from_indexed_bytesarray(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index)
            internal
            constant
            returns (bytes32 _item)
@@ -46,7 +46,7 @@ contract IndexedBytesIteratorStorage {
     @param _current_item The current item to be used as base line
     @return {"_item":"The next item from the specified `_current_item`"}
   */
-  function read_next_from_indexed_bytes_dll(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index, bytes32 _current_item)
+  function read_next_from_indexed_bytesarray(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index, bytes32 _current_item)
            internal
            constant
            returns (bytes32 _item)
@@ -61,7 +61,7 @@ contract IndexedBytesIteratorStorage {
     @param _current_item The current item to be used as base line
     @return {"_item":"The previous item from the specified `_current_item`"}
   */
-  function read_previous_from_indexed_bytes_dll(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index, bytes32 _current_item)
+  function read_previous_from_indexed_bytesarray(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index, bytes32 _current_item)
            internal
            constant
            returns (bytes32 _item)
@@ -75,7 +75,7 @@ contract IndexedBytesIteratorStorage {
     @param _collection_index Index of the Collection to evaluate
     @return {"_count":""}
   */
-  function read_indexed_bytes_dll_total(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index)
+  function read_total_indexed_bytesarray(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index)
            internal
            constant
            returns (uint256 _count)

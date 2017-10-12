@@ -12,7 +12,7 @@ contract('AddressIteratorController', function (addresses) {
     exampleController = await ExampleController.new(exampleStorage.address);
   });
 
-  describe('get_first_from_addresses_dll', function () {
+  describe('get_first_from_addresses', function () {
     it('[collection is not empty] returns correct first item', async function () {
       assert.deepEqual(await exampleController.get_first_in_addresses_collection.call(), exampleAddresses[1]);
     });
@@ -22,7 +22,7 @@ contract('AddressIteratorController', function (addresses) {
     });
   });
 
-  describe('get_last_from_addresses_dll', function () {
+  describe('get_last_from_addresses', function () {
     it('[collection is not empty] returns correct last item', async function () {
       assert.deepEqual(await exampleController.get_last_in_addresses_collection.call(), exampleAddresses[6]);
     });
@@ -32,7 +32,7 @@ contract('AddressIteratorController', function (addresses) {
     });
   });
 
-  describe('get_next_from_addresses_dll', function () {
+  describe('get_next_from_addresses', function () {
     it('[item is not last] returns correct next item', async function () {
       assert.deepEqual(await exampleController.get_next_in_addresses_collection.call(exampleAddresses[4]), exampleAddresses[5]);
     });
@@ -48,7 +48,7 @@ contract('AddressIteratorController', function (addresses) {
     });
   });
 
-  describe('get_previous_from_addresses_dll', function () {
+  describe('get_previous_from_addresses', function () {
     it('[item is not first] returns correct previous item', async function () {
       assert.deepEqual(await exampleController.get_previous_in_addresses_collection.call(exampleAddresses[4]), exampleAddresses[3]);
     });
@@ -64,7 +64,7 @@ contract('AddressIteratorController', function (addresses) {
     });
   });
 
-  describe('get_addresses_dll_total', function () {
+  describe('get_total_addresses', function () {
     it('[collection is not empty] returns correct number of items', async function () {
       assert.deepEqual(await exampleController.get_total_in_addresses_collection.call(), bN(6));
     });

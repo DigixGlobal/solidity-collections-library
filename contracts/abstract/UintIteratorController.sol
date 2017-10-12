@@ -13,7 +13,7 @@ contract UintIteratorController {
     @param _function Function that returns the first item
     @return {"_item": "The first item"}
   */
-  function get_first_from_uints_dll(function () constant external returns (uint256) _function)
+  function get_first_from_uints(function () constant external returns (uint256) _function)
            internal
            constant
            returns (uint256 _item)
@@ -26,7 +26,7 @@ contract UintIteratorController {
     @param _function Function that returns the last item
     @return {"_item": "The last item"}
   */
-  function get_last_from_uints_dll(function () constant external returns (uint256) _function)
+  function get_last_from_uints(function () constant external returns (uint256) _function)
            internal
            constant
            returns (uint256 _item)
@@ -40,7 +40,7 @@ contract UintIteratorController {
     @param _current_item The current item
     @return {"_item": "The next item"}
   */
-  function get_next_from_uints_dll(function (uint256) constant external returns (uint256) _function, uint256 _current_item)
+  function get_next_from_uints(function (uint256) constant external returns (uint256) _function, uint256 _current_item)
            internal
            constant
            returns (uint256 _item)
@@ -54,7 +54,7 @@ contract UintIteratorController {
     @param _current_item The current item
     @return {"_item": "The next item"}
   */
-  function get_previous_from_uints_dll(function (uint256) constant external returns (uint256) _function, uint256 _current_item)
+  function get_previous_from_uints(function (uint256) constant external returns (uint256) _function, uint256 _current_item)
            internal
            constant
            returns (uint256 _item)

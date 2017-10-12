@@ -16,7 +16,7 @@ contract IndexedAddressIteratorStorage {
     @param _collection_index Index of the Collection to evaluate
     @return {"_item" : "First item on the list"}
   */
-  function read_first_from_indexed_addresses_dll(DoublyLinkedList.IndexedAddress storage _list, bytes32 _collection_index)
+  function read_first_from_indexed_addresses(DoublyLinkedList.IndexedAddress storage _list, bytes32 _collection_index)
            internal
            constant
            returns (address _item)
@@ -30,7 +30,7 @@ contract IndexedAddressIteratorStorage {
     @param _collection_index Index of the Collection to evaluate
     @return {"_item" : "First item on the list"}
   */
-  function read_last_from_indexed_addresses_dll(DoublyLinkedList.IndexedAddress storage _list, bytes32 _collection_index)
+  function read_last_from_indexed_addresses(DoublyLinkedList.IndexedAddress storage _list, bytes32 _collection_index)
            internal
            constant
            returns (address _item)
@@ -45,7 +45,7 @@ contract IndexedAddressIteratorStorage {
     @param _current_item The current item to use as base line
     @return {"_item": "The next item on the list"}
   */
-  function read_next_from_indexed_addresses_dll(DoublyLinkedList.IndexedAddress storage _list, bytes32 _collection_index, address _current_item)
+  function read_next_from_indexed_addresses(DoublyLinkedList.IndexedAddress storage _list, bytes32 _collection_index, address _current_item)
            internal
            constant
            returns (address _item)
@@ -60,7 +60,7 @@ contract IndexedAddressIteratorStorage {
     @param _current_item The current item to use as base line
     @return {"_item" : "The previous item on the list"}
   */
-  function read_previous_from_indexed_addresses_dll(DoublyLinkedList.IndexedAddress storage _list, bytes32 _collection_index, address _current_item)
+  function read_previous_from_indexed_addresses(DoublyLinkedList.IndexedAddress storage _list, bytes32 _collection_index, address _current_item)
            internal
            constant
            returns (address _item)
@@ -75,7 +75,7 @@ contract IndexedAddressIteratorStorage {
     @param _collection_index Index of the Collection to evaluate
     @return {"_count": "Length of the Doubly Linked list"}
   */
-  function read_indexed_addresses_dll_total(DoublyLinkedList.IndexedAddress storage _list, bytes32 _collection_index)
+  function read_total_indexed_addresses(DoublyLinkedList.IndexedAddress storage _list, bytes32 _collection_index)
            internal
            constant
            returns (uint256 _count)

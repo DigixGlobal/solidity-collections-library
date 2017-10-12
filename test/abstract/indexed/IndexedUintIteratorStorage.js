@@ -9,7 +9,7 @@ contract('IndexedUintIteratorStorage', function () {
     exampleIndexedStorage = await ExampleIndexedStorage.new();
   });
 
-  describe('read_first_from_indexed_uints_dll', function () {
+  describe('read_first_from_indexed_uints', function () {
     it('[collection is not empty] returns correct first item', async function () {
       assert.deepEqual(await exampleIndexedStorage.read_first_in_indexed_uints_collection.call('a'), exampleUints[1]);
     });
@@ -22,7 +22,7 @@ contract('IndexedUintIteratorStorage', function () {
     });
   });
 
-  describe('read_last_from_indexed_uints_dll', function () {
+  describe('read_last_from_indexed_uints', function () {
     it('[collection is not empty] returns correct last item', async function () {
       assert.deepEqual(await exampleIndexedStorage.read_last_in_indexed_uints_collection.call('a'), exampleUints[6]);
     });
@@ -35,7 +35,7 @@ contract('IndexedUintIteratorStorage', function () {
     });
   });
 
-  describe('read_next_from_indexed_uints_dll', function () {
+  describe('read_next_from_indexed_uints', function () {
     it('[item is not last] returns correct next item', async function () {
       assert.deepEqual(await exampleIndexedStorage.read_next_in_indexed_uints_collection.call('a', exampleUints[4]), exampleUints[5]);
     });
@@ -54,7 +54,7 @@ contract('IndexedUintIteratorStorage', function () {
     });
   });
 
-  describe('read_previous_from_indexed_uints_dll', function () {
+  describe('read_previous_from_indexed_uints', function () {
     it('[item is not first] returns correct previous item', async function () {
       assert.deepEqual(await exampleIndexedStorage.read_previous_in_indexed_uints_collection.call('a', exampleUints[4]), exampleUints[3]);
     });
@@ -73,7 +73,7 @@ contract('IndexedUintIteratorStorage', function () {
     });
   });
 
-  describe('read_indexed_uints_dll_total', function () {
+  describe('read_total_indexed_uints', function () {
     it('[collection is not empty] returns correct number of items', async function () {
       assert.deepEqual(await exampleIndexedStorage.read_total_in_indexed_uints_collection.call('a'), bN(6));
     });

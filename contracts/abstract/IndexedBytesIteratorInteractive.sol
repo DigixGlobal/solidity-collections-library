@@ -7,101 +7,115 @@ pragma solidity ^0.4.16;
 contract IndexedBytesIteratorInteractive {
 
   /**
-    @notice Lists indexed Bytes in reverse from the end of the list
-    @param _collection_index Index of the Collection to evaluate
-    @param _count The total number of items to return
-    @param _function_total Function that returns the Total number of items in the list
-    @param _function_last Function that returns the last item in the list
-    @param _function_previous Function that returns the previous item in the list
-    @return {"_index_bytes_items": "List of reversed Bytes collection"}
+    @notice Lists an indexed Bytes collection from start or end
+    @param _collection_index Index of the Collection to list
+    @param _count Total number of Bytes items to return
+    @param _function_first The Function that returns the First Bytes item in the list
+    @param _function_last Function that returns the last Bytes item in the list
+    @param _function_next The Function that returns the Next Bytes item in the list
+    @param _function_previous Function that returns previous Bytes item in the list
+    @param _from_start whether to read from start (or end) of the list
+    @return {"_bytes_items" : "Collection of reversed Bytes list"}
   */
-  function list_indexed_bytes_backwards_from_end(bytes32 _collection_index, uint256 _count,
-                                 function (bytes32) external constant returns (uint256) _function_total,
-                                 function (bytes32) external constant returns (bytes32) _function_last,
-                                 function (bytes32, bytes32) external constant returns (bytes32) _function_previous)
-
+  function list_indexed_bytesarray(bytes32 _collection_index, uint256 _count,
+                              function (bytes32) external constant returns (bytes32) _function_first,
+                              function (bytes32) external constant returns (bytes32) _function_last,
+                              function (bytes32, bytes32) external constant returns (bytes32) _function_next,
+                              function (bytes32, bytes32) external constant returns (bytes32) _function_previous,
+                              bool _from_start)
            internal
            constant
            returns (bytes32[] _indexed_bytes_items)
   {
-    _indexed_bytes_items = list_indexed_bytes_from_start(_collection_index, _count, _function_total, _function_last, _function_previous);
+    if (_from_start) {
+      _indexed_bytes_items = private_list_indexed_bytes_from_bytes(_collection_index, _function_first(_collection_index), _count, true, _function_last, _function_next);
+    } else {
+      _indexed_bytes_items = private_list_indexed_bytes_from_bytes(_collection_index, _function_last(_collection_index), _count, true, _function_first, _function_previous);
+    }
   }
 
   /**
-    @notice Lists indexed Bytes starting from the beginning of the collection
-    @param _collection_index Index of the Collection to evaluate
-    @param _count The total number of items to return
-    @param _function_total Function that returns the Total number of items in the list
-    @param _function_first Function that returns the first item in the list
-    @param _function_next Function that returns the next item in the list
-    @return {"_index_bytes_items": "List of items in Bytes collection"}
+    @notice Lists an indexed Bytes collection from some `_current_item`, going forwards or backwards depending on `_from_start`
+    @param _collection_index Index of the Collection to list
+    @param _current_item The current Item
+    @param _count Total number of Bytes items to return
+    @param _function_first The Function that returns the First Bytes item in the list
+    @param _function_last Function that returns the last Bytes item in the list
+    @param _function_next The Function that returns the Next Bytes item in the list
+    @param _function_previous Function that returns previous Bytes item in the list
+    @param _from_start whether to read in the forwards ( or backwards) direction
+    @return {"_bytes_items" :"Collection/list of Bytes"}
   */
-  function list_indexed_bytes_from_start(bytes32 _collection_index, uint256 _count,
-                                 function (bytes32) external constant returns (uint256) _function_total,
-                                 function (bytes32) external constant returns (bytes32) _function_first,
-                                 function (bytes32, bytes32) external constant returns (bytes32) _function_next)
+  function list_indexed_bytesarray_from(bytes32 _collection_index, bytes32 _current_item, uint256 _count,
+                                function (bytes32) external constant returns (bytes32) _function_first,
+                                function (bytes32) external constant returns (bytes32) _function_last,
+                                function (bytes32, bytes32) external constant returns (bytes32) _function_next,
+                                function (bytes32, bytes32) external constant returns (bytes32) _function_previous,
+                                bool _from_start)
            internal
+           constant
+           returns (bytes32[] _indexed_bytes_items)
+  {
+    if (_from_start) {
+      _indexed_bytes_items = private_list_indexed_bytes_from_bytes(_collection_index, _current_item, _count, false, _function_last, _function_next);
+    } else {
+      _indexed_bytes_items = private_list_indexed_bytes_from_bytes(_collection_index, _current_item, _count, false, _function_first, _function_previous);
+    }
+  }
+
+  /**
+    @notice a private function to lists an indexed Bytes collection starting from some _current_item (which could be included or excluded), in the forwards or backwards direction
+    @param _collection_index Index of the Collection to list
+    @param _current_item The item where we start reading from the list
+    @param _count Total number of Bytes items to return
+    @param _including_current Whether the `_current_item` should be included in the result
+    @param _function_last The Function that returns the bytes where we stop reading more bytes
+    @param _function_next The Function that returns the next bytes to read after another bytes (could be backwards or forwards in the physical collection)
+    @return {"_bytes_items" :"Collection/list of Bytes"}
+  */
+  function private_list_indexed_bytes_from_bytes(bytes32 _collection_index, bytes32 _current_item, uint256 _count, bool _including_current,
+                                         function (bytes32) external constant returns (bytes32) _function_last,
+                                         function (bytes32, bytes32) external constant returns (bytes32) _function_next)
+           private
            constant
            returns (bytes32[] _indexed_bytes_items)
   {
     uint256 _i;
-    bytes32 _current_item;
-    uint256 _real_count = _function_total(_collection_index);
+    uint256 _real_count = 0;
+    bytes32 _last_item;
 
-    if (_count > _real_count) {
-      _count = _real_count;
-    }
-
-    bytes32[] memory _items_tmp = new bytes32[](_count);
-
-    if (_count > 0) {
-      _current_item = _function_first(_collection_index);
-      _items_tmp[0] = _current_item;
-
-      for(_i = 1;_i <= (_count - 1);_i++) {
-        _current_item = _function_next(_collection_index, _current_item);
-        if (_current_item != bytes32(0x0)) {
-          _items_tmp[_i] = _current_item;
+    _last_item = _function_last(_collection_index);
+    if (_count == 0 || _last_item == bytes32(0x0)) {  // if count is 0 or the collection is empty, returns empty array
+      _indexed_bytes_items = new bytes32[](0);
+    } else {
+      bytes32[] memory _items_temp = new bytes32[](_count);
+      bytes32 _this_item;
+      if (_including_current) {
+        _items_temp[0] = _current_item;
+        _real_count = 1;
+      }
+      _this_item = _current_item;
+      for (_i = _real_count; (_i < _count) && (_this_item != _last_item);_i++) {
+        _this_item = _function_next(_collection_index, _this_item);
+        if (_this_item != bytes32(0x0)) {
+          _real_count++;
+          _items_temp[_i] = _this_item;
         }
       }
-      _indexed_bytes_items = _items_tmp;
-    } else {
-      _indexed_bytes_items = new bytes32[](0);
+
+      _indexed_bytes_items = new bytes32[](_real_count);
+      for(_i = 0;_i < _real_count;_i++) {
+        _indexed_bytes_items[_i] = _items_temp[_i];
+      }
     }
   }
 
-  /**
-    @notice Lists indexed Bytes in reverse starting from a specified `_current_item`
-    @param _collection_index Index of the Collection to evaluate
-    @param _current_item The current item to be used as base line
-    @param _count The The total number of items to return
-    @param _function_first Function that returns the first item in the list
-    @param _function_previous Function that returns the previous item in the list
-    @return {"_index_bytes_items": "List of items in Bytes collection in reverse"}
-  */
-  function list_indexed_bytes_backwards_from_bytes(bytes32 _collection_index, bytes32 _current_item, uint256 _count,
-                                         function (bytes32) external constant returns (bytes32) _function_first,
-                                         function (bytes32, bytes32) external constant returns (bytes32) _function_previous)
-           internal
-           constant
-           returns (bytes32[] _indexed_bytes_items)
-  {
-    _indexed_bytes_items = list_indexed_bytes_from_bytes(_collection_index, _current_item, _count, _function_first, _function_previous);
-  }
 
-  /**
-    @notice Lists indexed Bytes starting from a specified `_current_item`
-    @param _collection_index Index of the Collection to evaluate
-    @param _current_item The current item to be used as base line
-    @param _count The total number of items to return
-    @param _function_last Function that returns the last item in the list
-    @param _function_next Function that returns the next item in the list
-    @return {"_index_bytes_items": "List of items in Bytes collection"}
-  */
-  function list_indexed_bytes_from_bytes(bytes32 _collection_index, bytes32 _current_item, uint256 _count,
+  // old function, DEPRECATED
+  /*function list_indexed_bytes_from_bytes(bytes32 _collection_index, bytes32 _current_item, uint256 _count,
                                          function (bytes32) external constant returns (bytes32) _function_last,
                                          function (bytes32, bytes32) external constant returns (bytes32) _function_next)
-           internal
+           private
            constant
            returns (bytes32[] _indexed_bytes_items)
   {
@@ -140,6 +154,7 @@ contract IndexedBytesIteratorInteractive {
         _indexed_bytes_items = new bytes32[](0);
       }
     }
-  }
+  }*/
+
 
 }

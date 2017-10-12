@@ -8,16 +8,16 @@ import "../lib/DoublyLinkedList.sol";
   @notice See: [Doubly Linked List](/DoublyLinkedList)
 */
 contract AddressIteratorStorage {
-  
+
   // Initialize Doubly Linked List of Address
   using DoublyLinkedList for DoublyLinkedList.Address;
 
   /**
     @notice Reads the first item from the list of Address
     @param _list The source list
-    @return {"_item" : "The first item from the list"} 
+    @return {"_item" : "The first item from the list"}
   */
-  function read_first_from_addresses_dll(DoublyLinkedList.Address storage _list)
+  function read_first_from_addresses(DoublyLinkedList.Address storage _list)
            internal
            constant
            returns (address _item)
@@ -31,7 +31,7 @@ contract AddressIteratorStorage {
     @param _list The source list
     @return {"_item" : "The last item from the list"}
   */
-  function read_last_from_addresses_dll(DoublyLinkedList.Address storage _list)
+  function read_last_from_addresses(DoublyLinkedList.Address storage _list)
            internal
            constant
            returns (address _item)
@@ -47,7 +47,7 @@ contract AddressIteratorStorage {
 
     TODO: Need to verify what happens if the specified `_current_item` is the last item from the list
   */
-  function read_next_from_addresses_dll(DoublyLinkedList.Address storage _list, address _current_item)
+  function read_next_from_addresses(DoublyLinkedList.Address storage _list, address _current_item)
            internal
            constant
            returns (address _item)
@@ -63,7 +63,7 @@ contract AddressIteratorStorage {
 
     TODO: Need to verify what happens if the specified `_current_item` is the first item from the list
   */
-  function read_previous_from_addresses_dll(DoublyLinkedList.Address storage _list, address _current_item)
+  function read_previous_from_addresses(DoublyLinkedList.Address storage _list, address _current_item)
            internal
            constant
            returns (address _item)
@@ -76,7 +76,7 @@ contract AddressIteratorStorage {
     @param _list The source list
     @return {"_count": "The lenght of the list"}
   */
-  function read_addresses_dll_total(DoublyLinkedList.Address storage _list)
+  function read_total_addresses(DoublyLinkedList.Address storage _list)
            internal
            constant
            returns (uint256 _count)

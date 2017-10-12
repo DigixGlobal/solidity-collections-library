@@ -120,7 +120,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (bytes32 _item)
   {
-    _item = read_first_from_indexed_bytes_dll(indexed_bytes_collection, _collection_index);
+    _item = read_first_from_indexed_bytesarray(indexed_bytes_collection, _collection_index);
   }
 
   /**
@@ -133,7 +133,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (bytes32 _item)
   {
-    _item = read_last_from_indexed_bytes_dll(indexed_bytes_collection, _collection_index);
+    _item = read_last_from_indexed_bytesarray(indexed_bytes_collection, _collection_index);
   }
 
   /**
@@ -147,7 +147,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (bytes32 _item)
   {
-    _item = read_next_from_indexed_bytes_dll(indexed_bytes_collection, _collection_index, _current_item);
+    _item = read_next_from_indexed_bytesarray(indexed_bytes_collection, _collection_index, _current_item);
   }
 
   /**
@@ -161,7 +161,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (bytes32 _item)
   {
-    _item = read_previous_from_indexed_bytes_dll(indexed_bytes_collection, _collection_index, _current_item);
+    _item = read_previous_from_indexed_bytesarray(indexed_bytes_collection, _collection_index, _current_item);
   }
 
   /**
@@ -174,7 +174,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (uint256 _total_count)
   {
-    _total_count = read_indexed_bytes_dll_total(indexed_bytes_collection, _collection_index);
+    _total_count = read_total_indexed_bytesarray(indexed_bytes_collection, _collection_index);
   }
 
   /**
@@ -187,7 +187,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (address _item)
   {
-    _item = read_first_from_indexed_addresses_dll(indexed_address_collection, _collection_index);
+    _item = read_first_from_indexed_addresses(indexed_address_collection, _collection_index);
   }
 
   /**
@@ -200,7 +200,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (address _item)
   {
-    _item = read_last_from_indexed_addresses_dll(indexed_address_collection, _collection_index);
+    _item = read_last_from_indexed_addresses(indexed_address_collection, _collection_index);
   }
 
   /**
@@ -213,7 +213,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (address _item)
   {
-    _item = read_next_from_indexed_addresses_dll(indexed_address_collection, _collection_index, _current_item);
+    _item = read_next_from_indexed_addresses(indexed_address_collection, _collection_index, _current_item);
   }
 
   /**
@@ -226,7 +226,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (address _item)
   {
-    _item = read_previous_from_indexed_addresses_dll(indexed_address_collection, _collection_index, _current_item);
+    _item = read_previous_from_indexed_addresses(indexed_address_collection, _collection_index, _current_item);
   }
 
   /**
@@ -239,7 +239,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (uint256 _total_count)
   {
-    _total_count = read_indexed_addresses_dll_total(indexed_address_collection, _collection_index);
+    _total_count = read_total_indexed_addresses(indexed_address_collection, _collection_index);
   }
 
   /**
@@ -252,7 +252,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (uint256 _item)
   {
-    _item = read_first_from_indexed_uints_dll(indexed_uint_collection, _collection_index);
+    _item = read_first_from_indexed_uints(indexed_uint_collection, _collection_index);
   }
 
   /**
@@ -265,7 +265,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (uint256 _item)
   {
-    _item = read_last_from_indexed_uints_dll(indexed_uint_collection, _collection_index);
+    _item = read_last_from_indexed_uints(indexed_uint_collection, _collection_index);
   }
 
   /**
@@ -278,7 +278,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (uint256 _item)
   {
-    _item = read_next_from_indexed_uints_dll(indexed_uint_collection, _collection_index, _current_item);
+    _item = read_next_from_indexed_uints(indexed_uint_collection, _collection_index, _current_item);
   }
 
   /**
@@ -291,7 +291,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (uint256 _item)
   {
-    _item = read_previous_from_indexed_uints_dll(indexed_uint_collection, _collection_index, _current_item);
+    _item = read_previous_from_indexed_uints(indexed_uint_collection, _collection_index, _current_item);
   }
 
   /**
@@ -304,6 +304,6 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
            constant
            returns (uint256 _total_count)
   {
-    _total_count = read_indexed_uints_dll_total(indexed_uint_collection, _collection_index);
+    _total_count = read_total_indexed_uints(indexed_uint_collection, _collection_index);
   }
 }

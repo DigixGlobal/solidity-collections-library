@@ -12,7 +12,7 @@ contract('AddressIteratorController', function () {
     exampleController = await ExampleController.new(exampleStorage.address);
   });
 
-  describe('get_first_from_uints_dll', function () {
+  describe('get_first_from_uints', function () {
     it('[collection is not empty] returns correct first item', async function () {
       assert.deepEqual(await exampleController.get_first_in_uints_collection.call(), exampleUints[1]);
     });
@@ -22,7 +22,7 @@ contract('AddressIteratorController', function () {
     });
   });
 
-  describe('get_last_from_uints_dll', function () {
+  describe('get_last_from_uints', function () {
     it('[collection is not empty] returns correct last item', async function () {
       assert.deepEqual(await exampleController.get_last_in_uints_collection.call(), exampleUints[6]);
     });
@@ -32,7 +32,7 @@ contract('AddressIteratorController', function () {
     });
   });
 
-  describe('get_next_from_uints_dll', function () {
+  describe('get_next_from_uints', function () {
     it('[item is not last] returns correct next item', async function () {
       assert.deepEqual(await exampleController.get_next_in_uints_collection.call(exampleUints[4]), exampleUints[5]);
     });
@@ -48,7 +48,7 @@ contract('AddressIteratorController', function () {
     });
   });
 
-  describe('get_previous_from_uints_dll', function () {
+  describe('get_previous_from_uints', function () {
     it('[item is not first] returns correct previous item', async function () {
       assert.deepEqual(await exampleController.get_previous_in_uints_collection.call(exampleUints[4]), exampleUints[3]);
     });
@@ -64,7 +64,7 @@ contract('AddressIteratorController', function () {
     });
   });
 
-  describe('get_uints_dll_total', function () {
+  describe('get_total_uints', function () {
     it('[collection is not empty] returns correct number of items', async function () {
       assert.deepEqual(await exampleController.get_total_in_uints_collection.call(), bN(6));
     });

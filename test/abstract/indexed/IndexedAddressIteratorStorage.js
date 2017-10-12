@@ -9,7 +9,7 @@ contract('IndexedAddressIteratorStorage', function (addresses) {
     exampleIndexedStorage = await ExampleIndexedStorage.new();
   });
 
-  describe('read_first_from_indexed_addresses_dll', function () {
+  describe('read_first_from_indexed_addresses', function () {
     it('[collection is not empty] returns correct first item', async function () {
       assert.deepEqual(await exampleIndexedStorage.read_first_in_indexed_addresses_collection.call('a'), exampleAddresses[1]);
     });
@@ -22,7 +22,7 @@ contract('IndexedAddressIteratorStorage', function (addresses) {
     });
   });
 
-  describe('read_last_from_indexed_addresses_dll', function () {
+  describe('read_last_from_indexed_addresses', function () {
     it('[collection is not empty] returns correct last item', async function () {
       assert.deepEqual(await exampleIndexedStorage.read_last_in_indexed_addresses_collection.call('a'), exampleAddresses[6]);
     });
@@ -35,7 +35,7 @@ contract('IndexedAddressIteratorStorage', function (addresses) {
     });
   });
 
-  describe('read_next_from_indexed_addresses_dll', function () {
+  describe('read_next_from_indexed_addresses', function () {
     it('[item is not last] returns correct next item', async function () {
       assert.deepEqual(await exampleIndexedStorage.read_next_in_indexed_addresses_collection.call('a', exampleAddresses[4]), exampleAddresses[5]);
     });
@@ -54,7 +54,7 @@ contract('IndexedAddressIteratorStorage', function (addresses) {
     });
   });
 
-  describe('read_previous_from_indexed_addresses_dll', function () {
+  describe('read_previous_from_indexed_addresses', function () {
     it('[item is not first] returns correct previous item', async function () {
       assert.deepEqual(await exampleIndexedStorage.read_previous_in_indexed_addresses_collection.call('a', exampleAddresses[4]), exampleAddresses[3]);
     });
@@ -73,7 +73,7 @@ contract('IndexedAddressIteratorStorage', function (addresses) {
     });
   });
 
-  describe('read_indexed_addresses_dll_total', function () {
+  describe('read_total_indexed_addresses', function () {
     it('[collection is not empty] returns correct number of items', async function () {
       assert.deepEqual(await exampleIndexedStorage.read_total_in_indexed_addresses_collection.call('a'), bN(6));
     });

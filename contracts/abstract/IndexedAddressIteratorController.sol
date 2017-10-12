@@ -15,7 +15,7 @@ contract IndexedAddressIteratorController {
     @param _collection_index Index of the collection to evaluate
     @return {"_item":"The first item from the list"}
   */
-  function get_first_from_indexed_addresses_dll(function (bytes32) constant external returns (address) _function, bytes32 _collection_index)
+  function get_first_from_indexed_addresses(function (bytes32) constant external returns (address) _function, bytes32 _collection_index)
            internal
            constant
            returns (address _item)
@@ -29,7 +29,7 @@ contract IndexedAddressIteratorController {
     @param _collection_index Index of the collection to evaluate
     @return {"_item":"The last item from the list"}
   */
-  function get_last_from_indexed_addresses_dll(function (bytes32) constant external returns (address) _function, bytes32 _collection_index)
+  function get_last_from_indexed_addresses(function (bytes32) constant external returns (address) _function, bytes32 _collection_index)
            internal
            constant
            returns (address _item)
@@ -44,7 +44,7 @@ contract IndexedAddressIteratorController {
     @param _current_item The current item to be used as base line
     @return {"_item":"The next item from the list"}
   */
-  function get_next_from_indexed_addresses_dll(function (bytes32, address) constant external returns (address) _function, bytes32 _collection_index, address _current_item)
+  function get_next_from_indexed_addresses(function (bytes32, address) constant external returns (address) _function, bytes32 _collection_index, address _current_item)
            internal
            constant
            returns (address _item)
@@ -59,7 +59,7 @@ contract IndexedAddressIteratorController {
     @param _current_item The current item be used as base line
     @return {"_item":"The previous item from the list"}
   */
-  function get_previous_from_indexed_addresses_dll(function (bytes32, address) constant external returns (address) _function, bytes32 _collection_index, address _current_item)
+  function get_previous_from_indexed_addresses(function (bytes32, address) constant external returns (address) _function, bytes32 _collection_index, address _current_item)
            internal
            constant
            returns (address _item)

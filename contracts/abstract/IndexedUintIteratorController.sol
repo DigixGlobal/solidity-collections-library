@@ -14,7 +14,7 @@ contract IndexedUintIteratorController {
   @param _collection_index The index of a collection
   @return {"_item": "The first item"}
   */
-  function get_first_from_indexed_uints_dll(function (bytes32) constant external returns (uint256) _function, bytes32 _collection_index)
+  function get_first_from_indexed_uints(function (bytes32) constant external returns (uint256) _function, bytes32 _collection_index)
            internal
            constant
            returns (uint256 _item)
@@ -28,7 +28,7 @@ contract IndexedUintIteratorController {
   @param _collection_index The index of a collection
   @return {"_item": "The last item"}
   */
-  function get_last_from_indexed_uints_dll(function (bytes32) constant external returns (uint256) _function, bytes32 _collection_index)
+  function get_last_from_indexed_uints(function (bytes32) constant external returns (uint256) _function, bytes32 _collection_index)
            internal
            constant
            returns (uint256 _item)
@@ -43,7 +43,7 @@ contract IndexedUintIteratorController {
   @param _current_item The current item
   @return {"_item": "The next item"}
   */
-  function get_next_from_indexed_uints_dll(function (bytes32, uint256) constant external returns (uint256) _function, bytes32 _collection_index, uint256 _current_item)
+  function get_next_from_indexed_uints(function (bytes32, uint256) constant external returns (uint256) _function, bytes32 _collection_index, uint256 _current_item)
            internal
            constant
            returns (uint256 _item)
@@ -58,7 +58,7 @@ contract IndexedUintIteratorController {
   @param _current_item The current item
   @return {"_item": "The previous item"}
   */
-  function get_previous_from_indexed_uints_dll(function (bytes32, uint256) constant external returns (uint256) _function, bytes32 _collection_index, uint256 _current_item)
+  function get_previous_from_indexed_uints(function (bytes32, uint256) constant external returns (uint256) _function, bytes32 _collection_index, uint256 _current_item)
            internal
            constant
            returns (uint256 _item)
@@ -72,7 +72,7 @@ contract IndexedUintIteratorController {
   @param _collection_index The index of a collection
   @return {"_total_count": "The total number of items"}
   */
-  function get_total_in_indexed_uints_dll(function (bytes32) constant external returns (uint256) _function, bytes32 _collection_index)
+  function get_total_indexed_uints(function (bytes32) constant external returns (uint256) _function, bytes32 _collection_index)
            internal
            constant
            returns (uint256 _total_count)

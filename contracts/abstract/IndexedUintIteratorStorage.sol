@@ -16,7 +16,7 @@ contract IndexedUintIteratorStorage {
     @param _collection_index The index of a collection
     @return {"_item": "The first item"}
   */
-  function read_first_from_indexed_uints_dll(DoublyLinkedList.IndexedUint storage _list, bytes32 _collection_index)
+  function read_first_from_indexed_uints(DoublyLinkedList.IndexedUint storage _list, bytes32 _collection_index)
            internal
            constant
            returns (uint256 _item)
@@ -30,7 +30,7 @@ contract IndexedUintIteratorStorage {
     @param _collection_index The index of a collection
     @return {"_item": "The last item"}
   */
-  function read_last_from_indexed_uints_dll(DoublyLinkedList.IndexedUint storage _list, bytes32 _collection_index)
+  function read_last_from_indexed_uints(DoublyLinkedList.IndexedUint storage _list, bytes32 _collection_index)
            internal
            constant
            returns (uint256 _item)
@@ -45,7 +45,7 @@ contract IndexedUintIteratorStorage {
     @param _current_item The current item
     @return {"_item": "The next item"}
   */
-  function read_next_from_indexed_uints_dll(DoublyLinkedList.IndexedUint storage _list, bytes32 _collection_index, uint256 _current_item)
+  function read_next_from_indexed_uints(DoublyLinkedList.IndexedUint storage _list, bytes32 _collection_index, uint256 _current_item)
            internal
            constant
            returns (uint256 _item)
@@ -60,7 +60,7 @@ contract IndexedUintIteratorStorage {
     @param _current_item The current item
     @return {"_item": "The previous item"}
   */
-  function read_previous_from_indexed_uints_dll(DoublyLinkedList.IndexedUint storage _list, bytes32 _collection_index, uint256 _current_item)
+  function read_previous_from_indexed_uints(DoublyLinkedList.IndexedUint storage _list, bytes32 _collection_index, uint256 _current_item)
            internal
            constant
            returns (uint256 _item)
@@ -74,7 +74,7 @@ contract IndexedUintIteratorStorage {
     @param _collection_index The index of a collection
     @return {"_item": "The first item"}
   */
-  function read_indexed_uints_dll_total(DoublyLinkedList.IndexedUint storage _list, bytes32 _collection_index)
+  function read_total_indexed_uints(DoublyLinkedList.IndexedUint storage _list, bytes32 _collection_index)
            internal
            constant
            returns (uint256 _count)

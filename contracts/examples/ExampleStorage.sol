@@ -102,7 +102,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (bytes32 _item)
   {
-    _item = read_first_from_bytes_dll(bytes_collection);
+    _item = read_first_from_bytesarray(bytes_collection);
   }
 
   /**
@@ -114,7 +114,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (bytes32 _item)
   {
-    _item = read_last_from_bytes_dll(bytes_collection);
+    _item = read_last_from_bytesarray(bytes_collection);
   }
 
   /**
@@ -126,7 +126,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (bytes32 _item)
   {
-    _item = read_next_from_bytes_dll(bytes_collection, _current_item);
+    _item = read_next_from_bytesarray(bytes_collection, _current_item);
   }
 
   /**
@@ -138,7 +138,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (bytes32 _item)
   {
-    _item = read_previous_from_bytes_dll(bytes_collection, _current_item);
+    _item = read_previous_from_bytesarray(bytes_collection, _current_item);
   }
 
   /**
@@ -150,7 +150,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (uint256 _total_count)
   {
-    _total_count = read_bytes_dll_total(bytes_collection);
+    _total_count = read_total_bytesarray(bytes_collection);
   }
 
   /**
@@ -162,7 +162,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (address _item)
   {
-    _item = read_first_from_addresses_dll(address_collection);
+    _item = read_first_from_addresses(address_collection);
   }
 
   /**
@@ -174,7 +174,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (address _item)
   {
-    _item = read_last_from_addresses_dll(address_collection);
+    _item = read_last_from_addresses(address_collection);
   }
 
   /**
@@ -186,7 +186,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (address _item)
   {
-    _item = read_next_from_addresses_dll(address_collection, _current_item);
+    _item = read_next_from_addresses(address_collection, _current_item);
   }
 
   /**
@@ -198,7 +198,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (address _item)
   {
-    _item = read_previous_from_addresses_dll(address_collection, _current_item);
+    _item = read_previous_from_addresses(address_collection, _current_item);
   }
 
   /**
@@ -210,7 +210,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (uint256 _total_count)
   {
-    _total_count = read_addresses_dll_total(address_collection);
+    _total_count = read_total_addresses(address_collection);
   }
 
 
@@ -223,7 +223,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (uint256 _item)
   {
-    _item = read_first_from_uints_dll(uint_collection);
+    _item = read_first_from_uints(uint_collection);
   }
 
   /**
@@ -235,7 +235,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (uint256 _item)
   {
-    _item = read_last_from_uints_dll(uint_collection);
+    _item = read_last_from_uints(uint_collection);
   }
 
   /**
@@ -247,7 +247,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (uint256 _item)
   {
-    _item = read_next_from_uints_dll(uint_collection, _current_item);
+    _item = read_next_from_uints(uint_collection, _current_item);
   }
 
   /**
@@ -259,7 +259,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (uint256 _item)
   {
-    _item = read_previous_from_uints_dll(uint_collection, _current_item);
+    _item = read_previous_from_uints(uint_collection, _current_item);
   }
 
   /**
@@ -271,7 +271,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
            constant
            returns (uint256 _total_count)
   {
-    _total_count = read_uints_dll_total(uint_collection);
+    _total_count = read_total_uints(uint_collection);
   }
 
 }

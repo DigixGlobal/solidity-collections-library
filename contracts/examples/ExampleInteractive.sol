@@ -34,197 +34,120 @@ contract ExampleInteractive is BytesIteratorInteractive, AddressIteratorInteract
   }
 
   /**
-    @notice Lists collection of Bytes from the start
+    @notice Lists collection of Bytes from the start or end
     @param _count The Total number of items you wish to be returned
+    @param _from_start Whether to read items from start (or end)
     @return {"_collection_items":"Collection items"}
   */
-  function list_bytes_collection_from_start(uint256 _count)
+  function list_bytes_collection(uint256 _count, bool _from_start)
            public
            constant
            returns (bytes32[] _collection_items)
   {
-    _collection_items = list_bytes_from_start(_count,
-                                              example_controller().get_total_in_bytes_collection,
-                                              example_controller().get_first_in_bytes_collection,
-                                              example_controller().get_next_in_bytes_collection);
+    _collection_items = list_bytesarray(_count,
+                                    example_controller().get_first_in_bytes_collection,
+                                    example_controller().get_last_in_bytes_collection,
+                                    example_controller().get_next_in_bytes_collection,
+                                    example_controller().get_previous_in_bytes_collection,
+                                    _from_start);
   }
 
   /**
-    @notice Lists collection of Bytes in reverse order from the end
+    @notice Lists collection of Bytes starting from the specified `_current_item`, going forwards or backwards depending on `_from_start`
     @param _count The Total number of items you wish to be returned
+    @param _from_start Whether to read items forwards (or backwards)
     @return {"_collection_items":"Collection items"}
   */
-  function list_bytes_collection_backwards_from_end(uint256 _count)
+  function list_bytes_collection_from(bytes32 _current_item, uint256 _count, bool _from_start)
            public
            constant
            returns (bytes32[] _collection_items)
   {
-    _collection_items = list_bytes_backwards_from_end(_count,
-                                              example_controller().get_total_in_bytes_collection,
-                                              example_controller().get_last_in_bytes_collection,
-                                              example_controller().get_previous_in_bytes_collection);
-  }
-
-  /**
-    @notice Lists collection of Bytes starting from the specified `_current_item`
-    @param _count The Total number of items you wish to be returned
-    @return {"_collection_items":"Collection items"}
-  */
-  function list_bytes_collection_from_item(bytes32 _current_item, uint256 _count)
-           public
-           constant
-           returns (bytes32[] _collection_items)
-  {
-    _collection_items = list_bytes_from_bytes(_current_item, 
-                                              _count,
-                                              example_controller().get_last_in_bytes_collection,
-                                              example_controller().get_next_in_bytes_collection);
-  }
-
-  /**
-    @notice Lists collection of Bytes in reverse starting from the specified `_current_item`
-    @param _count The Total number of items you wish to be returned
-    @return {"_collection_items":"Collection items"}
-  */
-  function list_bytes_collection_backwards_from_item(bytes32 _current_item, uint256 _count)
-           public
-           constant
-           returns (bytes32[] _collection_items)
-  {
-    _collection_items = list_bytes_backwards_from_bytes(_current_item, 
+    _collection_items = list_bytesarray_from(_current_item,
                                               _count,
                                               example_controller().get_first_in_bytes_collection,
-                                              example_controller().get_previous_in_bytes_collection);
+                                              example_controller().get_last_in_bytes_collection,
+                                              example_controller().get_next_in_bytes_collection,
+                                              example_controller().get_previous_in_bytes_collection,
+                                              _from_start);
   }
 
   /**
-    @notice Lists collection of Addresses from the start
+    @notice Lists collection of Addresses from the start or end
     @param _count The Total number of items you wish to be returned
+    @param _from_start Whether to read items from start (or end)
     @return {"_collection_items":"Collection items"}
   */
-  function list_addresses_collection_from_start(uint256 _count)
+  function list_addresses_collection(uint256 _count, bool _from_start)
            public
            constant
            returns (address[] _collection_items)
   {
-    _collection_items = list_addresses_from_start(_count,
-                                                  example_controller().get_total_in_addresses_collection,
-                                                  example_controller().get_first_in_addresses_collection,
-                                                  example_controller().get_next_in_addresses_collection);
+    _collection_items = list_addresses(_count,
+                                    example_controller().get_first_in_addresses_collection,
+                                    example_controller().get_last_in_addresses_collection,
+                                    example_controller().get_next_in_addresses_collection,
+                                    example_controller().get_previous_in_addresses_collection,
+                                    _from_start);
   }
 
   /**
-    @notice Lists collection of Addresses in reverse order starting from the end
+    @notice Lists collection of Addresses starting from the specified `_current_item`, going forwards or backwards depending on `_from_start`
     @param _count The Total number of items you wish to be returned
+    @param _from_start Whether to read items forwards (or backwards)
     @return {"_collection_items":"Collection items"}
   */
-  function list_addresses_collection_backwards_from_end(uint256 _count)
+  function list_addresses_collection_from(address _current_item, uint256 _count, bool _from_start)
            public
            constant
            returns (address[] _collection_items)
   {
-    _collection_items = list_addresses_backwards_from_end(_count,
-                                                  example_controller().get_total_in_addresses_collection,
-                                                  example_controller().get_last_in_addresses_collection,
-                                                  example_controller().get_previous_in_addresses_collection);
+    _collection_items = list_addresses_from(_current_item,
+                                              _count,
+                                              example_controller().get_first_in_addresses_collection,
+                                              example_controller().get_last_in_addresses_collection,
+                                              example_controller().get_next_in_addresses_collection,
+                                              example_controller().get_previous_in_addresses_collection,
+                                              _from_start);
   }
 
   /**
-    @notice Lists collection of Addresses starting from the specified `_current_item`
+    @notice Lists collection of Uints from the start or end
     @param _count The Total number of items you wish to be returned
+    @param _from_start Whether to read items from start (or end)
     @return {"_collection_items":"Collection items"}
   */
-  function list_addresses_collection_from_item(address _current_item, uint256 _count)
-           public
-           constant
-           returns (address[] _collection_items)
-  {
-    _collection_items = list_addresses_from_address(_current_item, 
-                                                    _count,
-                                                    example_controller().get_last_in_addresses_collection,
-                                                    example_controller().get_next_in_addresses_collection);
-  }
-
-  /**
-    @notice Lists collection of Addresses in reverse order starting from the specififed `_current_item`
-    @param _count The Total number of items you wish to be returned
-    @return {"_collection_items":"Collection items"}
-  */
-  function list_addresses_collection_backwards_from_item(address _current_item, uint256 _count)
-           public
-           constant
-           returns (address[] _collection_items)
-  {
-    _collection_items = list_addresses_backwards_from_address(_current_item, 
-                                                    _count,
-                                                    example_controller().get_first_in_addresses_collection,
-                                                    example_controller().get_previous_in_addresses_collection);
-  }
-
-
-  /**
-    @notice Lists collection of uints from the start
-    @param _count The Total number of items you wish to be returned
-    @return {"_collection_items":"Collection items"}
-  */
-  function list_uints_collection_from_start(uint256 _count)
+  function list_uints_collection(uint256 _count, bool _from_start)
            public
            constant
            returns (uint256[] _collection_items)
   {
-    _collection_items = list_uints_from_start(_count,
-                                                  example_controller().get_total_in_uints_collection,
-                                                  example_controller().get_first_in_uints_collection,
-                                                  example_controller().get_next_in_uints_collection);
+    _collection_items = list_uints(_count,
+                                    example_controller().get_first_in_uints_collection,
+                                    example_controller().get_last_in_uints_collection,
+                                    example_controller().get_next_in_uints_collection,
+                                    example_controller().get_previous_in_uints_collection,
+                                    _from_start);
   }
 
   /**
-    @notice Lists collection of uints in reverse order starting from the end
+    @notice Lists collection of Uints starting from the specified `_current_item`, going forwards or backwards depending on `_from_start`
     @param _count The Total number of items you wish to be returned
+    @param _from_start Whether to read items forwards (or backwards)
     @return {"_collection_items":"Collection items"}
   */
-  function list_uints_collection_backwards_from_end(uint256 _count)
+  function list_uints_collection_from(uint256 _current_item, uint256 _count, bool _from_start)
            public
            constant
            returns (uint256[] _collection_items)
   {
-    _collection_items = list_uints_backwards_from_end(_count,
-                                                  example_controller().get_total_in_uints_collection,
-                                                  example_controller().get_last_in_uints_collection,
-                                                  example_controller().get_previous_in_uints_collection);
+    _collection_items = list_uints_from(_current_item,
+                                              _count,
+                                              example_controller().get_first_in_uints_collection,
+                                              example_controller().get_last_in_uints_collection,
+                                              example_controller().get_next_in_uints_collection,
+                                              example_controller().get_previous_in_uints_collection,
+                                              _from_start);
   }
 
-  /**
-    @notice Lists collection of uints starting from the specified `_current_item`
-    @param _count The Total number of items you wish to be returned
-    @return {"_collection_items":"Collection items"}
-  */
-  function list_uints_collection_from_item(uint256 _current_item, uint256 _count)
-           public
-           constant
-           returns (uint256[] _collection_items)
-  {
-    _collection_items = list_uints_from_uint(_current_item, 
-                                                    _count,
-                                                    example_controller().get_last_in_uints_collection,
-                                                    example_controller().get_next_in_uints_collection);
-  }
-
-  /**
-    @notice Lists collection of uints in reverse order starting from the specified `_current_item`
-    @param _count The Total number of items you wish to be returned
-    @return {"_collection_items":"Collection items"}
-  */
-  function list_uints_collection_backwards_from_item(uint256 _current_item, uint256 _count)
-           public
-           constant
-           returns (uint256[] _collection_items)
-  {
-    _collection_items = list_uints_backwards_from_uint(_current_item, 
-                                                    _count,
-                                                    example_controller().get_first_in_uints_collection,
-                                                    example_controller().get_previous_in_uints_collection);
-  }
 }
-
-

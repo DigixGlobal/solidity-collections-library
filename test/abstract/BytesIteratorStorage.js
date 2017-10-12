@@ -9,7 +9,7 @@ contract('BytesIteratorStorage', function () {
     exampleStorage = await ExampleStorage.new();
   });
 
-  describe('read_first_from_bytes_dll', function () {
+  describe('read_first_from_bytesarray', function () {
     it('[collection is not empty] returns correct first item', async function () {
       assert.deepEqual(myToAscii(await exampleStorage.read_first_in_bytes_collection.call()), 'test1');
     });
@@ -19,7 +19,7 @@ contract('BytesIteratorStorage', function () {
     });
   });
 
-  describe('read_last_from_bytes_dll', function () {
+  describe('read_last_from_bytesarray', function () {
     it('[collection is not empty] returns correct last item', async function () {
       assert.deepEqual(myToAscii(await exampleStorage.read_last_in_bytes_collection.call()), 'test6');
     });
@@ -29,7 +29,7 @@ contract('BytesIteratorStorage', function () {
     });
   });
 
-  describe('read_next_from_bytes_dll', function () {
+  describe('read_next_from_bytesarray', function () {
     it('[item is not last] returns correct next item', async function () {
       assert.deepEqual(myToAscii(await exampleStorage.read_next_in_bytes_collection.call('test4')), 'test5');
     });
@@ -45,7 +45,7 @@ contract('BytesIteratorStorage', function () {
     });
   });
 
-  describe('read_previous_from_bytes_dll', function () {
+  describe('read_previous_from_bytesarray', function () {
     it('[item is not first] returns correct previous item', async function () {
       assert.deepEqual(myToAscii(await exampleStorage.read_previous_in_bytes_collection.call('test4')), 'test3');
     });
@@ -61,7 +61,7 @@ contract('BytesIteratorStorage', function () {
     });
   });
 
-  describe('read_bytes_dll_total', function () {
+  describe('read_total_bytesarray', function () {
     it('[collection is not empty] returns correct number of items', async function () {
       assert.deepEqual(await exampleStorage.read_total_in_bytes_collection.call(), bN(6));
     });

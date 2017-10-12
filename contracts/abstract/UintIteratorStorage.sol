@@ -15,7 +15,7 @@ contract UintIteratorStorage {
     @param _list The DoublyLinkedList.Uint list
     @return {"_item": "The first item"}
   */
-  function read_first_from_uints_dll(DoublyLinkedList.Uint storage _list)
+  function read_first_from_uints(DoublyLinkedList.Uint storage _list)
            internal
            constant
            returns (uint256 _item)
@@ -28,7 +28,7 @@ contract UintIteratorStorage {
     @param _list The DoublyLinkedList.Uint list
     @return {"_item": "The last item"}
   */
-  function read_last_from_uints_dll(DoublyLinkedList.Uint storage _list)
+  function read_last_from_uints(DoublyLinkedList.Uint storage _list)
            internal
            constant
            returns (uint256 _item)
@@ -42,7 +42,7 @@ contract UintIteratorStorage {
     @param _current_item The current item
     @return {"_item": "The next item"}
   */
-  function read_next_from_uints_dll(DoublyLinkedList.Uint storage _list, uint256 _current_item)
+  function read_next_from_uints(DoublyLinkedList.Uint storage _list, uint256 _current_item)
            internal
            constant
            returns (uint256 _item)
@@ -56,7 +56,7 @@ contract UintIteratorStorage {
     @param _current_item The current item
     @return {"_item": "The previous item"}
   */
-  function read_previous_from_uints_dll(DoublyLinkedList.Uint storage _list, uint256 _current_item)
+  function read_previous_from_uints(DoublyLinkedList.Uint storage _list, uint256 _current_item)
            internal
            constant
            returns (uint256 _item)
@@ -69,7 +69,7 @@ contract UintIteratorStorage {
     @param _list The DoublyLinkedList.Uint list
     @return {"_count": "The total count of items"}
   */
-  function read_uints_dll_total(DoublyLinkedList.Uint storage _list)
+  function read_total_uints(DoublyLinkedList.Uint storage _list)
            internal
            constant
            returns (uint256 _count)

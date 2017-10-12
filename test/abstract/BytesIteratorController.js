@@ -12,7 +12,7 @@ contract('BytesIteratorController', function () {
     exampleController = await ExampleController.new(exampleStorage.address);
   });
 
-  describe('get_first_from_bytes_dll', function () {
+  describe('get_first_from_bytesarray', function () {
     it('[collection is not empty] returns correct first item', async function () {
       assert.deepEqual(myToAscii(await exampleController.get_first_in_bytes_collection.call()), 'test1');
     });
@@ -22,7 +22,7 @@ contract('BytesIteratorController', function () {
     });
   });
 
-  describe('get_last_from_bytes_dll', function () {
+  describe('get_last_from_bytesarray', function () {
     it('[collection is not empty] returns correct last item', async function () {
       assert.deepEqual(myToAscii(await exampleController.get_last_in_bytes_collection.call()), 'test6');
     });
@@ -32,7 +32,7 @@ contract('BytesIteratorController', function () {
     });
   });
 
-  describe('get_next_from_bytes_dll', function () {
+  describe('get_next_from_bytesarray', function () {
     it('[item is not last] returns correct next item', async function () {
       assert.deepEqual(myToAscii(await exampleController.get_next_in_bytes_collection.call('test4')), 'test5');
     });
@@ -48,7 +48,7 @@ contract('BytesIteratorController', function () {
     });
   });
 
-  describe('get_previous_from_bytes_dll', function () {
+  describe('get_previous_from_bytesarray', function () {
     it('[item is not first] returns correct previous item', async function () {
       assert.deepEqual(myToAscii(await exampleController.get_previous_in_bytes_collection.call('test4')), 'test3');
     });
@@ -64,7 +64,7 @@ contract('BytesIteratorController', function () {
     });
   });
 
-  describe('get_bytes_dll_total', function () {
+  describe('get_total_bytesarray', function () {
     it('[collection is not empty] returns correct number of items', async function () {
       assert.deepEqual(await exampleController.get_total_in_bytes_collection.call(), bN(6));
     });

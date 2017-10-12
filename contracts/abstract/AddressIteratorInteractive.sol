@@ -4,41 +4,127 @@ pragma solidity ^0.4.16;
   @author DigixGlobal Pte Ltd
 */
 contract AddressIteratorInteractive {
+  event ReportThisAddress(address _from);
 
   /**
-    @notice List the Addresses in reverse starting from the end of the list
-    @param _count Total number of adddresses to return
-    @param _function_total The function that returns the Total number of Address in the list
-    @param _function_last The function that returns the Last Address from the list
-    @param _function_previous The function that returns the Previous item from the list
-    @return {"_address_items": "Reversed address list" }
+    @notice Lists a Address collection from start or end
+    @param _count Total number of Address items to return
+    @param _function_first The Function that returns the First Address item in the list
+    @param _function_last Function that returns the last Address item in the list
+    @param _function_next The Function that returns the Next Address item in the list
+    @param _function_previous Function that returns previous Address item in the list
+    @param _from_start whether to read from start (or end) of the list
+    @return {"_address_items" : "Collection of reversed Address list"}
   */
-  function list_addresses_backwards_from_end(uint256 _count, 
-                                 function () external constant returns (uint256) _function_total,
-                                 function () external constant returns (address) _function_last, 
-                                 function (address) external constant returns (address) _function_previous)
-                                 
+  function list_addresses(uint256 _count,
+                                 function () external constant returns (address) _function_first,
+                                 function () external constant returns (address) _function_last,
+                                 function (address) external constant returns (address) _function_next,
+                                 function (address) external constant returns (address) _function_previous,
+                                 bool _from_start)
            internal
            constant
            returns (address[] _address_items)
   {
-    _address_items = list_addresses_from_start(_count, _function_total, _function_last, _function_previous);
+    if (_from_start) {
+      _address_items = private_list_addresses_from_address(_function_first(), _count, true, _function_last, _function_next);
+    } else {
+      _address_items = private_list_addresses_from_address(_function_last(), _count, true, _function_first, _function_previous);
+    }
+  }
+
+
+
+  /**
+    @notice Lists a Address collection from some `_current_item`, going forwards or backwards depending on `_from_start`
+    @param _current_item The current Item
+    @param _count Total number of Address items to return
+    @param _function_first The Function that returns the First Address item in the list
+    @param _function_last Function that returns the last Address item in the list
+    @param _function_next The Function that returns the Next Address item in the list
+    @param _function_previous Function that returns previous Address item in the list
+    @param _from_start whether to read in the forwards ( or backwards) direction
+    @return {"_address_items" :"Collection/list of Address"}
+  */
+  function list_addresses_from(address _current_item, uint256 _count,
+                                function () external constant returns (address) _function_first,
+                                function () external constant returns (address) _function_last,
+                                function (address) external constant returns (address) _function_next,
+                                function (address) external constant returns (address) _function_previous,
+                                bool _from_start)
+           internal
+           constant
+           returns (address[] _address_items)
+  {
+    if (_from_start) {
+      _address_items = private_list_addresses_from_address(_current_item, _count, false, _function_last, _function_next);
+    } else {
+      _address_items = private_list_addresses_from_address(_current_item, _count, false, _function_first, _function_previous);
+    }
   }
 
 
   /**
-    @notice List the Addresses from start of the list
-    @param _count Total number of adddresses to return
-    @param _function_total The Function that returns the Total number of Address in the list
-    @param _function_first The Function that returns the First Address from the list
-    @param _function_next The Function that returns the Next item from the list
-    @return {"_address_items": "Address list" }
+    @notice a private function to lists a Address collection starting from some _current_item (which could be included or excluded), in the forwards or backwards direction
+    @param _current_item The current Item
+    @param _count Total number of Address items to return
+    @param _including_current Whether the `_current_item` should be included in the result
+    @param _function_last The Function that returns the address where we stop reading more address
+    @param _function_next The Function that returns the next address to read after some address (could be backwards or forwards in the physical collection)
+    @return {"_address_items" :"Collection/list of Address"}
   */
-  function list_addresses_from_start(uint256 _count, 
-                                 function () external constant returns (uint256) _function_total,
-                                 function () external constant returns (address) _function_first, 
+  function private_list_addresses_from_address(address _current_item, uint256 _count, bool _including_current,
+                                 function () external constant returns (address) _function_last,
                                  function (address) external constant returns (address) _function_next)
-           internal
+           private
+           constant
+           returns (address[] _address_items)
+  {
+    uint256 _i;
+    uint256 _real_count = 0;
+    address _last_item;
+
+    _last_item = _function_last();
+    if (_count == 0 || _last_item == address(0x0)) {
+      _address_items = new address[](0);
+    } else {
+      address[] memory _items_temp = new address[](_count);
+      address _this_item;
+      if (_including_current == true) {
+        _items_temp[0] = _current_item;
+        _real_count = 1;
+      }
+      _this_item = _current_item;
+      for (_i = _real_count; (_i < _count) && (_this_item != _last_item);_i++) {
+        _this_item = _function_next(_this_item);
+        if (_this_item != address(0x0)) {
+          _real_count++;
+          _items_temp[_i] = _this_item;
+        }
+      }
+
+      _address_items = new address[](_real_count);
+      for(_i = 0;_i < _real_count;_i++) {
+        _address_items[_i] = _items_temp[_i];
+      }
+    }
+  }
+
+
+  /** DEPRECATED
+    @notice private function to list a Address collection starting from the start or end of the list
+    @param _count Total number of Address item to return
+    @param _function_total The Function that returns the Total number of Address item in the list
+    @param _function_first The Function that returns the First Address item in the list
+    @param _function_next The Function that returns the Next Address item in the list
+    @return {"_address_items" :"Collection/list of Address"}
+  */
+  /*function list_addresses_from_start_or_end(uint256 _count,
+                                 function () external constant returns (uint256) _function_total,
+                                 function () external constant returns (address) _function_first,
+                                 function (address) external constant returns (address) _function_next)
+
+           private
            constant
            returns (address[] _address_items)
   {
@@ -66,38 +152,20 @@ contract AddressIteratorInteractive {
     } else {
       _address_items = new address[](0);
     }
-  }
+  }*/
 
-  /**
-    @notice List the Addresses in reverse starting from the specified `_current_item`
-    @param _current_item The current item from the collection to be used as base line
-    @param _count Total number of adddresses to return
-    @param _function_first The Function that returns the First item on the list
-    @param _function_previous The Function that return the Previous item on the list
-    @return {"_address_items": "Address list" } 
+  /** DEPRECATED
+    @notice a private function to lists a Address collection starting from some _current_item, could be forwards or backwards
+    @param _current_item The current Item
+    @param _count Total number of Address items to return
+    @param _function_last The Function that returns the bytes where we stop reading more bytes
+    @param _function_next The Function that returns the next bytes to read after some bytes (could be backwards or forwards in the physical collection)
+    @return {"_address_items" :"Collection/list of Address"}
   */
-  function list_addresses_backwards_from_address(address _current_item, uint256 _count,
-                                 function () external constant returns (address) _function_first,
-                                 function (address) external constant returns (address) _function_previous)
-           internal
-           constant
-           returns (address[] _address_items)
-  {
-    _address_items = list_addresses_from_address(_current_item, _count, _function_first, _function_previous);    
-  }
-
-  /**
-    @notice List the Addresses starting from a specified `_current_item`
-    @param _current_item The current item from the collection
-    @param _count Total number of adddresses to return
-    @param _function_last The last item on the list
-    @param _function_next The next item on the list
-    @return {"_address_items": "Address list" } 
-  */
-  function list_addresses_from_address(address _current_item, uint256 _count,
+  /*function list_addresses_from_byte(address _current_item, uint256 _count,
                                  function () external constant returns (address) _function_last,
                                  function (address) external constant returns (address) _function_next)
-           internal
+           private
            constant
            returns (address[] _address_items)
   {
@@ -105,7 +173,7 @@ contract AddressIteratorInteractive {
     uint256 _real_count = 0;
 
     if (_count == 0) {
-      _address_items = new address[](0); 
+      _address_items = new address[](0);
     } else {
       address[] memory _items_temp = new address[](_count);
 
@@ -137,6 +205,6 @@ contract AddressIteratorInteractive {
         _address_items = new address[](0);
       }
     }
-  }
+  }*/
 
 }
