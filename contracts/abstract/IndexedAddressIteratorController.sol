@@ -11,7 +11,7 @@ contract IndexedAddressIteratorController {
 
   /**
     @notice Encapsulated function that gets the first item from an Indexed Address Doubly Linked List
-    @param _function The Function that returns the first Address based on the specified  `_collection_index`
+    @param _function Function that returns the first Address based on the specified  `_collection_index`
     @param _collection_index Index of the collection to evaluate
     @return {"_item":"The first item from the list"}
   */
@@ -25,7 +25,7 @@ contract IndexedAddressIteratorController {
 
   /**
     @notice Encapsulated function that gets the last item from an Indexed Adddress Doubly Linked List
-    @param _function The Function that returns the last Address based on the specified  `_collection_index`
+    @param _function Function that returns the last Address based on the specified  `_collection_index`
     @param _collection_index Index of the collection to evaluate
     @return {"_item":"The last item from the list"}
   */
@@ -39,7 +39,7 @@ contract IndexedAddressIteratorController {
 
   /**
     @notice Encapsulated function that gets the next item from an Indexed Address Doubly Linked List
-    @param _function The Function that returns the next Address based on the specified `_collection_index` and `_current-item`
+    @param _function Function that returns the next Address based on the specified `_collection_index` and `_current-item`
     @param _collection_index The index of the collection to evaluate
     @param _current_item The current item to be used as base line
     @return {"_item":"The next item from the list"}
@@ -54,7 +54,7 @@ contract IndexedAddressIteratorController {
   
   /**
     @notice Encapsulated function that gets the previous item from an Indexed Address Doubly Linked List
-    @param _function The Function that returns the previous Address based on the specified `_collection_index` and `_current-item`
+    @param _function Function that returns the previous Address based on the specified `_collection_index` and `_current-item`
     @param _collection_index The index of the collection to evaluate
     @param _current_item The current item be used as base line
     @return {"_item":"The previous item from the list"}
@@ -69,7 +69,7 @@ contract IndexedAddressIteratorController {
 
   /**
     @notice Encapsulated function that gets the length of an Indexed Address Doubly Linked List
-    @param _function The Function that returns the length of the list
+    @param _function Function that returns the length of the list
     @param _collection_index The index of the collection to evaluate
     @return {"_total_count": "Lenth of the list"}
   */

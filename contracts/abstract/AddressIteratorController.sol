@@ -36,7 +36,7 @@ contract AddressIteratorController {
 
   /**
     @notice Gets the next address from the list based on the specified `_current_item`
-    @param _function The function that returns the next address based on the specified `_current_item`
+    @param _function Function that returns the next address based on the specified `_current_item`
     @param _current_item The current Address
     @return {"_item": "The last Address"}
   */
@@ -50,7 +50,7 @@ contract AddressIteratorController {
 
   /**
     @notice Gets the previous address from the list based on the spcified `_current_item`
-    @param _function The function that returns the previous address based on the specified `_current_item`
+    @param _function Function that returns the previous address based on the specified `_current_item`
     @param _current_item  The current Address
     @return {"_item": "The last Address"}
   */

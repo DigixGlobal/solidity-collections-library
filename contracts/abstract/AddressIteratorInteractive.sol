@@ -4,14 +4,13 @@ pragma solidity ^0.4.16;
   @author DigixGlobal Pte Ltd
 */
 contract AddressIteratorInteractive {
-  event ReportThisAddress(address _from);
 
   /**
     @notice Lists a Address collection from start or end
     @param _count Total number of Address items to return
-    @param _function_first The Function that returns the First Address item in the list
+    @param _function_first Function that returns the First Address item in the list
     @param _function_last Function that returns the last Address item in the list
-    @param _function_next The Function that returns the Next Address item in the list
+    @param _function_next Function that returns the Next Address item in the list
     @param _function_previous Function that returns previous Address item in the list
     @param _from_start whether to read from start (or end) of the list
     @return {"_address_items" : "Collection of reversed Address list"}
@@ -39,9 +38,9 @@ contract AddressIteratorInteractive {
     @notice Lists a Address collection from some `_current_item`, going forwards or backwards depending on `_from_start`
     @param _current_item The current Item
     @param _count Total number of Address items to return
-    @param _function_first The Function that returns the First Address item in the list
+    @param _function_first Function that returns the First Address item in the list
     @param _function_last Function that returns the last Address item in the list
-    @param _function_next The Function that returns the Next Address item in the list
+    @param _function_next Function that returns the Next Address item in the list
     @param _function_previous Function that returns previous Address item in the list
     @param _from_start whether to read in the forwards ( or backwards) direction
     @return {"_address_items" :"Collection/list of Address"}
@@ -65,12 +64,12 @@ contract AddressIteratorInteractive {
 
 
   /**
-    @notice a private function to lists a Address collection starting from some _current_item (which could be included or excluded), in the forwards or backwards direction
+    @notice a private function to lists a Address collection starting from some `_current_item` (which could be included or excluded), in the forwards or backwards direction
     @param _current_item The current Item
     @param _count Total number of Address items to return
     @param _including_current Whether the `_current_item` should be included in the result
-    @param _function_last The Function that returns the address where we stop reading more address
-    @param _function_next The Function that returns the next address to read after some address (could be backwards or forwards in the physical collection)
+    @param _function_last Function that returns the address where we stop reading more address
+    @param _function_next Function that returns the next address to read after some address (could be backwards or forwards in the physical collection)
     @return {"_address_items" :"Collection/list of Address"}
   */
   function private_list_addresses_from_address(address _current_item, uint256 _count, bool _including_current,
@@ -114,9 +113,9 @@ contract AddressIteratorInteractive {
   /** DEPRECATED
     @notice private function to list a Address collection starting from the start or end of the list
     @param _count Total number of Address item to return
-    @param _function_total The Function that returns the Total number of Address item in the list
-    @param _function_first The Function that returns the First Address item in the list
-    @param _function_next The Function that returns the Next Address item in the list
+    @param _function_total Function that returns the Total number of Address item in the list
+    @param _function_first Function that returns the First Address item in the list
+    @param _function_next Function that returns the Next Address item in the list
     @return {"_address_items" :"Collection/list of Address"}
   */
   /*function list_addresses_from_start_or_end(uint256 _count,
@@ -155,11 +154,11 @@ contract AddressIteratorInteractive {
   }*/
 
   /** DEPRECATED
-    @notice a private function to lists a Address collection starting from some _current_item, could be forwards or backwards
+    @notice a private function to lists a Address collection starting from some `_current_item`, could be forwards or backwards
     @param _current_item The current Item
     @param _count Total number of Address items to return
-    @param _function_last The Function that returns the bytes where we stop reading more bytes
-    @param _function_next The Function that returns the next bytes to read after some bytes (could be backwards or forwards in the physical collection)
+    @param _function_last Function that returns the bytes where we stop reading more bytes
+    @param _function_next Function that returns the next bytes to read after some bytes (could be backwards or forwards in the physical collection)
     @return {"_address_items" :"Collection/list of Address"}
   */
   /*function list_addresses_from_byte(address _current_item, uint256 _count,

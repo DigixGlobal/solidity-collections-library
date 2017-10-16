@@ -9,9 +9,9 @@ contract UintIteratorInteractive {
     /**
       @notice Lists a Uint collection from start or end
       @param _count Total number of Uint items to return
-      @param _function_first The Function that returns the First Uint item in the list
+      @param _function_first Function that returns the First Uint item in the list
       @param _function_last Function that returns the last Uint item in the list
-      @param _function_next The Function that returns the Next Uint item in the list
+      @param _function_next Function that returns the Next Uint item in the list
       @param _function_previous Function that returns previous Uint item in the list
       @param _from_start whether to read from start (or end) of the list
       @return {"_uint_items" : "Collection of reversed Uint list"}
@@ -38,9 +38,9 @@ contract UintIteratorInteractive {
       @notice Lists a Uint collection from some `_current_item`, going forwards or backwards depending on `_from_start`
       @param _current_item The current Item
       @param _count Total number of Uint items to return
-      @param _function_first The Function that returns the First Uint item in the list
+      @param _function_first Function that returns the First Uint item in the list
       @param _function_last Function that returns the last Uint item in the list
-      @param _function_next The Function that returns the Next Uint item in the list
+      @param _function_next Function that returns the Next Uint item in the list
       @param _function_previous Function that returns previous Uint item in the list
       @param _from_start whether to read in the forwards ( or backwards) direction
       @return {"_uint_items" :"Collection/list of Uint"}
@@ -63,12 +63,12 @@ contract UintIteratorInteractive {
     }
 
     /**
-      @notice a private function to lists a Uint collection starting from some _current_item (which could be included or excluded), in the forwards or backwards direction
+      @notice a private function to lists a Uint collection starting from some `_current_item` (which could be included or excluded), in the forwards or backwards direction
       @param _current_item The current Item
       @param _count Total number of Uint items to return
       @param _including_current Whether the `_current_item` should be included in the result
-      @param _function_last The Function that returns the uints where we stop reading more uints
-      @param _function_next The Function that returns the next uints to read after some uints (could be backwards or forwards in the physical collection)
+      @param _function_last Function that returns the uints where we stop reading more uints
+      @param _function_next Function that returns the next uints to read after some uints (could be backwards or forwards in the physical collection)
       @return {"_uint_items" :"Collection/list of Uint"}
     */
     function private_list_uints_from_uint(uint256 _current_item, uint256 _count, bool _including_current,
@@ -113,9 +113,9 @@ contract UintIteratorInteractive {
     /**
       @notice private function to list a Uint collection starting from the start or end of the list
       @param _count Total number of Uint item to return
-      @param _function_total The Function that returns the Total number of Uint item in the list
-      @param _function_first The Function that returns the First Uint item in the list
-      @param _function_next The Function that returns the Next Uint item in the list
+      @param _function_total Function that returns the Total number of Uint item in the list
+      @param _function_first Function that returns the First Uint item in the list
+      @param _function_next Function that returns the Next Uint item in the list
       @return {"_uint_items" :"Collection/list of Uint"}
     */
     /*function list_uints_from_start_or_end(uint256 _count,
@@ -157,11 +157,11 @@ contract UintIteratorInteractive {
 
 
     /**
-      @notice a private function to lists a Uint collection starting from some _current_item, could be forwards or backwards
+      @notice a private function to lists a Uint collection starting from some `_current_item`, could be forwards or backwards
       @param _current_item The current Item
       @param _count Total number of Uint items to return
-      @param _function_last The Function that returns the bytes where we stop reading more bytes
-      @param _function_next The Function that returns the next bytes to read after some bytes (could be backwards or forwards in the physical collection)
+      @param _function_last Function that returns the bytes where we stop reading more bytes
+      @param _function_next Function that returns the next bytes to read after some bytes (could be backwards or forwards in the physical collection)
       @return {"_uint_items" :"Collection/list of Uint"}
     */
     /*function list_uints_from_uint(uint256 _current_item, uint256 _count,

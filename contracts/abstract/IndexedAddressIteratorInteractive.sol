@@ -10,9 +10,9 @@ contract IndexedAddressIteratorInteractive {
     @notice Lists an indexed Address collection from start or end
     @param _collection_index Index of the Collection to list
     @param _count Total number of Address items to return
-    @param _function_first The Function that returns the First Address item in the list
+    @param _function_first Function that returns the First Address item in the list
     @param _function_last Function that returns the last Address item in the list
-    @param _function_next The Function that returns the Next Address item in the list
+    @param _function_next Function that returns the Next Address item in the list
     @param _function_previous Function that returns previous Address item in the list
     @param _from_start whether to read from start (or end) of the list
     @return {"_address_items" : "Collection of reversed Address list"}
@@ -39,9 +39,9 @@ contract IndexedAddressIteratorInteractive {
     @param _collection_index Index of the Collection to list
     @param _current_item The current Item
     @param _count Total number of Address items to return
-    @param _function_first The Function that returns the First Address item in the list
+    @param _function_first Function that returns the First Address item in the list
     @param _function_last Function that returns the last Address item in the list
-    @param _function_next The Function that returns the Next Address item in the list
+    @param _function_next Function that returns the Next Address item in the list
     @param _function_previous Function that returns previous Address item in the list
     @param _from_start whether to read in the forwards ( or backwards) direction
     @return {"_address_items" :"Collection/list of Address"}
@@ -64,13 +64,13 @@ contract IndexedAddressIteratorInteractive {
   }
 
   /**
-    @notice a private function to lists an indexed Address collection starting from some _current_item (which could be included or excluded), in the forwards or backwards direction
+    @notice a private function to lists an indexed Address collection starting from some `_current_item` (which could be included or excluded), in the forwards or backwards direction
     @param _collection_index Index of the Collection to list
     @param _current_item The item where we start reading from the list
     @param _count Total number of Address items to return
     @param _including_current Whether the `_current_item` should be included in the result
-    @param _function_last The Function that returns the bytes where we stop reading more bytes
-    @param _function_next The Function that returns the next bytes to read after another bytes (could be backwards or forwards in the physical collection)
+    @param _function_last Function that returns the bytes where we stop reading more bytes
+    @param _function_next Function that returns the next bytes to read after another bytes (could be backwards or forwards in the physical collection)
     @return {"_address_items" :"Collection/list of Address"}
   */
   function private_list_indexed_addresses_from_address(bytes32 _collection_index, address _current_item, uint256 _count, bool _including_current,
@@ -166,8 +166,8 @@ contract IndexedAddressIteratorInteractive {
     @param _collection_index Index of the Collection to evaluate
     @param _current_item The current item from the collection
     @param _count The total number of Addresses to return
-    @param _function_last The Function that returns the last Item in the Collection
-    @param _function_next The Function that returns the next Item in the collection
+    @param _function_last Function that returns the last Item in the Collection
+    @param _function_next Function that returns the next Item in the collection
     @return {"_address_items" : "Lisf of addresses"}
   */
   /*function list_indexed_addresses_from_address(bytes32 _collection_index, address _current_item, uint256 _count,
