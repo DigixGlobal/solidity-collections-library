@@ -73,7 +73,7 @@ contract IndexedAddressIteratorController {
     @param _collection_index The index of the collection to evaluate
     @return {"_total_count": "Lenth of the list"}
   */
-  function get_total_in_indexed_addresses_dll(function (bytes32) constant external returns (uint256) _function, bytes32 _collection_index)
+  function get_total_indexed_addresses(function (bytes32) constant external returns (uint256) _function, bytes32 _collection_index)
            internal
            constant
            returns (uint256 _total_count)

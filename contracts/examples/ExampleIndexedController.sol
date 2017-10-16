@@ -172,7 +172,7 @@ contract ExampleIndexedController is IndexedBytesIteratorController, IndexedAddr
            constant
            returns (uint256 _total_count)
   {
-    _total_count = get_total_in_indexed_addresses_dll(example_storage().read_total_in_indexed_addresses_collection, _collection_index);
+    _total_count = get_total_indexed_addresses(example_storage().read_total_in_indexed_addresses_collection, _collection_index);
   }
 
   /**

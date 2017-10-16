@@ -49,7 +49,7 @@ contract('AddressIteratorStorage', function (addresses) {
     it('[item is not first] returns correct previous item', async function () {
       assert.deepEqual(await exampleStorage.read_previous_in_addresses_collection.call(exampleAddresses[4]), exampleAddresses[3]);
     });
-    it('[item is last] returns empty address', async function () {
+    it('[item is first] returns empty address', async function () {
       assert.deepEqual(await exampleStorage.read_previous_in_addresses_collection.call(exampleAddresses[1]), emptyAddress);
     });
     it('[item does not exist] returns empty address', async function () {

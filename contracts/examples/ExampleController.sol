@@ -219,6 +219,6 @@ contract ExampleController is BytesIteratorController, AddressIteratorController
            constant
            returns (uint256 _total_count)
   {
-    _total_count = get_total_in_uints_dll(example_storage().read_total_in_uints_collection);
+    _total_count = get_total_uints(example_storage().read_total_in_uints_collection);
   }
 }

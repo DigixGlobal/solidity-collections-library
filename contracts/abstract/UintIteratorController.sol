@@ -67,7 +67,7 @@ contract UintIteratorController {
     @param _function Function that returns the total number of items
     @return {"_total_count": "The total number of items"}
   */
-  function get_total_in_uints_dll(function () constant external returns (uint256) _function)
+  function get_total_uints(function () constant external returns (uint256) _function)
            internal
            constant
            returns (uint256 _total_count)

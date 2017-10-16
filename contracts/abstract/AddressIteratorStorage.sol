@@ -44,8 +44,6 @@ contract AddressIteratorStorage {
     @param _list The source list
     @param _current_item The current item to be used as base line
     @return {"_item" : "The next item from the list based on the specieid `_current_item`"}
-
-    TODO: Need to verify what happens if the specified `_current_item` is the last item from the list
   */
   function read_next_from_addresses(DoublyLinkedList.Address storage _list, address _current_item)
            internal
@@ -60,8 +58,6 @@ contract AddressIteratorStorage {
     @param _list The source list
     @param _current_item The current item to be used as base line
     @return {"_item" : "The previous item from the list based on the spcified `_current_item`"}
-
-    TODO: Need to verify what happens if the specified `_current_item` is the first item from the list
   */
   function read_previous_from_addresses(DoublyLinkedList.Address storage _list, address _current_item)
            internal
