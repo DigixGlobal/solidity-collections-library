@@ -71,6 +71,12 @@ contract('TestLibraryAddress', function () {
       assert.deepEqual(await testLibraryAddress.test_check_last_index.call(), bN(1));
       assert.deepEqual(await testLibraryAddress.test_check_count.call(), bN(1));
     });
+    it('[item is empty address]: return false, doesn\'t do anything', async function () {
+      await testLibraryAddress.setup_reset_data();
+      assert.deepEqual(await testLibraryAddress.test_append.call(emptyAddress), false);
+      await testLibraryAddress.test_append(emptyAddress);
+      assert.deepEqual(await testLibraryAddress.test_check_count.call(), bN(0));
+    });
   });
 
   describe('remove', function () {

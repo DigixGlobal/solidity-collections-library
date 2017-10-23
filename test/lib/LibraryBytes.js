@@ -1,4 +1,4 @@
-const { myToAscii, bN } = require('../testHelpers');
+const { myToAscii, bN, emptyBytes } = require('../testHelpers');
 
 const TestLibraryBytes = artifacts.require('./TestLibraryBytes.sol');
 
@@ -70,6 +70,12 @@ contract('TestLibraryBytes', function () {
       assert.deepEqual(await testLibraryBytes.test_check_first_index.call(), bN(1));
       assert.deepEqual(await testLibraryBytes.test_check_last_index.call(), bN(1));
       assert.deepEqual(await testLibraryBytes.test_check_count.call(), bN(1));
+    });
+    it('[item is empty bytes]: return false, doesn\'t do anything', async function () {
+      await testLibraryBytes.setup_reset_data();
+      assert.deepEqual(await testLibraryBytes.test_append.call(emptyBytes), false);
+      await testLibraryBytes.test_append(emptyBytes);
+      assert.deepEqual(await testLibraryBytes.test_check_count.call(), bN(0));
     });
   });
 

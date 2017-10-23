@@ -71,6 +71,12 @@ contract('TestLibraryUint', function () {
       assert.deepEqual(await testLibraryUint.test_check_last_index.call(), bN(1));
       assert.deepEqual(await testLibraryUint.test_check_count.call(), bN(1));
     });
+    it('[item is 0]: return false, doesn\'t do anything', async function () {
+      await testLibraryUint.setup_reset_data();
+      assert.deepEqual(await testLibraryUint.test_append.call(bN(0)), false);
+      await testLibraryUint.test_append(bN(0));
+      assert.deepEqual(await testLibraryUint.test_check_count.call(), bN(0));
+    });
   });
 
   describe('remove', function () {

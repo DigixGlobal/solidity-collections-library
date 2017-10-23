@@ -1,6 +1,6 @@
 const a = require('awaiting');
 
-const { myToAscii, bN } = require('../testHelpers');
+const { myToAscii, bN, emptyBytes } = require('../testHelpers');
 
 const TestDoublyLinkedList = artifacts.require('./TestDoublyLinkedList.sol');
 
@@ -72,6 +72,12 @@ contract('TestDoublyLinkedList', function () {
       assert.deepEqual(await testDoublyLinkedList.test_check_first_index.call(), bN(1));
       assert.deepEqual(await testDoublyLinkedList.test_check_last_index.call(), bN(1));
       assert.deepEqual(await testDoublyLinkedList.test_check_count.call(), bN(1));
+    });
+    it('[item is empty bytes]: return false, doesn\'t do anything', async function () {
+      await testDoublyLinkedList.setup_reset_data();
+      assert.deepEqual(await testDoublyLinkedList.test_append.call(emptyBytes), false);
+      await testDoublyLinkedList.test_append(emptyBytes);
+      assert.deepEqual(await testDoublyLinkedList.test_check_count.call(), bN(0));
     });
   });
 

@@ -3,7 +3,6 @@ const { bN, exampleAddresses } = require('../testHelpers');
 const ExampleController = artifacts.require('./ExampleController.sol');
 const ExampleStorage = artifacts.require('./ExampleStorage.sol');
 const ExampleInteractive = artifacts.require('./ExampleInteractive.sol');
-const AddressIteratorInteractive = artifacts.require('./AddressIteratorInteractive.sol');
 
 contract('AddressIteratorInteractive', function () {
   let exampleController;
@@ -11,14 +10,9 @@ contract('AddressIteratorInteractive', function () {
   let exampleInteractive;
 
   beforeEach(async function () {
-    // const ai = await AddressIteratorInteractive.new();
     exampleStorage = await ExampleStorage.new();
     exampleController = await ExampleController.new(exampleStorage.address);
     exampleInteractive = await ExampleInteractive.new(exampleController.address);
-    // console.log(await AddressIteratorInteractive.deployed());
-    // ai.ReportThisAddress((err, result) => {
-    //   console.log(result);
-    // });
   });
 
   describe('list_addresses (from start)', function () {
