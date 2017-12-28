@@ -22,6 +22,10 @@ contract('TestDoublyLinkedList', function () {
     it('returns 0 if item is not found', async function () {
       assert.deepEqual(await testDoublyLinkedList.test_find.call('test_new'), bN(0));
     });
+    it('returns 0 if item is removed', async function () {
+      await testDoublyLinkedList.test_remove(bN(4));
+      assert.deepEqual(await testDoublyLinkedList.test_find.call('test4'), bN(0));
+    });
     it('returns 0 if data is empty (no items at all)', async function () {
       await testDoublyLinkedList.setup_reset_data();
       assert.deepEqual(await testDoublyLinkedList.test_find.call('test_new'), bN(0));
