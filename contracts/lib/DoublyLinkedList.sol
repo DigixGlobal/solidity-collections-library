@@ -65,7 +65,7 @@ library DoublyLinkedList {
     if (self.valid_indexes[_item_index] == true) {
       _item = self.collection[_item_index - 1].item;
     } else {
-      _item = bytes32("");
+      _item = EMPTY_BYTES;
     }
   }
 
@@ -103,14 +103,13 @@ library DoublyLinkedList {
       Item memory item = self.collection[_index - 1];
       if (item.previous_index == NONE) {
         self.first_index = item.next_index;
-      }
-      if (item.next_index == NONE) {
-        self.last_index = item.previous_index;
-      }
-      if (item.previous_index != NONE) {
+      } else {
         self.collection[item.previous_index - 1].next_index = item.next_index;
       }
-      if (item.next_index != NONE) {
+
+      if (item.next_index == NONE) {
+        self.last_index = item.previous_index;
+      } else {
         self.collection[item.next_index - 1].previous_index = item.previous_index;
       }
       delete self.collection[_index - 1];
