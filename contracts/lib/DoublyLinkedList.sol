@@ -114,6 +114,7 @@ library DoublyLinkedList {
       }
       delete self.collection[_index - 1];
       self.valid_indexes[_index] = false;
+      delete self.item_index[item.item];
       self.count--;
       _success = true;
     } else {
