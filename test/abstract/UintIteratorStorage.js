@@ -70,4 +70,28 @@ contract('UintIteratorStorage', function (addresses) {
       assert.deepEqual(await exampleStorage.read_total_in_uints_collection.call(), bN(0));
     });
   });
+
+  describe('remove_item_from_uints', function () {
+    it('[item is first]: remove uint, check total, previous', async function () {
+      assert.deepEqual(await exampleStorage.remove_item_from_uints_collection.call(exampleUints[1]), true);
+      await exampleStorage.remove_item_from_uints_collection(exampleUints[1]);
+      assert.deepEqual(await exampleStorage.read_total_in_uints_collection.call(), bN(5));
+      assert.deepEqual(await exampleStorage.read_first_in_uints_collection.call(), exampleUints[2]);
+      assert.deepEqual(await exampleStorage.read_previous_in_uints_collection.call(exampleUints[2]), bN(0));
+    });
+    it('[item is last]: remove uint, check total, next', async function () {
+      assert.deepEqual(await exampleStorage.remove_item_from_uints_collection.call(exampleUints[6]), true);
+      await exampleStorage.remove_item_from_uints_collection(exampleUints[6]);
+      assert.deepEqual(await exampleStorage.read_total_in_uints_collection.call(), bN(5));
+      assert.deepEqual(await exampleStorage.read_last_in_uints_collection.call(), exampleUints[5]);
+      assert.deepEqual(await exampleStorage.read_next_in_uints_collection.call(exampleUints[5]), bN(0));
+    });
+    it('[item is not first/last]: remove uint, check total, next and previous of neighbours', async function () {
+      assert.deepEqual(await exampleStorage.remove_item_from_uints_collection.call(exampleUints[3]), true);
+      await exampleStorage.remove_item_from_uints_collection(exampleUints[3]);
+      assert.deepEqual(await exampleStorage.read_total_in_uints_collection.call(), bN(5));
+      assert.deepEqual(await exampleStorage.read_next_in_uints_collection.call(exampleUints[2]), exampleUints[4]);
+      assert.deepEqual(await exampleStorage.read_previous_in_uints_collection.call(exampleUints[4]), exampleUints[2]);
+    });
+  });
 });

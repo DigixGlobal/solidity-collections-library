@@ -73,4 +73,28 @@ contract('AddressIteratorController', function () {
       assert.deepEqual(await exampleController.get_total_in_uints_collection.call(), bN(0));
     });
   });
+
+  describe('remove_item_from_uints', function () {
+    it('[uint is first] remove uint, check total, first and previous of first', async function () {
+      assert.deepEqual(await exampleController.remove_item_from_uints_collection.call(exampleUints[1]), true);
+      await exampleController.remove_item_from_uints_collection(exampleUints[1]);
+      assert.deepEqual(await exampleController.get_first_in_uints_collection.call(), exampleUints[2]);
+      assert.deepEqual(await exampleController.get_total_in_uints_collection.call(), bN(5));
+      assert.deepEqual(await exampleController.get_previous_in_uints_collection.call(exampleUints[2]), bN(0));
+    });
+    it('[uint is last] remove uint, check total, last and next of last', async function () {
+      assert.deepEqual(await exampleController.remove_item_from_uints_collection.call(exampleUints[6]), true);
+      await exampleController.remove_item_from_uints_collection(exampleUints[6]);
+      assert.deepEqual(await exampleController.get_last_in_uints_collection.call(), exampleUints[5]);
+      assert.deepEqual(await exampleController.get_total_in_uints_collection.call(), bN(5));
+      assert.deepEqual(await exampleController.get_next_in_uints_collection.call(exampleUints[5]), bN(0));
+    });
+    it('[uint is not first/last] remove uint, check total, previous and next of neighbours', async function () {
+      assert.deepEqual(await exampleController.remove_item_from_uints_collection.call(exampleUints[3]), true);
+      await exampleController.remove_item_from_uints_collection(exampleUints[3]);
+      assert.deepEqual(await exampleController.get_total_in_uints_collection.call(), bN(5));
+      assert.deepEqual(await exampleController.get_next_in_uints_collection.call(exampleUints[2]), exampleUints[4]);
+      assert.deepEqual(await exampleController.get_previous_in_uints_collection.call(exampleUints[4]), exampleUints[2]);
+    });
+  });
 });

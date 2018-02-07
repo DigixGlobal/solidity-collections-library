@@ -82,4 +82,17 @@ contract BytesIteratorStorage {
     _count = _list.total();
   }
 
+  /**
+    @notice Removes item from list
+    @param _list The source list
+    @param _item The item to remove
+    @return {"_success": "If item was removed successfully"}
+  */
+  function remove_item_from_bytes(DoublyLinkedList.Bytes storage _list, bytes32 _item)
+           internal
+           returns (bool _success)
+  {
+    _success = _list.remove_item(_item);
+  }
+
 }

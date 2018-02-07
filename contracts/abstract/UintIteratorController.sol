@@ -75,4 +75,17 @@ contract UintIteratorController {
     _total_count = _function();
   }
 
+  /**
+    @notice Remove a uint from uints
+    @param _function Function that returns true on successful removal of item
+    @param _item The item to be removed
+    @return {"_success": "If item was removed successfully"}
+  */
+  function remove_item_from_uints(function (uint256) external returns (bool) _function, uint256 _item)
+           internal
+           returns (bool _success)
+  {
+    _success = _function(_item);
+  }
+
 }
