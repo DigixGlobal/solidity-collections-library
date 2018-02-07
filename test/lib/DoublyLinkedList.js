@@ -135,6 +135,20 @@ contract('TestDoublyLinkedList', function () {
       await testDoublyLinkedList.test_remove_item('test_remove_item_new');
       assert.deepEqual(await testDoublyLinkedList.test_check_count.call(), bN(6));
     });
+    it('[item exists, last item]: remove the item, check next and last indexes updated correctly', async function () {
+      assert.deepEqual(await testDoublyLinkedList.test_remove_item.call('test6'), true);
+      await testDoublyLinkedList.test_remove_item('test6');
+      assert.deepEqual(await testDoublyLinkedList.test_next.call(bN(5)), bN(0));
+      assert.deepEqual(await testDoublyLinkedList.test_end.call(), bN(5));
+      assert.deepEqual(myToAscii(await testDoublyLinkedList.test_end_item.call()), 'test5');
+    });
+    it('[item exists, first item]: remove item, check previous and first indexes updated correctly', async function() {
+      assert.deepEqual(await testDoublyLinkedList.test_remove_item.call('test1'), true);
+      await testDoublyLinkedList.test_remove_item('test1');
+      assert.deepEqual(await testDoublyLinkedList.test_previous.call(bN(2)), bN(0));
+      assert.deepEqual(await testDoublyLinkedList.test_start.call(), bN(2));
+      assert.deepEqual(myToAscii(await testDoublyLinkedList.test_start_item.call()), 'test2');
+    });
   });
 
   describe('total', function () {
