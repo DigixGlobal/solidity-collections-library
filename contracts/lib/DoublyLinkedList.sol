@@ -114,6 +114,7 @@ library DoublyLinkedList {
       }
       delete self.collection[_index - 1];
       self.valid_indexes[_index] = false;
+      delete self.item_index[item.item];
       self.count--;
       _success = true;
     } else {
@@ -128,7 +129,6 @@ library DoublyLinkedList {
     uint256 _item_index = find(self, _item);
     if (_item_index != NONE) {
       require(remove(self, _item_index));
-      delete self.item_index[_item];
       _success = true;
     } else {
       _success = false;

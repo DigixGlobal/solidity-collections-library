@@ -135,6 +135,20 @@ contract('TestDoublyLinkedList', function () {
       await testDoublyLinkedList.test_remove_item('test_remove_item_new');
       assert.deepEqual(await testDoublyLinkedList.test_check_count.call(), bN(6));
     });
+    it('[item exists, last item]: remove the item, check next and last indexes updated correctly', async function () {
+      assert.deepEqual(await testDoublyLinkedList.test_remove_item.call('test6'), true);
+      await testDoublyLinkedList.test_remove_item('test6');
+      assert.deepEqual(await testDoublyLinkedList.test_next.call(bN(5)), bN(0));
+      assert.deepEqual(await testDoublyLinkedList.test_end.call(), bN(5));
+      assert.deepEqual(myToAscii(await testDoublyLinkedList.test_end_item.call()), 'test5');
+    });
+    it('[item exists, first item]: remove item, check previous and first indexes updated correctly', async function() {
+      assert.deepEqual(await testDoublyLinkedList.test_remove_item.call('test1'), true);
+      await testDoublyLinkedList.test_remove_item('test1');
+      assert.deepEqual(await testDoublyLinkedList.test_previous.call(bN(2)), bN(0));
+      assert.deepEqual(await testDoublyLinkedList.test_start.call(), bN(2));
+      assert.deepEqual(myToAscii(await testDoublyLinkedList.test_start_item.call()), 'test2');
+    });
   });
 
   describe('total', function () {
@@ -285,4 +299,31 @@ contract('TestDoublyLinkedList', function () {
       assert.deepEqual(await testDoublyLinkedList.test_total.call(), bN(0));
     });
   });
+
+  describe('remove and remove_item difference', function () {
+    beforeEach(resetDataBeforeTest);
+    it('find an item removed by remove', async function () {
+      assert.deepEqual(await testDoublyLinkedList.test_remove.call(bN(4)), true);
+      await testDoublyLinkedList.test_remove(bN(4));
+      assert.deepEqual(await testDoublyLinkedList.test_find.call('test4'), bN(0));
+    });
+    it('find an item removed by remove_item', async function () {
+      assert.deepEqual(await testDoublyLinkedList.test_remove_item.call('test3'), true);
+      await testDoublyLinkedList.test_remove_item('test3');
+      assert.deepEqual(await testDoublyLinkedList.test_find.call('test3'), bN(0));
+    });
+    it('remove an item removed by remove_item', async function () {
+      assert.deepEqual(await testDoublyLinkedList.test_remove_item.call('test2'), true);
+      await testDoublyLinkedList.test_remove_item('test2');
+      assert.deepEqual(await testDoublyLinkedList.test_remove.call(bN(2)), false);
+      await testDoublyLinkedList.test_remove(bN(2));
+    });
+    it('remove_item an item removed by remove', async function () {
+      assert.deepEqual(await testDoublyLinkedList.test_remove.call(bN(2)), true);
+      await testDoublyLinkedList.test_remove(bN(2));
+      assert.deepEqual(await testDoublyLinkedList.test_remove_item.call('test2'), false);
+      await testDoublyLinkedList.test_remove_item('test2');
+    });
+  });
+
 });
