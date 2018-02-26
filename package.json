@@ -1,6 +1,6 @@
 {
   "name": "@digix/solidity-collections",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Solidity library for collections",
   "files": [
     "build",
@@ -11,9 +11,9 @@
     "url": "https://github.com/DigixGlobal/solidity-collections-library"
   },
   "devDependencies": {
-    "@digix/doxity": "^0.5.0",
+    "@digix/doxity": "^0.5.2",
     "@digix/tempo": "^0.2.0",
-    "@digix/truffle-lightwallet-provider": "^0.1.2",
+    "@digix/truffle-lightwallet-provider": "^0.1.4",
     "awaiting": "^3.0.0",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
