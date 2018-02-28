@@ -100,6 +100,18 @@ contract ExampleController is BytesIteratorController, AddressIteratorController
   }
 
   /**
+    @notice Remove an item from the Bytes collection
+    @param _item The item to be removed
+    @return {"_success": "If item was removed successfully"}
+  */
+  function remove_item_from_bytes_collection(bytes32 _item)
+           public
+           returns (bool _success)
+  {
+    _success = remove_item_from_bytes(example_storage().remove_item_from_bytes_collection, _item);
+  }
+
+  /**
     @notice Gets the first item in the Addresses collection
     @return {"_item":"Collection item"}
   */
@@ -159,6 +171,17 @@ contract ExampleController is BytesIteratorController, AddressIteratorController
     _total_count = get_total_addresses(example_storage().read_total_in_addresses_collection);
   }
 
+  /**
+    @notice Remove an address from the Addresses collection
+    @param _item The address to be removed
+    @return {"_success": "If item was removed successfully"}
+  */
+  function remove_item_from_addresses_collection(address _item)
+           public
+           returns (bool _success)
+  {
+    _success = remove_item_from_addresses(example_storage().remove_item_from_addresses_collection, _item);
+  }
 
   /**
     @notice Gets the first item in the uints collection
@@ -220,5 +243,17 @@ contract ExampleController is BytesIteratorController, AddressIteratorController
            returns (uint256 _total_count)
   {
     _total_count = get_total_uints(example_storage().read_total_in_uints_collection);
+  }
+
+  /**
+    @notice Remove a uint from the uints collection
+    @param _item The uint to be removed
+    @return {"_success": "If item was removed successfully"}
+  */
+  function remove_item_from_uints_collection(uint256 _item)
+           public
+           returns (bool _success)
+  {
+    _success = remove_item_from_uints(example_storage().remove_item_from_uints_collection, _item);
   }
 }

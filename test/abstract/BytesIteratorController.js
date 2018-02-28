@@ -1,4 +1,4 @@
-const { myToAscii, bN } = require('../testHelpers');
+const { myToAscii, bN, emptyBytes } = require('../testHelpers');
 
 const ExampleController = artifacts.require('./ExampleController.sol');
 const ExampleStorage = artifacts.require('./ExampleStorage.sol');
@@ -71,6 +71,30 @@ contract('BytesIteratorController', function () {
     it('[collection is empty] returns 0', async function () {
       await exampleStorage.remove_all_data_in_bytes_collection();
       assert.deepEqual(await exampleController.get_total_in_bytes_collection.call(), bN(0));
+    });
+  });
+
+  describe('remove_item_from_bytesarray', function () {
+    it('[item is first] remove item, check total, first and previous of first', async function () {
+      assert.deepEqual(await exampleController.remove_item_from_bytes_collection.call('test1'), true);
+      await exampleController.remove_item_from_bytes_collection('test1');
+      assert.deepEqual(myToAscii(await exampleController.get_first_in_bytes_collection.call()), 'test2');
+      assert.deepEqual(await exampleController.get_total_in_bytes_collection.call(), bN(5));
+      assert.deepEqual(await exampleController.get_previous_in_bytes_collection.call('test2'), emptyBytes);
+    });
+    it('[item is last] remove item, check total, last and next of last', async function () {
+      assert.deepEqual(await exampleController.remove_item_from_bytes_collection.call('test6'), true);
+      await exampleController.remove_item_from_bytes_collection('test6');
+      assert.deepEqual(myToAscii(await exampleController.get_last_in_bytes_collection.call()), 'test5');
+      assert.deepEqual(await exampleController.get_total_in_bytes_collection.call(), bN(5));
+      assert.deepEqual(await exampleController.get_next_in_bytes_collection.call('test5'), emptyBytes);
+    });
+    it('[item is not first/last] remove item, check total, previous and next of neighbours', async function () {
+      assert.deepEqual(await exampleController.remove_item_from_bytes_collection.call('test3'), true);
+      await exampleController.remove_item_from_bytes_collection('test3');
+      assert.deepEqual(await exampleController.get_total_in_bytes_collection.call(), bN(5));
+      assert.deepEqual(myToAscii(await exampleController.get_next_in_bytes_collection.call('test2')), 'test4');
+      assert.deepEqual(myToAscii(await exampleController.get_previous_in_bytes_collection.call('test4')), 'test2');
     });
   });
 });

@@ -70,4 +70,28 @@ contract('AddressIteratorStorage', function (addresses) {
       assert.deepEqual(await exampleStorage.read_total_in_addresses_collection.call(), bN(0));
     });
   });
+
+  describe('remove_item_from_addresses', function () {
+    it('[item is first]: remove address, check total, previous', async function () {
+      assert.deepEqual(await exampleStorage.remove_item_from_addresses_collection.call(exampleAddresses[1]), true);
+      await exampleStorage.remove_item_from_addresses_collection(exampleAddresses[1]);
+      assert.deepEqual(await exampleStorage.read_total_in_addresses_collection.call(), bN(5));
+      assert.deepEqual(await exampleStorage.read_first_in_addresses_collection.call(), exampleAddresses[2]);
+      assert.deepEqual(await exampleStorage.read_previous_in_addresses_collection.call(exampleAddresses[2]), emptyAddress);
+    });
+    it('[item is last]: remove address, check total, next', async function () {
+      assert.deepEqual(await exampleStorage.remove_item_from_addresses_collection.call(exampleAddresses[6]), true);
+      await exampleStorage.remove_item_from_addresses_collection(exampleAddresses[6]);
+      assert.deepEqual(await exampleStorage.read_total_in_addresses_collection.call(), bN(5));
+      assert.deepEqual(await exampleStorage.read_last_in_addresses_collection.call(), exampleAddresses[5]);
+      assert.deepEqual(await exampleStorage.read_next_in_addresses_collection.call(exampleAddresses[5]), emptyAddress);
+    });
+    it('[item is not first/last]: remove address, check total, next and previous of neighbours', async function () {
+      assert.deepEqual(await exampleStorage.remove_item_from_addresses_collection.call(exampleAddresses[3]), true);
+      await exampleStorage.remove_item_from_addresses_collection(exampleAddresses[3]);
+      assert.deepEqual(await exampleStorage.read_total_in_addresses_collection.call(), bN(5));
+      assert.deepEqual(await exampleStorage.read_next_in_addresses_collection.call(exampleAddresses[2]), exampleAddresses[4]);
+      assert.deepEqual(await exampleStorage.read_previous_in_addresses_collection.call(exampleAddresses[4]), exampleAddresses[2]);
+    });
+  });
 });

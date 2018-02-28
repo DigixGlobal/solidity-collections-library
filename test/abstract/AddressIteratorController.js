@@ -73,4 +73,28 @@ contract('AddressIteratorController', function (addresses) {
       assert.deepEqual(await exampleController.get_total_in_addresses_collection.call(), bN(0));
     });
   });
+
+  describe('remove_item_from_addresses', function () {
+    it('[address is first] remove address, check total, first and previous of first', async function () {
+      assert.deepEqual(await exampleController.remove_item_from_addresses_collection.call(exampleAddresses[1]), true);
+      await exampleController.remove_item_from_addresses_collection(exampleAddresses[1]);
+      assert.deepEqual(await exampleController.get_first_in_addresses_collection.call(), exampleAddresses[2]);
+      assert.deepEqual(await exampleController.get_total_in_addresses_collection.call(), bN(5));
+      assert.deepEqual(await exampleController.get_previous_in_addresses_collection.call(exampleAddresses[2]), emptyAddress);
+    });
+    it('[address is last] remove address, check total, last and next of last', async function () {
+      assert.deepEqual(await exampleController.remove_item_from_addresses_collection.call(exampleAddresses[6]), true);
+      await exampleController.remove_item_from_addresses_collection(exampleAddresses[6]);
+      assert.deepEqual(await exampleController.get_last_in_addresses_collection.call(), exampleAddresses[5]);
+      assert.deepEqual(await exampleController.get_total_in_addresses_collection.call(), bN(5));
+      assert.deepEqual(await exampleController.get_next_in_addresses_collection.call(exampleAddresses[5]), emptyAddress);
+    });
+    it('[address is not first/last] remove address, check total, previous and next of neighbours', async function () {
+      assert.deepEqual(await exampleController.remove_item_from_addresses_collection.call(exampleAddresses[3]), true);
+      await exampleController.remove_item_from_addresses_collection(exampleAddresses[3]);
+      assert.deepEqual(await exampleController.get_total_in_addresses_collection.call(), bN(5));
+      assert.deepEqual(await exampleController.get_next_in_addresses_collection.call(exampleAddresses[2]), exampleAddresses[4]);
+      assert.deepEqual(await exampleController.get_previous_in_addresses_collection.call(exampleAddresses[4]), exampleAddresses[2]);
+    });
+  });
 });
