@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 /**
   @title Address Iterator Interactive
   @author DigixGlobal Pte Ltd

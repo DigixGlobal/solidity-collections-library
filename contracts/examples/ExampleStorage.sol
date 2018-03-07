@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
 import "../abstract/BytesIteratorStorage.sol";
 import "../abstract/AddressIteratorStorage.sol";
@@ -21,14 +21,14 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
   /**
     @notice Constructor
   */
-  function ExampleStorage() {
+  function ExampleStorage() public {
     initialize();
   }
 
   /**
     @notice Initializes instace of collections
   */
-  function initialize() {
+  function initialize() public {
     bytes_collection.append("test1");
     bytes_collection.append("test2");
     bytes_collection.append("test3");
@@ -228,7 +228,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
 
   /**
     @notice Reads the last item in the uints collection
-    @return {"_item": "Collection item"} 
+    @return {"_item": "Collection item"}
    */
   function read_last_in_uints_collection()
            public

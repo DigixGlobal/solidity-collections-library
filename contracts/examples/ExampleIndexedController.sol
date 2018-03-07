@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
 import "../abstract/IndexedBytesIteratorController.sol";
 import "../abstract/IndexedAddressIteratorController.sol";
@@ -25,7 +25,7 @@ contract ExampleIndexedController is IndexedBytesIteratorController, IndexedAddr
     @notice Constructor for ExampleIndexedController
     @param _storage Address of storage to use
   */
-  function ExampleIndexedController(address _storage) {
+  function ExampleIndexedController(address _storage) public {
     storage_contract = _storage;
   }
 

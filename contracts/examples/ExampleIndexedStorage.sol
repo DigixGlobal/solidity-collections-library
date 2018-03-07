@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
 import "../abstract/IndexedBytesIteratorStorage.sol";
 import "../abstract/IndexedAddressIteratorStorage.sol";
@@ -20,14 +20,14 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
   /**
     @notice Constructor
   */
-  function ExampleIndexedStorage() {
+  function ExampleIndexedStorage() public {
     initialize();
   }
 
   /**
     @notice Initializes a list of collections
   */
-  function initialize() {
+  function initialize() public {
     indexed_bytes_collection.append("a", "atest1");
     indexed_bytes_collection.append("a", "atest2");
     indexed_bytes_collection.append("a", "atest3");
@@ -39,12 +39,12 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
     indexed_bytes_collection.append("b", "btest3");
     indexed_bytes_collection.append("b", "btest4");
     indexed_bytes_collection.append("b", "btest5");*/
-    indexed_address_collection.append("a", 0x7812421a7579d8182dc6f2b68ab56595db01553f);
-    indexed_address_collection.append("a", 0x419f0a80d85f3c7dc3553394d91c9a339332a01e);
-    indexed_address_collection.append("a", 0xf5dfe2a3f8cf5ca8723b51be6fc065bea0cfe893);
-    indexed_address_collection.append("a", 0x5dc52d499a77af45f43174cfe7982dc68c331c38);
-    indexed_address_collection.append("a", 0x727c89006bd885f9a77254797a362d69e8a1f4da);
-    indexed_address_collection.append("a", 0x0f66ec3df48ec1e216d24e225b772696e031b698);
+    indexed_address_collection.append("a", 0x7812421a7579d8182DC6f2B68Ab56595db01553F);
+    indexed_address_collection.append("a", 0x419f0a80D85f3C7dC3553394d91c9A339332a01E);
+    indexed_address_collection.append("a", 0xF5dFE2A3f8Cf5CA8723b51be6fc065beA0cFE893);
+    indexed_address_collection.append("a", 0x5dc52D499a77af45f43174CFE7982dC68c331c38);
+    indexed_address_collection.append("a", 0x727C89006bd885f9A77254797a362d69E8A1f4da);
+    indexed_address_collection.append("a", 0x0F66eC3DF48eC1E216D24e225b772696e031B698);
 		/*indexed_address_collection.append("b", 0x0F66eC3DF48eC1E216D24e225b772696e031B698);
 		indexed_address_collection.append("b", 0x755eAc40A9017B52b6d811A2Ee3f495D08afb5eD);
 		indexed_address_collection.append("b", 0xFd59C5dBB42666CF99a714EE5286C0280B6002Bd);

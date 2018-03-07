@@ -45,4 +45,9 @@ module.exports = {
       gas: 7600000,
     },
   },
+  solc: {
+    optimizer: {
+      enabled: false,
+    },
+  },
 };

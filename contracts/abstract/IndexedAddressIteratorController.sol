@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
 import "./IndexedAddressIteratorStorage.sol";
 
@@ -51,7 +51,7 @@ contract IndexedAddressIteratorController {
   {
     _item = _function(_collection_index, _current_item);
   }
-  
+
   /**
     @notice Encapsulated function that gets the previous item from an Indexed Address Doubly Linked List
     @param _function Function that returns the previous Address based on the specified `_collection_index` and `_current-item`

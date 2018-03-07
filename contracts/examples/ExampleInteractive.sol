@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
 import "../abstract/BytesIteratorInteractive.sol";
 import "../abstract/AddressIteratorInteractive.sol";
@@ -18,7 +18,7 @@ contract ExampleInteractive is BytesIteratorInteractive, AddressIteratorInteract
   /**
     @notice Constructor
   */
-  function ExampleInteractive(address _controller) {
+  function ExampleInteractive(address _controller) public {
     controller_contract = _controller;
   }
 
