@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.4.19;
 
 /// @title Truffle Migrations Contract
 /// @author Consensys / Tim Coulter
@@ -17,19 +17,19 @@ contract Migrations {
   }
 
   /// Constructor
-  function Migrations() {
+  function Migrations() public {
     owner = msg.sender;
   }
 
   /// @notice Set the latest completed migraiton step for project
   /// @param completed Completed step
-  function setCompleted(uint completed) restricted {
+  function setCompleted(uint completed) public restricted {
     last_completed_migration = completed;
   }
 
   /// @notice Upgrades to a new Migrations contract
   /// @param new_address Address of the new owner
-  function upgrade(address new_address) restricted {
+  function upgrade(address new_address) public restricted {
     Migrations upgraded = Migrations(new_address);
     upgraded.setCompleted(last_completed_migration);
   }

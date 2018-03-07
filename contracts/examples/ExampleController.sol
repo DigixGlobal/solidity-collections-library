@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
 import "../abstract/BytesIteratorController.sol";
 import "../abstract/AddressIteratorController.sol";
@@ -21,7 +21,7 @@ contract ExampleController is BytesIteratorController, AddressIteratorController
     @notice Constructor for ExampleController
     @param _storage Adress of storage to use
   */
-  function ExampleController(address _storage) {
+  function ExampleController(address _storage) public {
     storage_contract = _storage;
   }
 

@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
 import "../abstract/IndexedBytesIteratorInteractive.sol";
 import "../abstract/IndexedAddressIteratorInteractive.sol";
@@ -16,7 +16,7 @@ contract ExampleIndexedInteractive is IndexedBytesIteratorInteractive, IndexedAd
     @notice Constructor
     @param _controller The Controller to use
   */
-  function ExampleIndexedInteractive(address _controller) {
+  function ExampleIndexedInteractive(address _controller) public {
     controller_contract = _controller;
   }
 

@@ -1,8 +1,1345 @@
 {
-  "contract_name": "IndexedBytesIteratorStorage",
+  "contractName": "IndexedBytesIteratorStorage",
   "abi": [],
-  "unlinked_binary": "0x60606040523415600e57600080fd5b5b603680601c6000396000f30060606040525b600080fd00a165627a7a72305820848d2a1ca4a940004b0c4de62cf42f429e9dc45db6c3eba3a94f3280477637400029",
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a7230582023fc7777c79399d6d1a403481d83fef9f538edcf2d3fccca06e37764ac798f780029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a7230582023fc7777c79399d6d1a403481d83fef9f538edcf2d3fccca06e37764ac798f780029",
+  "sourceMap": "216:2763:16:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "216:2763:16:-;;;;;",
+  "source": "pragma solidity ^0.4.19;\n\nimport \"../lib/DoublyLinkedList.sol\";\n\n/**\n  @title Indexed Bytes Iterator Storage\n  @author DigixGlobal Pte Ltd\n  @notice This contract utilizes: [Doubly Linked List](/DoublyLinkedList)\n*/\ncontract IndexedBytesIteratorStorage {\n\n  using DoublyLinkedList for DoublyLinkedList.IndexedBytes;\n\n  /**\n    @notice Reads the first item from an Indexed Bytes Doubly Linked List\n    @param _list The source list\n    @param _collection_index Index of the Collection to evaluate\n    @return {\"_item\":\"The first item from the specified `_list`\"}\n  */\n  function read_first_from_indexed_bytesarray(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index)\n           internal\n           constant\n           returns (bytes32 _item)\n  {\n    _item = _list.start_item(_collection_index);\n  }\n\n  /**\n    @notice Reads the last item from an Indexed Bytes Doubly Linked List\n    @param _list The source list\n    @param _collection_index Index of the Collection to evaluate\n    @return {\"_item\":\"The last item from the specified `_list`\"}\n  */\n  function read_last_from_indexed_bytesarray(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index)\n           internal\n           constant\n           returns (bytes32 _item)\n  {\n    _item = _list.end_item(_collection_index);\n  }\n\n  /**\n    @notice Reads the next item from an Indexed Bytes Doubly Linked List\n    @param _list The source list\n    @param _collection_index Index of the Collection to evaluate\n    @param _current_item The current item to be used as base line\n    @return {\"_item\":\"The next item from the specified `_current_item`\"}\n  */\n  function read_next_from_indexed_bytesarray(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index, bytes32 _current_item)\n           internal\n           constant\n           returns (bytes32 _item)\n  {\n    _item = _list.next_item(_collection_index, _current_item);\n  }\n\n  /**\n    @notice Reads the previous item from an Indexed Bytes Doubly Linked List\n    @param _list The source list\n    @param _collection_index Collection Index\n    @param _current_item The current item to be used as base line\n    @return {\"_item\":\"The previous item from the specified `_current_item`\"}\n  */\n  function read_previous_from_indexed_bytesarray(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index, bytes32 _current_item)\n           internal\n           constant\n           returns (bytes32 _item)\n  {\n    _item = _list.previous_item(_collection_index, _current_item);\n  }\n\n  /**\n    @notice Reads the list of Indexed Bytes and returns length of the list\n    @param _list The source list\n    @param _collection_index Index of the Collection to evaluate\n    @return {\"_count\":\"\"}\n  */\n  function read_total_indexed_bytesarray(DoublyLinkedList.IndexedBytes storage _list, bytes32 _collection_index)\n           internal\n           constant\n           returns (uint256 _count)\n  {\n    _count = _list.total(_collection_index);\n  }\n\n}\n",
+  "sourcePath": "/home/rohit/Develop/solidity-collections-library/contracts/abstract/IndexedBytesIteratorStorage.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/home/rohit/Develop/solidity-collections-library/contracts/abstract/IndexedBytesIteratorStorage.sol",
+      "exportedSymbols": {
+        "IndexedBytesIteratorStorage": [
+          3598
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".19"
+          ]
+        },
+        "id": 3502,
+        "name": "PragmaDirective",
+        "src": "0:24:16"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 9183,
+          "absolutePath": "/home/rohit/Develop/solidity-collections-library/contracts/lib/DoublyLinkedList.sol",
+          "file": "../lib/DoublyLinkedList.sol",
+          "scope": 3599,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 3503,
+        "name": "ImportDirective",
+        "src": "26:37:16"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title Indexed Bytes Iterator Storage\n@author DigixGlobal Pte Ltd\n@notice This contract utilizes: [Doubly Linked List](/DoublyLinkedList)",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            3598
+          ],
+          "name": "IndexedBytesIteratorStorage",
+          "scope": 3599
+        },
+        "children": [
+          {
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "DoublyLinkedList",
+                  "referencedDeclaration": 9182,
+                  "type": "library DoublyLinkedList"
+                },
+                "id": 3504,
+                "name": "UserDefinedTypeName",
+                "src": "264:16:16"
+              },
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "DoublyLinkedList.IndexedBytes",
+                  "referencedDeclaration": 6666,
+                  "type": "struct DoublyLinkedList.IndexedBytes storage pointer"
+                },
+                "id": 3505,
+                "name": "UserDefinedTypeName",
+                "src": "285:29:16"
+              }
+            ],
+            "id": 3506,
+            "name": "UsingForDirective",
+            "src": "258:57:16"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "read_first_from_indexed_bytesarray",
+              "payable": false,
+              "scope": 3598,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_list",
+                      "scope": 3523,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct DoublyLinkedList.IndexedBytes storage pointer",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "DoublyLinkedList.IndexedBytes",
+                          "referencedDeclaration": 6666,
+                          "type": "struct DoublyLinkedList.IndexedBytes storage pointer"
+                        },
+                        "id": 3507,
+                        "name": "UserDefinedTypeName",
+                        "src": "612:29:16"
+                      }
+                    ],
+                    "id": 3508,
+                    "name": "VariableDeclaration",
+                    "src": "612:43:16"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_collection_index",
+                      "scope": 3523,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3509,
+                        "name": "ElementaryTypeName",
+                        "src": "657:7:16"
+                      }
+                    ],
+                    "id": 3510,
+                    "name": "VariableDeclaration",
+                    "src": "657:25:16"
+                  }
+                ],
+                "id": 3511,
+                "name": "ParameterList",
+                "src": "611:72:16"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_item",
+                      "scope": 3523,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3512,
+                        "name": "ElementaryTypeName",
+                        "src": "744:7:16"
+                      }
+                    ],
+                    "id": 3513,
+                    "name": "VariableDeclaration",
+                    "src": "744:13:16"
+                  }
+                ],
+                "id": 3514,
+                "name": "ParameterList",
+                "src": "743:15:16"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bytes32"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3513,
+                              "type": "bytes32",
+                              "value": "_item"
+                            },
+                            "id": 3515,
+                            "name": "Identifier",
+                            "src": "767:5:16"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes32",
+                                      "typeString": "bytes32"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "start_item",
+                                  "referencedDeclaration": 8999,
+                                  "type": "function (struct DoublyLinkedList.IndexedBytes storage pointer,bytes32) view returns (bytes32)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3508,
+                                      "type": "struct DoublyLinkedList.IndexedBytes storage pointer",
+                                      "value": "_list"
+                                    },
+                                    "id": 3516,
+                                    "name": "Identifier",
+                                    "src": "775:5:16"
+                                  }
+                                ],
+                                "id": 3517,
+                                "name": "MemberAccess",
+                                "src": "775:16:16"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3510,
+                                  "type": "bytes32",
+                                  "value": "_collection_index"
+                                },
+                                "id": 3518,
+                                "name": "Identifier",
+                                "src": "792:17:16"
+                              }
+                            ],
+                            "id": 3519,
+                            "name": "FunctionCall",
+                            "src": "775:35:16"
+                          }
+                        ],
+                        "id": 3520,
+                        "name": "Assignment",
+                        "src": "767:43:16"
+                      }
+                    ],
+                    "id": 3521,
+                    "name": "ExpressionStatement",
+                    "src": "767:43:16"
+                  }
+                ],
+                "id": 3522,
+                "name": "Block",
+                "src": "761:54:16"
+              }
+            ],
+            "id": 3523,
+            "name": "FunctionDefinition",
+            "src": "568:247:16"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "read_last_from_indexed_bytesarray",
+              "payable": false,
+              "scope": 3598,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_list",
+                      "scope": 3540,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct DoublyLinkedList.IndexedBytes storage pointer",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "DoublyLinkedList.IndexedBytes",
+                          "referencedDeclaration": 6666,
+                          "type": "struct DoublyLinkedList.IndexedBytes storage pointer"
+                        },
+                        "id": 3524,
+                        "name": "UserDefinedTypeName",
+                        "src": "1109:29:16"
+                      }
+                    ],
+                    "id": 3525,
+                    "name": "VariableDeclaration",
+                    "src": "1109:43:16"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_collection_index",
+                      "scope": 3540,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3526,
+                        "name": "ElementaryTypeName",
+                        "src": "1154:7:16"
+                      }
+                    ],
+                    "id": 3527,
+                    "name": "VariableDeclaration",
+                    "src": "1154:25:16"
+                  }
+                ],
+                "id": 3528,
+                "name": "ParameterList",
+                "src": "1108:72:16"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_item",
+                      "scope": 3540,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3529,
+                        "name": "ElementaryTypeName",
+                        "src": "1241:7:16"
+                      }
+                    ],
+                    "id": 3530,
+                    "name": "VariableDeclaration",
+                    "src": "1241:13:16"
+                  }
+                ],
+                "id": 3531,
+                "name": "ParameterList",
+                "src": "1240:15:16"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bytes32"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3530,
+                              "type": "bytes32",
+                              "value": "_item"
+                            },
+                            "id": 3532,
+                            "name": "Identifier",
+                            "src": "1264:5:16"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes32",
+                                      "typeString": "bytes32"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "end_item",
+                                  "referencedDeclaration": 9039,
+                                  "type": "function (struct DoublyLinkedList.IndexedBytes storage pointer,bytes32) view returns (bytes32)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3525,
+                                      "type": "struct DoublyLinkedList.IndexedBytes storage pointer",
+                                      "value": "_list"
+                                    },
+                                    "id": 3533,
+                                    "name": "Identifier",
+                                    "src": "1272:5:16"
+                                  }
+                                ],
+                                "id": 3534,
+                                "name": "MemberAccess",
+                                "src": "1272:14:16"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3527,
+                                  "type": "bytes32",
+                                  "value": "_collection_index"
+                                },
+                                "id": 3535,
+                                "name": "Identifier",
+                                "src": "1287:17:16"
+                              }
+                            ],
+                            "id": 3536,
+                            "name": "FunctionCall",
+                            "src": "1272:33:16"
+                          }
+                        ],
+                        "id": 3537,
+                        "name": "Assignment",
+                        "src": "1264:41:16"
+                      }
+                    ],
+                    "id": 3538,
+                    "name": "ExpressionStatement",
+                    "src": "1264:41:16"
+                  }
+                ],
+                "id": 3539,
+                "name": "Block",
+                "src": "1258:52:16"
+              }
+            ],
+            "id": 3540,
+            "name": "FunctionDefinition",
+            "src": "1066:244:16"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "read_next_from_indexed_bytesarray",
+              "payable": false,
+              "scope": 3598,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_list",
+                      "scope": 3560,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct DoublyLinkedList.IndexedBytes storage pointer",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "DoublyLinkedList.IndexedBytes",
+                          "referencedDeclaration": 6666,
+                          "type": "struct DoublyLinkedList.IndexedBytes storage pointer"
+                        },
+                        "id": 3541,
+                        "name": "UserDefinedTypeName",
+                        "src": "1678:29:16"
+                      }
+                    ],
+                    "id": 3542,
+                    "name": "VariableDeclaration",
+                    "src": "1678:43:16"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_collection_index",
+                      "scope": 3560,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3543,
+                        "name": "ElementaryTypeName",
+                        "src": "1723:7:16"
+                      }
+                    ],
+                    "id": 3544,
+                    "name": "VariableDeclaration",
+                    "src": "1723:25:16"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_current_item",
+                      "scope": 3560,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3545,
+                        "name": "ElementaryTypeName",
+                        "src": "1750:7:16"
+                      }
+                    ],
+                    "id": 3546,
+                    "name": "VariableDeclaration",
+                    "src": "1750:21:16"
+                  }
+                ],
+                "id": 3547,
+                "name": "ParameterList",
+                "src": "1677:95:16"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_item",
+                      "scope": 3560,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3548,
+                        "name": "ElementaryTypeName",
+                        "src": "1833:7:16"
+                      }
+                    ],
+                    "id": 3549,
+                    "name": "VariableDeclaration",
+                    "src": "1833:13:16"
+                  }
+                ],
+                "id": 3550,
+                "name": "ParameterList",
+                "src": "1832:15:16"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bytes32"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3549,
+                              "type": "bytes32",
+                              "value": "_item"
+                            },
+                            "id": 3551,
+                            "name": "Identifier",
+                            "src": "1856:5:16"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes32",
+                                      "typeString": "bytes32"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_bytes32",
+                                      "typeString": "bytes32"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "next_item",
+                                  "referencedDeclaration": 9181,
+                                  "type": "function (struct DoublyLinkedList.IndexedBytes storage pointer,bytes32,bytes32) view returns (bytes32)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3542,
+                                      "type": "struct DoublyLinkedList.IndexedBytes storage pointer",
+                                      "value": "_list"
+                                    },
+                                    "id": 3552,
+                                    "name": "Identifier",
+                                    "src": "1864:5:16"
+                                  }
+                                ],
+                                "id": 3553,
+                                "name": "MemberAccess",
+                                "src": "1864:15:16"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3544,
+                                  "type": "bytes32",
+                                  "value": "_collection_index"
+                                },
+                                "id": 3554,
+                                "name": "Identifier",
+                                "src": "1880:17:16"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3546,
+                                  "type": "bytes32",
+                                  "value": "_current_item"
+                                },
+                                "id": 3555,
+                                "name": "Identifier",
+                                "src": "1899:13:16"
+                              }
+                            ],
+                            "id": 3556,
+                            "name": "FunctionCall",
+                            "src": "1864:49:16"
+                          }
+                        ],
+                        "id": 3557,
+                        "name": "Assignment",
+                        "src": "1856:57:16"
+                      }
+                    ],
+                    "id": 3558,
+                    "name": "ExpressionStatement",
+                    "src": "1856:57:16"
+                  }
+                ],
+                "id": 3559,
+                "name": "Block",
+                "src": "1850:68:16"
+              }
+            ],
+            "id": 3560,
+            "name": "FunctionDefinition",
+            "src": "1635:283:16"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "read_previous_from_indexed_bytesarray",
+              "payable": false,
+              "scope": 3598,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_list",
+                      "scope": 3580,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct DoublyLinkedList.IndexedBytes storage pointer",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "DoublyLinkedList.IndexedBytes",
+                          "referencedDeclaration": 6666,
+                          "type": "struct DoublyLinkedList.IndexedBytes storage pointer"
+                        },
+                        "id": 3561,
+                        "name": "UserDefinedTypeName",
+                        "src": "2279:29:16"
+                      }
+                    ],
+                    "id": 3562,
+                    "name": "VariableDeclaration",
+                    "src": "2279:43:16"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_collection_index",
+                      "scope": 3580,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3563,
+                        "name": "ElementaryTypeName",
+                        "src": "2324:7:16"
+                      }
+                    ],
+                    "id": 3564,
+                    "name": "VariableDeclaration",
+                    "src": "2324:25:16"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_current_item",
+                      "scope": 3580,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3565,
+                        "name": "ElementaryTypeName",
+                        "src": "2351:7:16"
+                      }
+                    ],
+                    "id": 3566,
+                    "name": "VariableDeclaration",
+                    "src": "2351:21:16"
+                  }
+                ],
+                "id": 3567,
+                "name": "ParameterList",
+                "src": "2278:95:16"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_item",
+                      "scope": 3580,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3568,
+                        "name": "ElementaryTypeName",
+                        "src": "2434:7:16"
+                      }
+                    ],
+                    "id": 3569,
+                    "name": "VariableDeclaration",
+                    "src": "2434:13:16"
+                  }
+                ],
+                "id": 3570,
+                "name": "ParameterList",
+                "src": "2433:15:16"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bytes32"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3569,
+                              "type": "bytes32",
+                              "value": "_item"
+                            },
+                            "id": 3571,
+                            "name": "Identifier",
+                            "src": "2457:5:16"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes32",
+                                      "typeString": "bytes32"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_bytes32",
+                                      "typeString": "bytes32"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "previous_item",
+                                  "referencedDeclaration": 9133,
+                                  "type": "function (struct DoublyLinkedList.IndexedBytes storage pointer,bytes32,bytes32) view returns (bytes32)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3562,
+                                      "type": "struct DoublyLinkedList.IndexedBytes storage pointer",
+                                      "value": "_list"
+                                    },
+                                    "id": 3572,
+                                    "name": "Identifier",
+                                    "src": "2465:5:16"
+                                  }
+                                ],
+                                "id": 3573,
+                                "name": "MemberAccess",
+                                "src": "2465:19:16"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3564,
+                                  "type": "bytes32",
+                                  "value": "_collection_index"
+                                },
+                                "id": 3574,
+                                "name": "Identifier",
+                                "src": "2485:17:16"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3566,
+                                  "type": "bytes32",
+                                  "value": "_current_item"
+                                },
+                                "id": 3575,
+                                "name": "Identifier",
+                                "src": "2504:13:16"
+                              }
+                            ],
+                            "id": 3576,
+                            "name": "FunctionCall",
+                            "src": "2465:53:16"
+                          }
+                        ],
+                        "id": 3577,
+                        "name": "Assignment",
+                        "src": "2457:61:16"
+                      }
+                    ],
+                    "id": 3578,
+                    "name": "ExpressionStatement",
+                    "src": "2457:61:16"
+                  }
+                ],
+                "id": 3579,
+                "name": "Block",
+                "src": "2451:72:16"
+              }
+            ],
+            "id": 3580,
+            "name": "FunctionDefinition",
+            "src": "2232:291:16"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "read_total_indexed_bytesarray",
+              "payable": false,
+              "scope": 3598,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_list",
+                      "scope": 3597,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct DoublyLinkedList.IndexedBytes storage pointer",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "DoublyLinkedList.IndexedBytes",
+                          "referencedDeclaration": 6666,
+                          "type": "struct DoublyLinkedList.IndexedBytes storage pointer"
+                        },
+                        "id": 3581,
+                        "name": "UserDefinedTypeName",
+                        "src": "2776:29:16"
+                      }
+                    ],
+                    "id": 3582,
+                    "name": "VariableDeclaration",
+                    "src": "2776:43:16"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_collection_index",
+                      "scope": 3597,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3583,
+                        "name": "ElementaryTypeName",
+                        "src": "2821:7:16"
+                      }
+                    ],
+                    "id": 3584,
+                    "name": "VariableDeclaration",
+                    "src": "2821:25:16"
+                  }
+                ],
+                "id": 3585,
+                "name": "ParameterList",
+                "src": "2775:72:16"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_count",
+                      "scope": 3597,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3586,
+                        "name": "ElementaryTypeName",
+                        "src": "2908:7:16"
+                      }
+                    ],
+                    "id": 3587,
+                    "name": "VariableDeclaration",
+                    "src": "2908:14:16"
+                  }
+                ],
+                "id": 3588,
+                "name": "ParameterList",
+                "src": "2907:16:16"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3587,
+                              "type": "uint256",
+                              "value": "_count"
+                            },
+                            "id": 3589,
+                            "name": "Identifier",
+                            "src": "2932:6:16"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "uint256",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes32",
+                                      "typeString": "bytes32"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "total",
+                                  "referencedDeclaration": 8959,
+                                  "type": "function (struct DoublyLinkedList.IndexedBytes storage pointer,bytes32) view returns (uint256)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3582,
+                                      "type": "struct DoublyLinkedList.IndexedBytes storage pointer",
+                                      "value": "_list"
+                                    },
+                                    "id": 3590,
+                                    "name": "Identifier",
+                                    "src": "2941:5:16"
+                                  }
+                                ],
+                                "id": 3591,
+                                "name": "MemberAccess",
+                                "src": "2941:11:16"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3584,
+                                  "type": "bytes32",
+                                  "value": "_collection_index"
+                                },
+                                "id": 3592,
+                                "name": "Identifier",
+                                "src": "2953:17:16"
+                              }
+                            ],
+                            "id": 3593,
+                            "name": "FunctionCall",
+                            "src": "2941:30:16"
+                          }
+                        ],
+                        "id": 3594,
+                        "name": "Assignment",
+                        "src": "2932:39:16"
+                      }
+                    ],
+                    "id": 3595,
+                    "name": "ExpressionStatement",
+                    "src": "2932:39:16"
+                  }
+                ],
+                "id": 3596,
+                "name": "Block",
+                "src": "2926:50:16"
+              }
+            ],
+            "id": 3597,
+            "name": "FunctionDefinition",
+            "src": "2737:239:16"
+          }
+        ],
+        "id": 3598,
+        "name": "ContractDefinition",
+        "src": "216:2763:16"
+      }
+    ],
+    "id": 3599,
+    "name": "SourceUnit",
+    "src": "0:2980:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
   "networks": {},
-  "schema_version": "0.0.5",
-  "updated_at": 1508746208598
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-03-07T03:38:46.679Z"
 }

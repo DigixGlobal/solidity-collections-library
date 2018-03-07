@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
 import './lib/DoublyLinkedList.sol';
 
@@ -11,12 +11,12 @@ contract TestLibraryBytes {
   DoublyLinkedList.Bytes testData;
 
   /// @notice Deletes the `testData` values
-  function setup_reset_data () {
+  function setup_reset_data () public {
     delete testData;
   }
 
   /// @notice Setups `testData` values for testing
-  function setup_data_for_testing () {
+  function setup_data_for_testing () public {
       delete testData;
       testData.append('test1');
       testData.append('test2');
@@ -30,7 +30,7 @@ contract TestLibraryBytes {
   @notice Returns the total number of collection in `testData.data`
   @return {"_count": "The total number of collection in `testData.data`"}
   */
-  function test_check_collection_count () returns (uint256 _count) {
+  function test_check_collection_count () public constant returns (uint256 _count) {
     _count = testData.data.collection.length;
   }
 
@@ -38,7 +38,7 @@ contract TestLibraryBytes {
   @notice Returns the first index of `testData.data`
   @return {"_first_index": "First index of `testData.data`"}
   */
-  function test_check_first_index () returns (uint256 _first_index) {
+  function test_check_first_index () public constant returns (uint256 _first_index) {
     _first_index = testData.data.first_index;
   }
 
@@ -46,7 +46,7 @@ contract TestLibraryBytes {
   @notice Returns the last index of `testData.data`
   @return {"_first_index": "Last index of `testData.data`"}
   */
-  function test_check_last_index () returns (uint256 _last_index) {
+  function test_check_last_index () public constant returns (uint256 _last_index) {
     _last_index = testData.data.last_index;
   }
 
@@ -54,7 +54,7 @@ contract TestLibraryBytes {
   @notice Returns the total number of items in `testData.data`
   @return {"_count": "Total number of items in `testData.data`"}
   */
-  function test_check_count () returns (uint256 _count) {
+  function test_check_count () public constant returns (uint256 _count) {
     _count = testData.data.count;
   }
 
@@ -63,7 +63,7 @@ contract TestLibraryBytes {
   @param _item_index Starting index of the item
   @return {"_previous_index": "Index of the previous item of `testData.data`"}
   */
-  function test_item_previous_index (uint256 _item_index) returns (uint256 _previous_index) {
+  function test_item_previous_index (uint256 _item_index) public constant returns (uint256 _previous_index) {
     _previous_index = testData.data.collection[_item_index-1].previous_index;
   }
 
@@ -72,7 +72,7 @@ contract TestLibraryBytes {
   @param _item_index Starting index of the item
   @return {"_next_index": "Index of the next item of `testData.data`"}
   */
-  function test_item_next_index (uint256 _item_index) returns (uint256 _next_index) {
+  function test_item_next_index (uint256 _item_index) public constant returns (uint256 _next_index) {
     _next_index = testData.data.collection[_item_index-1].next_index;
   }
 
@@ -95,6 +95,8 @@ contract TestLibraryBytes {
   @return {"_item": "Item of the given `_item_index` in `testData`"}
   */
   function test_get(uint256 _item_index)
+           public
+           constant
            returns (bytes32 _item)
   {
     _item = testData.get(_item_index);
@@ -106,6 +108,7 @@ contract TestLibraryBytes {
   @return {"_success": "If appending of `data` is successful"}
   */
   function test_append(bytes32 _data)
+           public
            returns (bool _success)
   {
     _success = testData.append(_data);
@@ -117,6 +120,7 @@ contract TestLibraryBytes {
   @return {"_success": "If removing of the `_index` is successful"}
   */
   function test_remove(uint256 _index)
+           public
            returns (bool _success)
   {
     _success = testData.remove(_index);
@@ -128,6 +132,7 @@ contract TestLibraryBytes {
   @return {"_success": "If removing of the `_item` is successful"}
   */
   function test_remove_item(bytes32 _item)
+           public
            returns (bool _success)
   {
     _success = testData.remove_item(_item);
@@ -138,6 +143,8 @@ contract TestLibraryBytes {
   @return {"_total_count": "Total number of items in `testData`"}
   */
   function test_total ()
+           public
+           constant
            returns (uint256 _total_count)
   {
     _total_count = testData.total();
@@ -148,6 +155,8 @@ contract TestLibraryBytes {
   @return {"_start_index": "Index of the first item in `testData`"}
   */
   function test_start ()
+           public
+           constant
            returns (uint256 _start_index)
   {
     _start_index = testData.start();
@@ -158,6 +167,8 @@ contract TestLibraryBytes {
   @return {"_item": "First item of `testData`"}
   */
   function test_start_item ()
+           public
+           constant
            returns (bytes32 _item)
   {
     _item = testData.start_item();
@@ -168,6 +179,8 @@ contract TestLibraryBytes {
   @return {"_end_index": "Index of the list item in `testData`"}
   */
   function test_end ()
+           public
+           constant
            returns (uint256 _end_index)
   {
     _end_index = testData.end();
@@ -178,6 +191,8 @@ contract TestLibraryBytes {
   @return {"_item": "Last item of `testData`"}
   */
   function test_end_item ()
+           public
+           constant
            returns (bytes32 _item)
   {
     _item = testData.end_item();
@@ -189,6 +204,8 @@ contract TestLibraryBytes {
   @return {"_yes": "If `_item_index` is a valid index in `testData`"}
   */
   function test_valid(uint256 _item_index)
+           public
+           constant
            returns (bool _yes)
   {
     _yes = testData.valid(_item_index);
@@ -200,6 +217,8 @@ contract TestLibraryBytes {
   @return {"_yes": "If `_item` is a valid item in `testData`"}
   */
   function test_valid_item(bytes32 _item)
+           public
+           constant
            returns (bool _yes)
   {
     _yes = testData.valid_item(_item);
@@ -211,6 +230,8 @@ contract TestLibraryBytes {
   @return {"_previous_index": "Previous index of `testData`"}
   */
   function test_previous(uint256 _current_index)
+           public
+           constant
            returns (uint256 _previous_index)
   {
     _previous_index = testData.previous(_current_index);
@@ -222,6 +243,8 @@ contract TestLibraryBytes {
   @return {"_previous_item": "Previous item of `testData`"}
   */
   function test_previous_item(bytes32 _current_item)
+           public
+           constant
            returns (bytes32 _previous_item)
   {
     _previous_item = testData.previous_item(_current_item);
@@ -233,6 +256,8 @@ contract TestLibraryBytes {
   @return {"_next_index": "Next index of `testData`"}
   */
   function test_next(uint256 _current_index)
+           public
+           constant
            returns (uint256 _next_index)
   {
     _next_index = testData.next(_current_index);
@@ -244,6 +269,8 @@ contract TestLibraryBytes {
   @return {"_next_item": "Next item of `testData`"}
   */
   function test_next_item(bytes32 _current_item)
+           public
+           constant
            returns (bytes32 _next_item)
   {
     _next_item = testData.next_item(_current_item);

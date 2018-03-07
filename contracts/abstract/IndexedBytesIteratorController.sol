@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
 import "./IndexedBytesIteratorStorage.sol";
 
@@ -51,7 +51,7 @@ contract IndexedBytesIteratorController {
   {
     _item = _function(_collection_index, _current_item);
   }
-  
+
   /**
     @notice Gets the previous item from an indexed Bytes Doubly Linked List using the spcified `_current_item`
     @param _function Function that returns the previous item in the collection

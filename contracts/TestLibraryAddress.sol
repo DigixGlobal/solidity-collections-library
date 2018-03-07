@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity ^0.4.19;
 
 import './lib/DoublyLinkedList.sol';
 
@@ -11,27 +11,28 @@ contract TestLibraryAddress {
   DoublyLinkedList.Address testData;
 
   /// @notice Deletes the `testData` values
-  function setup_reset_data () {
+  function setup_reset_data () public {
     delete testData;
   }
 
   /// @notice Setups `testData` values for testing
   function setup_data_for_testing ()
+           public
   {
       delete testData;
-      testData.append(address(0x249b1bf054d2b2643a0e38948aa92ccb6c2ccd7e));
-      testData.append(address(0x1cd24e853af2027df542551f393b1bd0db2f1a03));
-      testData.append(address(0x54e3872db39fc3a1fa018688bff59dd6409b0a23));
-      testData.append(address(0x4db089d50f72996895dc4224c8c6fae0f104bc1d));
-      testData.append(address(0x74cd5f20ee949189bdc83f7f6088063eb7fdcc86));
-      testData.append(address(0xa1fada6e4f11770a672ca678d6290b311f53c256));
+      testData.append(address(0x249B1bF054d2b2643A0E38948aa92ccb6c2CCD7E));
+      testData.append(address(0x1Cd24e853aF2027dF542551f393b1bD0DB2f1a03));
+      testData.append(address(0x54E3872Db39FC3A1Fa018688bfF59dd6409B0a23));
+      testData.append(address(0x4DB089D50f72996895DC4224c8C6FaE0f104bc1D));
+      testData.append(address(0x74cD5f20eE949189bdc83F7F6088063EB7fdcc86));
+      testData.append(address(0xa1FADA6e4F11770A672Ca678d6290b311f53c256));
   }
 
   /**
   @notice Returns the total number of collection in `testData.data`
   @return {"_count": "The total number of collection in `testData.data`"}
   */
-  function test_check_collection_count () returns (uint256 _count) {
+  function test_check_collection_count () public constant returns (uint256 _count) {
     _count = testData.data.collection.length;
   }
 
@@ -39,7 +40,7 @@ contract TestLibraryAddress {
   @notice Returns the first index of `testData.data`
   @return {"_first_index": "First index of `testData.data`"}
   */
-  function test_check_first_index () returns (uint256 _first_index) {
+  function test_check_first_index () public constant returns (uint256 _first_index) {
     _first_index = testData.data.first_index;
   }
 
@@ -47,7 +48,7 @@ contract TestLibraryAddress {
   @notice Returns the last index of `testData.data`
   @return {"_first_index": "Last index of `testData.data`"}
   */
-  function test_check_last_index () returns (uint256 _last_index) {
+  function test_check_last_index () public constant returns (uint256 _last_index) {
     _last_index = testData.data.last_index;
   }
 
@@ -55,7 +56,7 @@ contract TestLibraryAddress {
   @notice Returns the total number of items in `testData.data`
   @return {"_count": "Total number of items in `testData.data`"}
   */
-  function test_check_count () returns (uint256 _count) {
+  function test_check_count () public constant returns (uint256 _count) {
     _count = testData.data.count;
   }
 
@@ -64,7 +65,7 @@ contract TestLibraryAddress {
   @param _item_index Starting index of the item
   @return {"_previous_index": "Index of the previous item of `testData.data`"}
   */
-  function test_item_previous_index (uint256 _item_index) returns (uint256 _previous_index) {
+  function test_item_previous_index (uint256 _item_index) public constant returns (uint256 _previous_index) {
     _previous_index = testData.data.collection[_item_index-1].previous_index;
   }
 
@@ -73,7 +74,7 @@ contract TestLibraryAddress {
   @param _item_index Starting index of the item
   @return {"_next_index": "Index of the next item of `testData.data`"}
   */
-  function test_item_next_index (uint256 _item_index) returns (uint256 _next_index) {
+  function test_item_next_index (uint256 _item_index) public constant returns (uint256 _next_index) {
     _next_index = testData.data.collection[_item_index-1].next_index;
   }
 
@@ -96,6 +97,8 @@ contract TestLibraryAddress {
   @return {"_item": "Item of the given `_item_index` in `testData`"}
   */
   function test_get(uint256 _item_index)
+           public
+           constant
            returns (address _item)
   {
     _item = testData.get(_item_index);
@@ -107,6 +110,7 @@ contract TestLibraryAddress {
   @return {"_success": "If appending of `data` is successful"}
   */
   function test_append(address _data)
+           public
            returns (bool _success)
   {
     _success = testData.append(_data);
@@ -118,6 +122,7 @@ contract TestLibraryAddress {
   @return {"_success": "If removing of the `_index` is successful"}
   */
   function test_remove(uint256 _index)
+           public
            returns (bool _success)
   {
     _success = testData.remove(_index);
@@ -129,6 +134,7 @@ contract TestLibraryAddress {
   @return {"_success": "If removing of the `_item` is successful"}
   */
   function test_remove_item(address _item)
+           public
            returns (bool _success)
   {
     _success = testData.remove_item(_item);
@@ -139,6 +145,8 @@ contract TestLibraryAddress {
   @return {"_total_count": "Total number of items in `testData`"}
   */
   function test_total ()
+           public
+           constant
            returns (uint256 _total_count)
   {
     _total_count = testData.total();
@@ -149,6 +157,8 @@ contract TestLibraryAddress {
   @return {"_start_index": "Index of the first item in `testData`"}
   */
   function test_start ()
+           public
+           constant
            returns (uint256 _start_index)
   {
     _start_index = testData.start();
@@ -159,6 +169,8 @@ contract TestLibraryAddress {
   @return {"_item": "First item of `testData`"}
   */
   function test_start_item ()
+           public
+           constant
            returns (address _item)
   {
     _item = testData.start_item();
@@ -169,6 +181,8 @@ contract TestLibraryAddress {
   @return {"_end_index": "Index of the list item in `testData`"}
   */
   function test_end ()
+           public
+           constant
            returns (uint256 _end_index)
   {
     _end_index = testData.end();
@@ -179,6 +193,8 @@ contract TestLibraryAddress {
   @return {"_item": "Last item of `testData`"}
   */
   function test_end_item ()
+           public
+           constant
            returns (address _item)
   {
     _item = testData.end_item();
@@ -190,6 +206,8 @@ contract TestLibraryAddress {
   @return {"_yes": "If `_item_index` is a valid index in `testData`"}
   */
   function test_valid(uint256 _item_index)
+           public
+           constant
            returns (bool _yes)
   {
     _yes = testData.valid(_item_index);
@@ -201,6 +219,8 @@ contract TestLibraryAddress {
   @return {"_yes": "If `_item` is a valid item in `testData`"}
   */
   function test_valid_item(address _item)
+           public
+           constant
            returns (bool _yes)
   {
     _yes = testData.valid_item(_item);
@@ -212,6 +232,8 @@ contract TestLibraryAddress {
   @return {"_previous_index": "Previous index of `testData`"}
   */
   function test_previous(uint256 _current_index)
+           public
+           constant
            returns (uint256 _previous_index)
   {
     _previous_index = testData.previous(_current_index);
@@ -223,6 +245,8 @@ contract TestLibraryAddress {
   @return {"_previous_item": "Previous item of `testData`"}
   */
   function test_previous_item(address _current_item)
+           public
+           constant
            returns (address _previous_item)
   {
     _previous_item = testData.previous_item(_current_item);
@@ -234,6 +258,8 @@ contract TestLibraryAddress {
   @return {"_next_index": "Next index of `testData`"}
   */
   function test_next(uint256 _current_index)
+           public
+           constant
            returns (uint256 _next_index)
   {
     _next_index = testData.next(_current_index);
@@ -245,6 +271,8 @@ contract TestLibraryAddress {
   @return {"_next_item": "Next item of `testData`"}
   */
   function test_next_item(address _current_item)
+           public
+           constant
            returns (address _next_item)
   {
     _next_item = testData.next_item(_current_item);
