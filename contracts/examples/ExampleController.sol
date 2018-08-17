@@ -21,7 +21,7 @@ contract ExampleController is BytesIteratorController, AddressIteratorController
     @notice Constructor for ExampleController
     @param _storage Adress of storage to use
   */
-  function ExampleController(address _storage) public {
+  constructor(address _storage) public {
     storage_contract = _storage;
   }
 

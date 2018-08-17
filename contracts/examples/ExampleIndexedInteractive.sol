@@ -16,7 +16,7 @@ contract ExampleIndexedInteractive is IndexedBytesIteratorInteractive, IndexedAd
     @notice Constructor
     @param _controller The Controller to use
   */
-  function ExampleIndexedInteractive(address _controller) public {
+  constructor(address _controller) public {
     controller_contract = _controller;
   }
 

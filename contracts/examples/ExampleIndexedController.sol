@@ -25,7 +25,7 @@ contract ExampleIndexedController is IndexedBytesIteratorController, IndexedAddr
     @notice Constructor for ExampleIndexedController
     @param _storage Address of storage to use
   */
-  function ExampleIndexedController(address _storage) public {
+  constructor(address _storage) public {
     storage_contract = _storage;
   }
 

@@ -1,1302 +1,2349 @@
 {
   "contractName": "AddressIteratorController",
   "abi": [],
-  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820002e1fb0ef26227ab5979d5d1a2ab69ca749a32ae0d464d8fb1f1f5c56c0fa600029",
-  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820002e1fb0ef26227ab5979d5d1a2ab69ca749a32ae0d464d8fb1f1f5c56c0fa600029",
-  "sourceMap": "227:2131:5:-;;;;;;;;;;;;;;;;;",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a7230582034e563836cbb710decd515252347235cc2227ab2517b8eb9081b9e1bdaef17e60029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a7230582034e563836cbb710decd515252347235cc2227ab2517b8eb9081b9e1bdaef17e60029",
+  "sourceMap": "227:2131:5:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;227:2131:5;;;;;;;",
   "deployedSourceMap": "227:2131:5:-;;;;;",
   "source": "pragma solidity ^0.4.19;\n\nimport \"./AddressIteratorStorage.sol\";\n\n/**\n  @title Address Iterator Controller\n  @author DigixGlobal Pte Ltd\n  @notice This contract utilizes: [Address Iterator Storage](/AddressIteratorStorage)\n*/\n\ncontract AddressIteratorController {\n\n  /**\n\t  @notice Gets the first adddress from the list\n    @return {\"_item\": \"The first Address\"}\n  */\n  function get_first_from_addresses(function () constant external returns (address) _function)\n           internal\n           constant\n           returns (address _item)\n  {\n    _item = _function();\n  }\n\n  /**\n    @notice Gets the last address from the list\n    @return {\"_item\": \"The last Address\"}\n  */\n  function get_last_from_addresses(function () constant external returns (address) _function)\n           internal\n           constant\n           returns (address _item)\n  {\n    _item = _function();\n  }\n\n  /**\n    @notice Gets the next address from the list based on the specified `_current_item`\n    @param _function Function that returns the next address based on the specified `_current_item`\n    @param _current_item The current Address\n    @return {\"_item\": \"The last Address\"}\n  */\n  function get_next_from_addresses(function (address) constant external returns (address) _function, address _current_item)\n           internal\n           constant\n           returns (address _item)\n  {\n    _item = _function(_current_item);\n  }\n\n  /**\n    @notice Gets the previous address from the list based on the spcified `_current_item`\n    @param _function Function that returns the previous address based on the specified `_current_item`\n    @param _current_item  The current Address\n    @return {\"_item\": \"The last Address\"}\n  */\n  function get_previous_from_addresses(function (address) constant external returns (address) _function, address _current_item)\n           internal\n           constant\n           returns (address _item)\n  {\n    _item = _function(_current_item);\n  }\n\n  /**\n    @notice Gets the length (total number of addresses) of the list\n    @param _function Function that returns the length of the list\n    @return {\"_total_count\": \"Length of the list\"}\n  */\n  function get_total_addresses(function () constant external returns (uint256) _function)\n           internal\n           constant\n           returns (uint256 _total_count)\n  {\n    _total_count = _function();\n  }\n\n}\n",
   "sourcePath": "/home/rohit/Develop/solidity-collections-library/contracts/abstract/AddressIteratorController.sol",
   "ast": {
-    "attributes": {
-      "absolutePath": "/home/rohit/Develop/solidity-collections-library/contracts/abstract/AddressIteratorController.sol",
-      "exportedSymbols": {
-        "AddressIteratorController": [
-          1645
-        ]
-      }
+    "absolutePath": "/home/rohit/Develop/solidity-collections-library/contracts/abstract/AddressIteratorController.sol",
+    "exportedSymbols": {
+      "AddressIteratorController": [
+        1645
+      ]
     },
-    "children": [
+    "id": 1646,
+    "nodeType": "SourceUnit",
+    "nodes": [
       {
-        "attributes": {
-          "literals": [
-            "solidity",
-            "^",
-            "0.4",
-            ".19"
-          ]
-        },
         "id": 1548,
-        "name": "PragmaDirective",
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".19"
+        ],
+        "nodeType": "PragmaDirective",
         "src": "0:24:5"
       },
       {
-        "attributes": {
-          "SourceUnit": 2024,
-          "absolutePath": "/home/rohit/Develop/solidity-collections-library/contracts/abstract/AddressIteratorStorage.sol",
-          "file": "./AddressIteratorStorage.sol",
-          "scope": 1646,
-          "symbolAliases": [
-            null
-          ],
-          "unitAlias": ""
-        },
+        "absolutePath": "/home/rohit/Develop/solidity-collections-library/contracts/abstract/AddressIteratorStorage.sol",
+        "file": "./AddressIteratorStorage.sol",
         "id": 1549,
-        "name": "ImportDirective",
-        "src": "26:38:5"
+        "nodeType": "ImportDirective",
+        "scope": 1646,
+        "sourceUnit": 2024,
+        "src": "26:38:5",
+        "symbolAliases": [],
+        "unitAlias": ""
       },
       {
-        "attributes": {
-          "baseContracts": [
-            null
-          ],
-          "contractDependencies": [
-            null
-          ],
-          "contractKind": "contract",
-          "documentation": "@title Address Iterator Controller\n@author DigixGlobal Pte Ltd\n@notice This contract utilizes: [Address Iterator Storage](/AddressIteratorStorage)",
-          "fullyImplemented": true,
-          "linearizedBaseContracts": [
-            1645
-          ],
-          "name": "AddressIteratorController",
-          "scope": 1646
-        },
-        "children": [
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title Address Iterator Controller\n@author DigixGlobal Pte Ltd\n@notice This contract utilizes: [Address Iterator Storage](/AddressIteratorStorage)",
+        "fullyImplemented": true,
+        "id": 1645,
+        "linearizedBaseContracts": [
+          1645
+        ],
+        "name": "AddressIteratorController",
+        "nodeType": "ContractDefinition",
+        "nodes": [
           {
-            "attributes": {
-              "constant": true,
-              "implemented": true,
-              "isConstructor": false,
-              "modifiers": [
-                null
-              ],
-              "name": "get_first_from_addresses",
-              "payable": false,
-              "scope": 1645,
-              "stateMutability": "view",
-              "superFunction": null,
-              "visibility": "internal"
-            },
-            "children": [
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_function",
-                      "scope": 1566,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "function () view external returns (address)",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "constant": true,
-                          "payable": false,
-                          "stateMutability": "view",
-                          "type": "function () view external returns (address)",
-                          "visibility": "external"
-                        },
-                        "children": [
-                          {
-                            "attributes": {
-                              "parameters": [
-                                null
-                              ]
-                            },
-                            "children": [],
-                            "id": 1550,
-                            "name": "ParameterList",
-                            "src": "413:2:5"
-                          },
-                          {
-                            "children": [
-                              {
-                                "attributes": {
-                                  "constant": false,
-                                  "name": "",
-                                  "scope": 1566,
-                                  "stateVariable": false,
-                                  "storageLocation": "default",
-                                  "type": "address",
-                                  "value": null,
-                                  "visibility": "internal"
-                                },
-                                "children": [
-                                  {
-                                    "attributes": {
-                                      "name": "address",
-                                      "type": "address"
-                                    },
-                                    "id": 1551,
-                                    "name": "ElementaryTypeName",
-                                    "src": "443:7:5"
-                                  }
-                                ],
-                                "id": 1552,
-                                "name": "VariableDeclaration",
-                                "src": "443:7:5"
-                              }
-                            ],
-                            "id": 1553,
-                            "name": "ParameterList",
-                            "src": "442:9:5"
-                          }
-                        ],
-                        "id": 1554,
-                        "name": "FunctionTypeName",
-                        "src": "404:57:5"
-                      }
-                    ],
-                    "id": 1555,
-                    "name": "VariableDeclaration",
-                    "src": "404:57:5"
-                  }
-                ],
-                "id": 1556,
-                "name": "ParameterList",
-                "src": "403:59:5"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
+            "body": {
+              "id": 1565,
+              "nodeType": "Block",
+              "src": "540:30:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1563,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1560,
                       "name": "_item",
-                      "scope": 1566,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "address",
-                      "value": null,
-                      "visibility": "internal"
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1558,
+                      "src": "546:5:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
                     },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "address",
-                          "type": "address"
-                        },
-                        "id": 1557,
-                        "name": "ElementaryTypeName",
-                        "src": "523:7:5"
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 1561,
+                        "name": "_function",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1555,
+                        "src": "554:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                          "typeString": "function () view external returns (address)"
+                        }
+                      },
+                      "id": 1562,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "554:11:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
                       }
-                    ],
-                    "id": 1558,
-                    "name": "VariableDeclaration",
-                    "src": "523:13:5"
-                  }
-                ],
-                "id": 1559,
-                "name": "ParameterList",
-                "src": "522:15:5"
-              },
-              {
-                "children": [
-                  {
-                    "children": [
-                      {
-                        "attributes": {
-                          "argumentTypes": null,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "operator": "=",
-                          "type": "address"
-                        },
-                        "children": [
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "overloadedDeclarations": [
-                                null
-                              ],
-                              "referencedDeclaration": 1558,
-                              "type": "address",
-                              "value": "_item"
-                            },
-                            "id": 1560,
-                            "name": "Identifier",
-                            "src": "546:5:5"
-                          },
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "arguments": [
-                                null
-                              ],
-                              "isConstant": false,
-                              "isLValue": false,
-                              "isPure": false,
-                              "isStructConstructorCall": false,
-                              "lValueRequested": false,
-                              "names": [
-                                null
-                              ],
-                              "type": "address",
-                              "type_conversion": false
-                            },
-                            "children": [
-                              {
-                                "attributes": {
-                                  "argumentTypes": [
-                                    null
-                                  ],
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
-                                  "referencedDeclaration": 1555,
-                                  "type": "function () view external returns (address)",
-                                  "value": "_function"
-                                },
-                                "id": 1561,
-                                "name": "Identifier",
-                                "src": "554:9:5"
-                              }
-                            ],
-                            "id": 1562,
-                            "name": "FunctionCall",
-                            "src": "554:11:5"
-                          }
-                        ],
-                        "id": 1563,
-                        "name": "Assignment",
-                        "src": "546:19:5"
-                      }
-                    ],
-                    "id": 1564,
-                    "name": "ExpressionStatement",
-                    "src": "546:19:5"
-                  }
-                ],
-                "id": 1565,
-                "name": "Block",
-                "src": "540:30:5"
-              }
-            ],
+                    },
+                    "src": "546:19:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1564,
+                  "nodeType": "ExpressionStatement",
+                  "src": "546:19:5"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the first adddress from the list\n@return {\"_item\": \"The first Address\"}",
             "id": 1566,
-            "name": "FunctionDefinition",
-            "src": "370:200:5"
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get_first_from_addresses",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1556,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1555,
+                  "name": "_function",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1566,
+                  "src": "404:57:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                    "typeString": "function () view external returns (address)"
+                  },
+                  "typeName": {
+                    "id": 1554,
+                    "isDeclaredConst": true,
+                    "nodeType": "FunctionTypeName",
+                    "parameterTypes": {
+                      "id": 1550,
+                      "nodeType": "ParameterList",
+                      "parameters": [],
+                      "src": "413:2:5"
+                    },
+                    "payable": false,
+                    "returnParameterTypes": {
+                      "id": 1553,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1552,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1566,
+                          "src": "443:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "typeName": {
+                            "id": 1551,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "443:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "442:9:5"
+                    },
+                    "src": "404:57:5",
+                    "stateMutability": "view",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                      "typeString": "function () view external returns (address)"
+                    },
+                    "visibility": "external"
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "403:59:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1559,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1558,
+                  "name": "_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1566,
+                  "src": "523:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1557,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "523:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "522:15:5"
+            },
+            "scope": 1645,
+            "src": "370:200:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
           },
           {
-            "attributes": {
-              "constant": true,
-              "implemented": true,
-              "isConstructor": false,
-              "modifiers": [
-                null
-              ],
-              "name": "get_last_from_addresses",
-              "payable": false,
-              "scope": 1645,
-              "stateMutability": "view",
-              "superFunction": null,
-              "visibility": "internal"
-            },
-            "children": [
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_function",
-                      "scope": 1583,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "function () view external returns (address)",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "constant": true,
-                          "payable": false,
-                          "stateMutability": "view",
-                          "type": "function () view external returns (address)",
-                          "visibility": "external"
-                        },
-                        "children": [
-                          {
-                            "attributes": {
-                              "parameters": [
-                                null
-                              ]
-                            },
-                            "children": [],
-                            "id": 1567,
-                            "name": "ParameterList",
-                            "src": "717:2:5"
-                          },
-                          {
-                            "children": [
-                              {
-                                "attributes": {
-                                  "constant": false,
-                                  "name": "",
-                                  "scope": 1583,
-                                  "stateVariable": false,
-                                  "storageLocation": "default",
-                                  "type": "address",
-                                  "value": null,
-                                  "visibility": "internal"
-                                },
-                                "children": [
-                                  {
-                                    "attributes": {
-                                      "name": "address",
-                                      "type": "address"
-                                    },
-                                    "id": 1568,
-                                    "name": "ElementaryTypeName",
-                                    "src": "747:7:5"
-                                  }
-                                ],
-                                "id": 1569,
-                                "name": "VariableDeclaration",
-                                "src": "747:7:5"
-                              }
-                            ],
-                            "id": 1570,
-                            "name": "ParameterList",
-                            "src": "746:9:5"
-                          }
-                        ],
-                        "id": 1571,
-                        "name": "FunctionTypeName",
-                        "src": "708:57:5"
-                      }
-                    ],
-                    "id": 1572,
-                    "name": "VariableDeclaration",
-                    "src": "708:57:5"
-                  }
-                ],
-                "id": 1573,
-                "name": "ParameterList",
-                "src": "707:59:5"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
+            "body": {
+              "id": 1582,
+              "nodeType": "Block",
+              "src": "844:30:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1580,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1577,
                       "name": "_item",
-                      "scope": 1583,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "address",
-                      "value": null,
-                      "visibility": "internal"
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1575,
+                      "src": "850:5:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
                     },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "address",
-                          "type": "address"
-                        },
-                        "id": 1574,
-                        "name": "ElementaryTypeName",
-                        "src": "827:7:5"
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 1578,
+                        "name": "_function",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1572,
+                        "src": "858:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                          "typeString": "function () view external returns (address)"
+                        }
+                      },
+                      "id": 1579,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "858:11:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
                       }
-                    ],
-                    "id": 1575,
-                    "name": "VariableDeclaration",
-                    "src": "827:13:5"
-                  }
-                ],
-                "id": 1576,
-                "name": "ParameterList",
-                "src": "826:15:5"
-              },
-              {
-                "children": [
-                  {
-                    "children": [
-                      {
-                        "attributes": {
-                          "argumentTypes": null,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "operator": "=",
-                          "type": "address"
-                        },
-                        "children": [
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "overloadedDeclarations": [
-                                null
-                              ],
-                              "referencedDeclaration": 1575,
-                              "type": "address",
-                              "value": "_item"
-                            },
-                            "id": 1577,
-                            "name": "Identifier",
-                            "src": "850:5:5"
-                          },
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "arguments": [
-                                null
-                              ],
-                              "isConstant": false,
-                              "isLValue": false,
-                              "isPure": false,
-                              "isStructConstructorCall": false,
-                              "lValueRequested": false,
-                              "names": [
-                                null
-                              ],
-                              "type": "address",
-                              "type_conversion": false
-                            },
-                            "children": [
-                              {
-                                "attributes": {
-                                  "argumentTypes": [
-                                    null
-                                  ],
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
-                                  "referencedDeclaration": 1572,
-                                  "type": "function () view external returns (address)",
-                                  "value": "_function"
-                                },
-                                "id": 1578,
-                                "name": "Identifier",
-                                "src": "858:9:5"
-                              }
-                            ],
-                            "id": 1579,
-                            "name": "FunctionCall",
-                            "src": "858:11:5"
-                          }
-                        ],
-                        "id": 1580,
-                        "name": "Assignment",
-                        "src": "850:19:5"
-                      }
-                    ],
-                    "id": 1581,
-                    "name": "ExpressionStatement",
-                    "src": "850:19:5"
-                  }
-                ],
-                "id": 1582,
-                "name": "Block",
-                "src": "844:30:5"
-              }
-            ],
+                    },
+                    "src": "850:19:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1581,
+                  "nodeType": "ExpressionStatement",
+                  "src": "850:19:5"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the last address from the list\n@return {\"_item\": \"The last Address\"}",
             "id": 1583,
-            "name": "FunctionDefinition",
-            "src": "675:199:5"
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get_last_from_addresses",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1573,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1572,
+                  "name": "_function",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1583,
+                  "src": "708:57:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                    "typeString": "function () view external returns (address)"
+                  },
+                  "typeName": {
+                    "id": 1571,
+                    "isDeclaredConst": true,
+                    "nodeType": "FunctionTypeName",
+                    "parameterTypes": {
+                      "id": 1567,
+                      "nodeType": "ParameterList",
+                      "parameters": [],
+                      "src": "717:2:5"
+                    },
+                    "payable": false,
+                    "returnParameterTypes": {
+                      "id": 1570,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1569,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1583,
+                          "src": "747:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "typeName": {
+                            "id": 1568,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "747:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "746:9:5"
+                    },
+                    "src": "708:57:5",
+                    "stateMutability": "view",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                      "typeString": "function () view external returns (address)"
+                    },
+                    "visibility": "external"
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "707:59:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1576,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1575,
+                  "name": "_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1583,
+                  "src": "827:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1574,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "827:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "826:15:5"
+            },
+            "scope": 1645,
+            "src": "675:199:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
           },
           {
-            "attributes": {
-              "constant": true,
-              "implemented": true,
-              "isConstructor": false,
-              "modifiers": [
-                null
-              ],
-              "name": "get_next_from_addresses",
-              "payable": false,
-              "scope": 1645,
-              "stateMutability": "view",
-              "superFunction": null,
-              "visibility": "internal"
-            },
-            "children": [
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_function",
-                      "scope": 1605,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "function (address) view external returns (address)",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "constant": true,
-                          "payable": false,
-                          "stateMutability": "view",
-                          "type": "function (address) view external returns (address)",
-                          "visibility": "external"
-                        },
-                        "children": [
-                          {
-                            "children": [
-                              {
-                                "attributes": {
-                                  "constant": false,
-                                  "name": "",
-                                  "scope": 1605,
-                                  "stateVariable": false,
-                                  "storageLocation": "default",
-                                  "type": "address",
-                                  "value": null,
-                                  "visibility": "internal"
-                                },
-                                "children": [
-                                  {
-                                    "attributes": {
-                                      "name": "address",
-                                      "type": "address"
-                                    },
-                                    "id": 1584,
-                                    "name": "ElementaryTypeName",
-                                    "src": "1205:7:5"
-                                  }
-                                ],
-                                "id": 1585,
-                                "name": "VariableDeclaration",
-                                "src": "1205:7:5"
-                              }
-                            ],
-                            "id": 1586,
-                            "name": "ParameterList",
-                            "src": "1204:9:5"
-                          },
-                          {
-                            "children": [
-                              {
-                                "attributes": {
-                                  "constant": false,
-                                  "name": "",
-                                  "scope": 1605,
-                                  "stateVariable": false,
-                                  "storageLocation": "default",
-                                  "type": "address",
-                                  "value": null,
-                                  "visibility": "internal"
-                                },
-                                "children": [
-                                  {
-                                    "attributes": {
-                                      "name": "address",
-                                      "type": "address"
-                                    },
-                                    "id": 1587,
-                                    "name": "ElementaryTypeName",
-                                    "src": "1241:7:5"
-                                  }
-                                ],
-                                "id": 1588,
-                                "name": "VariableDeclaration",
-                                "src": "1241:7:5"
-                              }
-                            ],
-                            "id": 1589,
-                            "name": "ParameterList",
-                            "src": "1240:9:5"
-                          }
-                        ],
-                        "id": 1590,
-                        "name": "FunctionTypeName",
-                        "src": "1195:64:5"
-                      }
-                    ],
-                    "id": 1591,
-                    "name": "VariableDeclaration",
-                    "src": "1195:64:5"
-                  },
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_current_item",
-                      "scope": 1605,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "address",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "address",
-                          "type": "address"
-                        },
-                        "id": 1592,
-                        "name": "ElementaryTypeName",
-                        "src": "1261:7:5"
-                      }
-                    ],
-                    "id": 1593,
-                    "name": "VariableDeclaration",
-                    "src": "1261:21:5"
-                  }
-                ],
-                "id": 1594,
-                "name": "ParameterList",
-                "src": "1194:89:5"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
+            "body": {
+              "id": 1604,
+              "nodeType": "Block",
+              "src": "1361:43:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1602,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1598,
                       "name": "_item",
-                      "scope": 1605,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "address",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "address",
-                          "type": "address"
-                        },
-                        "id": 1595,
-                        "name": "ElementaryTypeName",
-                        "src": "1344:7:5"
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1596,
+                      "src": "1367:5:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
                       }
-                    ],
-                    "id": 1596,
-                    "name": "VariableDeclaration",
-                    "src": "1344:13:5"
-                  }
-                ],
-                "id": 1597,
-                "name": "ParameterList",
-                "src": "1343:15:5"
-              },
-              {
-                "children": [
-                  {
-                    "children": [
-                      {
-                        "attributes": {
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
                           "argumentTypes": null,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "operator": "=",
-                          "type": "address"
-                        },
-                        "children": [
+                          "id": 1600,
+                          "name": "_current_item",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1593,
+                          "src": "1385:13:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
                           {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "overloadedDeclarations": [
-                                null
-                              ],
-                              "referencedDeclaration": 1596,
-                              "type": "address",
-                              "value": "_item"
-                            },
-                            "id": 1598,
-                            "name": "Identifier",
-                            "src": "1367:5:5"
-                          },
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "isConstant": false,
-                              "isLValue": false,
-                              "isPure": false,
-                              "isStructConstructorCall": false,
-                              "lValueRequested": false,
-                              "names": [
-                                null
-                              ],
-                              "type": "address",
-                              "type_conversion": false
-                            },
-                            "children": [
-                              {
-                                "attributes": {
-                                  "argumentTypes": [
-                                    {
-                                      "typeIdentifier": "t_address",
-                                      "typeString": "address"
-                                    }
-                                  ],
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
-                                  "referencedDeclaration": 1591,
-                                  "type": "function (address) view external returns (address)",
-                                  "value": "_function"
-                                },
-                                "id": 1599,
-                                "name": "Identifier",
-                                "src": "1375:9:5"
-                              },
-                              {
-                                "attributes": {
-                                  "argumentTypes": null,
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
-                                  "referencedDeclaration": 1593,
-                                  "type": "address",
-                                  "value": "_current_item"
-                                },
-                                "id": 1600,
-                                "name": "Identifier",
-                                "src": "1385:13:5"
-                              }
-                            ],
-                            "id": 1601,
-                            "name": "FunctionCall",
-                            "src": "1375:24:5"
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
                           }
                         ],
-                        "id": 1602,
-                        "name": "Assignment",
-                        "src": "1367:32:5"
+                        "id": 1599,
+                        "name": "_function",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1591,
+                        "src": "1375:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                          "typeString": "function (address) view external returns (address)"
+                        }
+                      },
+                      "id": 1601,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1375:24:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
                       }
-                    ],
-                    "id": 1603,
-                    "name": "ExpressionStatement",
-                    "src": "1367:32:5"
-                  }
-                ],
-                "id": 1604,
-                "name": "Block",
-                "src": "1361:43:5"
-              }
-            ],
+                    },
+                    "src": "1367:32:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1603,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1367:32:5"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the next address from the list based on the specified `_current_item`\n@param _function Function that returns the next address based on the specified `_current_item`\n@param _current_item The current Address\n@return {\"_item\": \"The last Address\"}",
             "id": 1605,
-            "name": "FunctionDefinition",
-            "src": "1162:242:5"
-          },
-          {
-            "attributes": {
-              "constant": true,
-              "implemented": true,
-              "isConstructor": false,
-              "modifiers": [
-                null
-              ],
-              "name": "get_previous_from_addresses",
-              "payable": false,
-              "scope": 1645,
-              "stateMutability": "view",
-              "superFunction": null,
-              "visibility": "internal"
-            },
-            "children": [
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_function",
-                      "scope": 1627,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "function (address) view external returns (address)",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "constant": true,
-                          "payable": false,
-                          "stateMutability": "view",
-                          "type": "function (address) view external returns (address)",
-                          "visibility": "external"
-                        },
-                        "children": [
-                          {
-                            "children": [
-                              {
-                                "attributes": {
-                                  "constant": false,
-                                  "name": "",
-                                  "scope": 1627,
-                                  "stateVariable": false,
-                                  "storageLocation": "default",
-                                  "type": "address",
-                                  "value": null,
-                                  "visibility": "internal"
-                                },
-                                "children": [
-                                  {
-                                    "attributes": {
-                                      "name": "address",
-                                      "type": "address"
-                                    },
-                                    "id": 1606,
-                                    "name": "ElementaryTypeName",
-                                    "src": "1747:7:5"
-                                  }
-                                ],
-                                "id": 1607,
-                                "name": "VariableDeclaration",
-                                "src": "1747:7:5"
-                              }
-                            ],
-                            "id": 1608,
-                            "name": "ParameterList",
-                            "src": "1746:9:5"
-                          },
-                          {
-                            "children": [
-                              {
-                                "attributes": {
-                                  "constant": false,
-                                  "name": "",
-                                  "scope": 1627,
-                                  "stateVariable": false,
-                                  "storageLocation": "default",
-                                  "type": "address",
-                                  "value": null,
-                                  "visibility": "internal"
-                                },
-                                "children": [
-                                  {
-                                    "attributes": {
-                                      "name": "address",
-                                      "type": "address"
-                                    },
-                                    "id": 1609,
-                                    "name": "ElementaryTypeName",
-                                    "src": "1783:7:5"
-                                  }
-                                ],
-                                "id": 1610,
-                                "name": "VariableDeclaration",
-                                "src": "1783:7:5"
-                              }
-                            ],
-                            "id": 1611,
-                            "name": "ParameterList",
-                            "src": "1782:9:5"
-                          }
-                        ],
-                        "id": 1612,
-                        "name": "FunctionTypeName",
-                        "src": "1737:64:5"
-                      }
-                    ],
-                    "id": 1613,
-                    "name": "VariableDeclaration",
-                    "src": "1737:64:5"
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get_next_from_addresses",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1594,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1591,
+                  "name": "_function",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1605,
+                  "src": "1195:64:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                    "typeString": "function (address) view external returns (address)"
                   },
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_current_item",
-                      "scope": 1627,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "address",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "address",
-                          "type": "address"
-                        },
-                        "id": 1614,
-                        "name": "ElementaryTypeName",
-                        "src": "1803:7:5"
-                      }
-                    ],
-                    "id": 1615,
-                    "name": "VariableDeclaration",
-                    "src": "1803:21:5"
-                  }
-                ],
-                "id": 1616,
-                "name": "ParameterList",
-                "src": "1736:89:5"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_item",
-                      "scope": 1627,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "address",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "address",
-                          "type": "address"
-                        },
-                        "id": 1617,
-                        "name": "ElementaryTypeName",
-                        "src": "1886:7:5"
-                      }
-                    ],
-                    "id": 1618,
-                    "name": "VariableDeclaration",
-                    "src": "1886:13:5"
-                  }
-                ],
-                "id": 1619,
-                "name": "ParameterList",
-                "src": "1885:15:5"
-              },
-              {
-                "children": [
-                  {
-                    "children": [
-                      {
-                        "attributes": {
-                          "argumentTypes": null,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "operator": "=",
-                          "type": "address"
-                        },
-                        "children": [
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "overloadedDeclarations": [
-                                null
-                              ],
-                              "referencedDeclaration": 1618,
-                              "type": "address",
-                              "value": "_item"
-                            },
-                            "id": 1620,
-                            "name": "Identifier",
-                            "src": "1909:5:5"
+                  "typeName": {
+                    "id": 1590,
+                    "isDeclaredConst": true,
+                    "nodeType": "FunctionTypeName",
+                    "parameterTypes": {
+                      "id": 1586,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1585,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1605,
+                          "src": "1205:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
                           },
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "isConstant": false,
-                              "isLValue": false,
-                              "isPure": false,
-                              "isStructConstructorCall": false,
-                              "lValueRequested": false,
-                              "names": [
-                                null
-                              ],
-                              "type": "address",
-                              "type_conversion": false
-                            },
-                            "children": [
-                              {
-                                "attributes": {
-                                  "argumentTypes": [
-                                    {
-                                      "typeIdentifier": "t_address",
-                                      "typeString": "address"
-                                    }
-                                  ],
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
-                                  "referencedDeclaration": 1613,
-                                  "type": "function (address) view external returns (address)",
-                                  "value": "_function"
-                                },
-                                "id": 1621,
-                                "name": "Identifier",
-                                "src": "1917:9:5"
-                              },
-                              {
-                                "attributes": {
-                                  "argumentTypes": null,
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
-                                  "referencedDeclaration": 1615,
-                                  "type": "address",
-                                  "value": "_current_item"
-                                },
-                                "id": 1622,
-                                "name": "Identifier",
-                                "src": "1927:13:5"
-                              }
-                            ],
-                            "id": 1623,
-                            "name": "FunctionCall",
-                            "src": "1917:24:5"
-                          }
-                        ],
-                        "id": 1624,
-                        "name": "Assignment",
-                        "src": "1909:32:5"
-                      }
-                    ],
-                    "id": 1625,
-                    "name": "ExpressionStatement",
-                    "src": "1909:32:5"
-                  }
-                ],
-                "id": 1626,
-                "name": "Block",
-                "src": "1903:43:5"
-              }
-            ],
-            "id": 1627,
-            "name": "FunctionDefinition",
-            "src": "1700:246:5"
+                          "typeName": {
+                            "id": 1584,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1205:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "1204:9:5"
+                    },
+                    "payable": false,
+                    "returnParameterTypes": {
+                      "id": 1589,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1588,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1605,
+                          "src": "1241:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "typeName": {
+                            "id": 1587,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1241:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "1240:9:5"
+                    },
+                    "src": "1195:64:5",
+                    "stateMutability": "view",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                      "typeString": "function (address) view external returns (address)"
+                    },
+                    "visibility": "external"
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1593,
+                  "name": "_current_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1605,
+                  "src": "1261:21:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1592,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1261:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1194:89:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1597,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1596,
+                  "name": "_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1605,
+                  "src": "1344:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1595,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1344:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1343:15:5"
+            },
+            "scope": 1645,
+            "src": "1162:242:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
           },
           {
-            "attributes": {
-              "constant": true,
-              "implemented": true,
-              "isConstructor": false,
-              "modifiers": [
-                null
-              ],
-              "name": "get_total_addresses",
-              "payable": false,
-              "scope": 1645,
-              "stateMutability": "view",
-              "superFunction": null,
-              "visibility": "internal"
-            },
-            "children": [
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_function",
-                      "scope": 1644,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "function () view external returns (uint256)",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "constant": true,
-                          "payable": false,
-                          "stateMutability": "view",
-                          "type": "function () view external returns (uint256)",
-                          "visibility": "external"
-                        },
-                        "children": [
-                          {
-                            "attributes": {
-                              "parameters": [
-                                null
-                              ]
-                            },
-                            "children": [],
-                            "id": 1628,
-                            "name": "ParameterList",
-                            "src": "2184:2:5"
-                          },
-                          {
-                            "children": [
-                              {
-                                "attributes": {
-                                  "constant": false,
-                                  "name": "",
-                                  "scope": 1644,
-                                  "stateVariable": false,
-                                  "storageLocation": "default",
-                                  "type": "uint256",
-                                  "value": null,
-                                  "visibility": "internal"
-                                },
-                                "children": [
-                                  {
-                                    "attributes": {
-                                      "name": "uint256",
-                                      "type": "uint256"
-                                    },
-                                    "id": 1629,
-                                    "name": "ElementaryTypeName",
-                                    "src": "2214:7:5"
-                                  }
-                                ],
-                                "id": 1630,
-                                "name": "VariableDeclaration",
-                                "src": "2214:7:5"
-                              }
-                            ],
-                            "id": 1631,
-                            "name": "ParameterList",
-                            "src": "2213:9:5"
-                          }
-                        ],
-                        "id": 1632,
-                        "name": "FunctionTypeName",
-                        "src": "2175:57:5"
+            "body": {
+              "id": 1626,
+              "nodeType": "Block",
+              "src": "1903:43:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1624,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1620,
+                      "name": "_item",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1618,
+                      "src": "1909:5:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
                       }
-                    ],
-                    "id": 1633,
-                    "name": "VariableDeclaration",
-                    "src": "2175:57:5"
-                  }
-                ],
-                "id": 1634,
-                "name": "ParameterList",
-                "src": "2174:59:5"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "_total_count",
-                      "scope": 1644,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "uint256",
-                      "value": null,
-                      "visibility": "internal"
                     },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "uint256",
-                          "type": "uint256"
-                        },
-                        "id": 1635,
-                        "name": "ElementaryTypeName",
-                        "src": "2294:7:5"
-                      }
-                    ],
-                    "id": 1636,
-                    "name": "VariableDeclaration",
-                    "src": "2294:20:5"
-                  }
-                ],
-                "id": 1637,
-                "name": "ParameterList",
-                "src": "2293:22:5"
-              },
-              {
-                "children": [
-                  {
-                    "children": [
-                      {
-                        "attributes": {
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
                           "argumentTypes": null,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "operator": "=",
-                          "type": "uint256"
-                        },
-                        "children": [
+                          "id": 1622,
+                          "name": "_current_item",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1615,
+                          "src": "1927:13:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
                           {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "overloadedDeclarations": [
-                                null
-                              ],
-                              "referencedDeclaration": 1636,
-                              "type": "uint256",
-                              "value": "_total_count"
-                            },
-                            "id": 1638,
-                            "name": "Identifier",
-                            "src": "2324:12:5"
-                          },
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "arguments": [
-                                null
-                              ],
-                              "isConstant": false,
-                              "isLValue": false,
-                              "isPure": false,
-                              "isStructConstructorCall": false,
-                              "lValueRequested": false,
-                              "names": [
-                                null
-                              ],
-                              "type": "uint256",
-                              "type_conversion": false
-                            },
-                            "children": [
-                              {
-                                "attributes": {
-                                  "argumentTypes": [
-                                    null
-                                  ],
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
-                                  "referencedDeclaration": 1633,
-                                  "type": "function () view external returns (uint256)",
-                                  "value": "_function"
-                                },
-                                "id": 1639,
-                                "name": "Identifier",
-                                "src": "2339:9:5"
-                              }
-                            ],
-                            "id": 1640,
-                            "name": "FunctionCall",
-                            "src": "2339:11:5"
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
                           }
                         ],
-                        "id": 1641,
-                        "name": "Assignment",
-                        "src": "2324:26:5"
+                        "id": 1621,
+                        "name": "_function",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1613,
+                        "src": "1917:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                          "typeString": "function (address) view external returns (address)"
+                        }
+                      },
+                      "id": 1623,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1917:24:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
                       }
-                    ],
-                    "id": 1642,
-                    "name": "ExpressionStatement",
-                    "src": "2324:26:5"
-                  }
-                ],
-                "id": 1643,
-                "name": "Block",
-                "src": "2318:37:5"
-              }
-            ],
+                    },
+                    "src": "1909:32:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1625,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1909:32:5"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the previous address from the list based on the spcified `_current_item`\n@param _function Function that returns the previous address based on the specified `_current_item`\n@param _current_item  The current Address\n@return {\"_item\": \"The last Address\"}",
+            "id": 1627,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get_previous_from_addresses",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1616,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1613,
+                  "name": "_function",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1627,
+                  "src": "1737:64:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                    "typeString": "function (address) view external returns (address)"
+                  },
+                  "typeName": {
+                    "id": 1612,
+                    "isDeclaredConst": true,
+                    "nodeType": "FunctionTypeName",
+                    "parameterTypes": {
+                      "id": 1608,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1607,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1627,
+                          "src": "1747:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "typeName": {
+                            "id": 1606,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1747:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "1746:9:5"
+                    },
+                    "payable": false,
+                    "returnParameterTypes": {
+                      "id": 1611,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1610,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1627,
+                          "src": "1783:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "typeName": {
+                            "id": 1609,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1783:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "1782:9:5"
+                    },
+                    "src": "1737:64:5",
+                    "stateMutability": "view",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                      "typeString": "function (address) view external returns (address)"
+                    },
+                    "visibility": "external"
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1615,
+                  "name": "_current_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1627,
+                  "src": "1803:21:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1614,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1803:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1736:89:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1619,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1618,
+                  "name": "_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1627,
+                  "src": "1886:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1617,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1886:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1885:15:5"
+            },
+            "scope": 1645,
+            "src": "1700:246:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1643,
+              "nodeType": "Block",
+              "src": "2318:37:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1641,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1638,
+                      "name": "_total_count",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1636,
+                      "src": "2324:12:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 1639,
+                        "name": "_function",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1633,
+                        "src": "2339:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                          "typeString": "function () view external returns (uint256)"
+                        }
+                      },
+                      "id": 1640,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2339:11:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "2324:26:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1642,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2324:26:5"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the length (total number of addresses) of the list\n@param _function Function that returns the length of the list\n@return {\"_total_count\": \"Length of the list\"}",
             "id": 1644,
-            "name": "FunctionDefinition",
-            "src": "2146:209:5"
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get_total_addresses",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1634,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1633,
+                  "name": "_function",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1644,
+                  "src": "2175:57:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                    "typeString": "function () view external returns (uint256)"
+                  },
+                  "typeName": {
+                    "id": 1632,
+                    "isDeclaredConst": true,
+                    "nodeType": "FunctionTypeName",
+                    "parameterTypes": {
+                      "id": 1628,
+                      "nodeType": "ParameterList",
+                      "parameters": [],
+                      "src": "2184:2:5"
+                    },
+                    "payable": false,
+                    "returnParameterTypes": {
+                      "id": 1631,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1630,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1644,
+                          "src": "2214:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "typeName": {
+                            "id": 1629,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "2214:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "2213:9:5"
+                    },
+                    "src": "2175:57:5",
+                    "stateMutability": "view",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                      "typeString": "function () view external returns (uint256)"
+                    },
+                    "visibility": "external"
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2174:59:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1637,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1636,
+                  "name": "_total_count",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1644,
+                  "src": "2294:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1635,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2294:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2293:22:5"
+            },
+            "scope": 1645,
+            "src": "2146:209:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
           }
         ],
-        "id": 1645,
-        "name": "ContractDefinition",
+        "scope": 1646,
         "src": "227:2131:5"
       }
     ],
+    "src": "0:2359:5"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/rohit/Develop/solidity-collections-library/contracts/abstract/AddressIteratorController.sol",
+    "exportedSymbols": {
+      "AddressIteratorController": [
+        1645
+      ]
+    },
     "id": 1646,
-    "name": "SourceUnit",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1548,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".19"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:5"
+      },
+      {
+        "absolutePath": "/home/rohit/Develop/solidity-collections-library/contracts/abstract/AddressIteratorStorage.sol",
+        "file": "./AddressIteratorStorage.sol",
+        "id": 1549,
+        "nodeType": "ImportDirective",
+        "scope": 1646,
+        "sourceUnit": 2024,
+        "src": "26:38:5",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title Address Iterator Controller\n@author DigixGlobal Pte Ltd\n@notice This contract utilizes: [Address Iterator Storage](/AddressIteratorStorage)",
+        "fullyImplemented": true,
+        "id": 1645,
+        "linearizedBaseContracts": [
+          1645
+        ],
+        "name": "AddressIteratorController",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 1565,
+              "nodeType": "Block",
+              "src": "540:30:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1563,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1560,
+                      "name": "_item",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1558,
+                      "src": "546:5:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 1561,
+                        "name": "_function",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1555,
+                        "src": "554:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                          "typeString": "function () view external returns (address)"
+                        }
+                      },
+                      "id": 1562,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "554:11:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "546:19:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1564,
+                  "nodeType": "ExpressionStatement",
+                  "src": "546:19:5"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the first adddress from the list\n@return {\"_item\": \"The first Address\"}",
+            "id": 1566,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get_first_from_addresses",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1556,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1555,
+                  "name": "_function",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1566,
+                  "src": "404:57:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                    "typeString": "function () view external returns (address)"
+                  },
+                  "typeName": {
+                    "id": 1554,
+                    "isDeclaredConst": true,
+                    "nodeType": "FunctionTypeName",
+                    "parameterTypes": {
+                      "id": 1550,
+                      "nodeType": "ParameterList",
+                      "parameters": [],
+                      "src": "413:2:5"
+                    },
+                    "payable": false,
+                    "returnParameterTypes": {
+                      "id": 1553,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1552,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1566,
+                          "src": "443:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "typeName": {
+                            "id": 1551,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "443:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "442:9:5"
+                    },
+                    "src": "404:57:5",
+                    "stateMutability": "view",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                      "typeString": "function () view external returns (address)"
+                    },
+                    "visibility": "external"
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "403:59:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1559,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1558,
+                  "name": "_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1566,
+                  "src": "523:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1557,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "523:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "522:15:5"
+            },
+            "scope": 1645,
+            "src": "370:200:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1582,
+              "nodeType": "Block",
+              "src": "844:30:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1580,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1577,
+                      "name": "_item",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1575,
+                      "src": "850:5:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 1578,
+                        "name": "_function",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1572,
+                        "src": "858:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                          "typeString": "function () view external returns (address)"
+                        }
+                      },
+                      "id": 1579,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "858:11:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "850:19:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1581,
+                  "nodeType": "ExpressionStatement",
+                  "src": "850:19:5"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the last address from the list\n@return {\"_item\": \"The last Address\"}",
+            "id": 1583,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get_last_from_addresses",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1573,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1572,
+                  "name": "_function",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1583,
+                  "src": "708:57:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                    "typeString": "function () view external returns (address)"
+                  },
+                  "typeName": {
+                    "id": 1571,
+                    "isDeclaredConst": true,
+                    "nodeType": "FunctionTypeName",
+                    "parameterTypes": {
+                      "id": 1567,
+                      "nodeType": "ParameterList",
+                      "parameters": [],
+                      "src": "717:2:5"
+                    },
+                    "payable": false,
+                    "returnParameterTypes": {
+                      "id": 1570,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1569,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1583,
+                          "src": "747:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "typeName": {
+                            "id": 1568,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "747:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "746:9:5"
+                    },
+                    "src": "708:57:5",
+                    "stateMutability": "view",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                      "typeString": "function () view external returns (address)"
+                    },
+                    "visibility": "external"
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "707:59:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1576,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1575,
+                  "name": "_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1583,
+                  "src": "827:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1574,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "827:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "826:15:5"
+            },
+            "scope": 1645,
+            "src": "675:199:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1604,
+              "nodeType": "Block",
+              "src": "1361:43:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1602,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1598,
+                      "name": "_item",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1596,
+                      "src": "1367:5:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 1600,
+                          "name": "_current_item",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1593,
+                          "src": "1385:13:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 1599,
+                        "name": "_function",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1591,
+                        "src": "1375:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                          "typeString": "function (address) view external returns (address)"
+                        }
+                      },
+                      "id": 1601,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1375:24:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1367:32:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1603,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1367:32:5"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the next address from the list based on the specified `_current_item`\n@param _function Function that returns the next address based on the specified `_current_item`\n@param _current_item The current Address\n@return {\"_item\": \"The last Address\"}",
+            "id": 1605,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get_next_from_addresses",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1594,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1591,
+                  "name": "_function",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1605,
+                  "src": "1195:64:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                    "typeString": "function (address) view external returns (address)"
+                  },
+                  "typeName": {
+                    "id": 1590,
+                    "isDeclaredConst": true,
+                    "nodeType": "FunctionTypeName",
+                    "parameterTypes": {
+                      "id": 1586,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1585,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1605,
+                          "src": "1205:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "typeName": {
+                            "id": 1584,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1205:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "1204:9:5"
+                    },
+                    "payable": false,
+                    "returnParameterTypes": {
+                      "id": 1589,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1588,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1605,
+                          "src": "1241:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "typeName": {
+                            "id": 1587,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1241:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "1240:9:5"
+                    },
+                    "src": "1195:64:5",
+                    "stateMutability": "view",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                      "typeString": "function (address) view external returns (address)"
+                    },
+                    "visibility": "external"
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1593,
+                  "name": "_current_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1605,
+                  "src": "1261:21:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1592,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1261:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1194:89:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1597,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1596,
+                  "name": "_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1605,
+                  "src": "1344:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1595,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1344:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1343:15:5"
+            },
+            "scope": 1645,
+            "src": "1162:242:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1626,
+              "nodeType": "Block",
+              "src": "1903:43:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1624,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1620,
+                      "name": "_item",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1618,
+                      "src": "1909:5:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 1622,
+                          "name": "_current_item",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1615,
+                          "src": "1927:13:5",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 1621,
+                        "name": "_function",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1613,
+                        "src": "1917:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                          "typeString": "function (address) view external returns (address)"
+                        }
+                      },
+                      "id": 1623,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1917:24:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1909:32:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1625,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1909:32:5"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the previous address from the list based on the spcified `_current_item`\n@param _function Function that returns the previous address based on the specified `_current_item`\n@param _current_item  The current Address\n@return {\"_item\": \"The last Address\"}",
+            "id": 1627,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get_previous_from_addresses",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1616,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1613,
+                  "name": "_function",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1627,
+                  "src": "1737:64:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                    "typeString": "function (address) view external returns (address)"
+                  },
+                  "typeName": {
+                    "id": 1612,
+                    "isDeclaredConst": true,
+                    "nodeType": "FunctionTypeName",
+                    "parameterTypes": {
+                      "id": 1608,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1607,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1627,
+                          "src": "1747:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "typeName": {
+                            "id": 1606,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1747:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "1746:9:5"
+                    },
+                    "payable": false,
+                    "returnParameterTypes": {
+                      "id": 1611,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1610,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1627,
+                          "src": "1783:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "typeName": {
+                            "id": 1609,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1783:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "1782:9:5"
+                    },
+                    "src": "1737:64:5",
+                    "stateMutability": "view",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_address_$",
+                      "typeString": "function (address) view external returns (address)"
+                    },
+                    "visibility": "external"
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1615,
+                  "name": "_current_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1627,
+                  "src": "1803:21:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1614,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1803:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1736:89:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1619,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1618,
+                  "name": "_item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1627,
+                  "src": "1886:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1617,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1886:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1885:15:5"
+            },
+            "scope": 1645,
+            "src": "1700:246:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1643,
+              "nodeType": "Block",
+              "src": "2318:37:5",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1641,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1638,
+                      "name": "_total_count",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1636,
+                      "src": "2324:12:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 1639,
+                        "name": "_function",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1633,
+                        "src": "2339:9:5",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                          "typeString": "function () view external returns (uint256)"
+                        }
+                      },
+                      "id": 1640,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2339:11:5",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "2324:26:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1642,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2324:26:5"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the length (total number of addresses) of the list\n@param _function Function that returns the length of the list\n@return {\"_total_count\": \"Length of the list\"}",
+            "id": 1644,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "get_total_addresses",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1634,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1633,
+                  "name": "_function",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1644,
+                  "src": "2175:57:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                    "typeString": "function () view external returns (uint256)"
+                  },
+                  "typeName": {
+                    "id": 1632,
+                    "isDeclaredConst": true,
+                    "nodeType": "FunctionTypeName",
+                    "parameterTypes": {
+                      "id": 1628,
+                      "nodeType": "ParameterList",
+                      "parameters": [],
+                      "src": "2184:2:5"
+                    },
+                    "payable": false,
+                    "returnParameterTypes": {
+                      "id": 1631,
+                      "nodeType": "ParameterList",
+                      "parameters": [
+                        {
+                          "constant": false,
+                          "id": 1630,
+                          "name": "",
+                          "nodeType": "VariableDeclaration",
+                          "scope": 1644,
+                          "src": "2214:7:5",
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "typeName": {
+                            "id": 1629,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "2214:7:5",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "value": null,
+                          "visibility": "internal"
+                        }
+                      ],
+                      "src": "2213:9:5"
+                    },
+                    "src": "2175:57:5",
+                    "stateMutability": "view",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                      "typeString": "function () view external returns (uint256)"
+                    },
+                    "visibility": "external"
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2174:59:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1637,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1636,
+                  "name": "_total_count",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1644,
+                  "src": "2294:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1635,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2294:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2293:22:5"
+            },
+            "scope": 1645,
+            "src": "2146:209:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1646,
+        "src": "227:2131:5"
+      }
+    ],
     "src": "0:2359:5"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-07T03:38:46.675Z"
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-08-17T06:56:24.606Z"
 }

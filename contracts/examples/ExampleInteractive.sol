@@ -18,7 +18,7 @@ contract ExampleInteractive is BytesIteratorInteractive, AddressIteratorInteract
   /**
     @notice Constructor
   */
-  function ExampleInteractive(address _controller) public {
+  constructor(address _controller) public {
     controller_contract = _controller;
   }
 

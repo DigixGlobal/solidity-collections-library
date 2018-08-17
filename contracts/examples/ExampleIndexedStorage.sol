@@ -20,7 +20,7 @@ contract ExampleIndexedStorage is IndexedBytesIteratorStorage, IndexedAddressIte
   /**
     @notice Constructor
   */
-  function ExampleIndexedStorage() public {
+  constructor() public {
     initialize();
   }
 

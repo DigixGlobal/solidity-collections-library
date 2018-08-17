@@ -21,7 +21,7 @@ contract ExampleStorage is BytesIteratorStorage, AddressIteratorStorage, UintIte
   /**
     @notice Constructor
   */
-  function ExampleStorage() public {
+  constructor() public {
     initialize();
   }
 

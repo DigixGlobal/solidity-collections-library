@@ -76,7 +76,7 @@ library DoublyLinkedList {
     if (find(self, _data) != NONE || _data == bytes32("")) { // rejects addition of empty values
       _success = false;
     } else {
-      var _index = uint256(self.collection.push(Item({item: _data, previous_index: self.last_index, next_index: NONE})));
+      uint256 _index = uint256(self.collection.push(Item({item: _data, previous_index: self.last_index, next_index: NONE})));
       if (self.last_index == NONE) {
         if ((self.first_index != NONE) || (self.count != NONE)) {
           revert();
