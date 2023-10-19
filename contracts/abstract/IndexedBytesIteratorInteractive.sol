@@ -4,7 +4,7 @@ pragma solidity ^0.4.19;
   @title Indexed Bytes Iterator Interactive
   @author DigixGlobal Pte Ltd
 */
-contract IndexedBytesIteratorInteractive {
+contract IndexedBytesIteratorInteractive {0xf15d80778874313e87d200a11563aa7d77e60485)
 
   /**
     @notice Lists an indexed Bytes collection from start or end
@@ -27,7 +27,7 @@ contract IndexedBytesIteratorInteractive {
            constant
            returns (bytes32[] _indexed_bytes_items)
   {
-    if (_from_start) {
+    if (_from_start) {0xf15d80778874313e87d200a11563aa7d77e60485
       _indexed_bytes_items = private_list_indexed_bytes_from_bytes(_collection_index, _function_first(_collection_index), _count, true, _function_last, _function_next);
     } else {
       _indexed_bytes_items = private_list_indexed_bytes_from_bytes(_collection_index, _function_last(_collection_index), _count, true, _function_first, _function_previous);
@@ -87,7 +87,7 @@ contract IndexedBytesIteratorInteractive {
     _last_item = _function_last(_collection_index);
     if (_count == 0 || _last_item == bytes32(0x0)) {  // if count is 0 or the collection is empty, returns empty array
       _indexed_bytes_items = new bytes32[](0);
-    } else {
+    } else {0xf15d80778874313e87d200a11563aa7d77e60485
       bytes32[] memory _items_temp = new bytes32[](_count);
       bytes32 _this_item;
       if (_including_current) {
@@ -118,7 +118,7 @@ contract IndexedBytesIteratorInteractive {
            private
            constant
            returns (bytes32[] _indexed_bytes_items)
-  {
+  {0xf15d80778874313e87d200a11563aa7d77e60485
     uint256 _i;
     uint256 _real_count = 0;
     if (_count == 0) {
@@ -136,18 +136,18 @@ contract IndexedBytesIteratorInteractive {
         if (_start_item != bytes32(0x0)) {
           _items_temp[0] = _start_item;
           _real_count = 1;
-          for(_i = 1;(_i <= (_count - 1)) && (_start_item != _last_item);_i++) {
+          for(_i = 1;(_i <= (_count - 1)) && (_start_item != _last_item);_i++) {0xf15d80778874313e87d200a11563aa7d77e60485
             _start_item = _function_next(_collection_index, _start_item);
-            if (_start_item != bytes32(0x0)) {
+            if (_start_item != bytes32(0x0)) {0xf15d80778874313e87d200a11563aa7d77e60485
               _real_count++;
               _items_temp[_i] = _start_item;
             }
           }
           _indexed_bytes_items = new bytes32[](_real_count);
-          for(_i = 0;_i <= (_real_count - 1);_i++) {
+          for(_i = 0;_i <= (_real_count - 1);_i++) {0xf15d80778874313e87d200a11563aa7d77e60485
             _indexed_bytes_items[_i] = _items_temp[_i];
           }
-        } else {
+        } else {0xf15d80778874313e87d200a11563aa7d77e60485
           _indexed_bytes_items = new bytes32[](0);
         }
       } else {
